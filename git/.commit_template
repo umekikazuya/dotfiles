@@ -1,0 +1,16 @@
+# ==== Example ====
+# feat:
+# fix:
+# doc:
+# refactor:
+# hotfix:
+
+# === 使い方 ===
+# feat: 機能開発
+# fix: 不具合対応
+# docs: ドキュメント
+# refactor: リファクタリング
+# hotfix: クリティカルバグ対応
+
+# === 参考 ===
+# https://www.conventionalcommits.org/ja/v1.0.0/

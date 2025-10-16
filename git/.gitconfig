@@ -1,0 +1,126 @@
+[user]
+	useConfigOnly = true
+	name = Kazuya Umeki
+	email = 108924738+umekikazuya@users.noreply.github.com
+
+[include]
+	path = ~/.gitconfig.local
+
+[core]
+	editor = vim
+	quotepath = false
+	hooksPath = ~/.dotfiles/git/hooks
+
+[push]
+	default = simple
+	utoSetupRemote = true
+
+[ghq]
+	root = ./src
+
+[filter "lfs"]
+
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
+[alias]
+	# --- 共通 ---
+
+  # List aliases.
+  ali = !git config --get-regexp alias | awk '{key=$1; sub(/^alias\./, "", key); command=substr($0, index($0, " ")+1); printf "%-20s: %s\n", key, command}'
+
+	st = status -u -s
+
+	logo = log --oneline
+
+	logn = log --name-status --oneline
+
+	# --- リモート・ローカル同期 ---
+
+	fp = fetch --prune
+
+	# --- ブランチ操作 ---
+	sw = switch
+	bd = branch -D
+
+	# --- コミット ---
+
+	# コミット
+	ci = commit -v
+
+	# 直前の内容を再コミット(メッセージ変更あり)
+	ame = commit --amend
+
+	# 直前の内容を再コミット(メッセージ変更なし)
+	ame-no = commit --amend --no-edit
+
+	# --- コミット履歴 ---
+
+	# グラフ表示
+	lg = log --graph --all --pretty=format:'%C(yellow)%h%C(reset) - %C(bold red)%d%C(reset) %s %C(green)(%ar)%C(reset) %C(bold blue)<%an>%C(reset)'
+
+	# Find By Commit Message(略してfbcm) コミットメッセージを検索して作業内容を確認する
+	fbcm = "!git show $(git log --oneline | fzf -m | awk '{print $1}')"
+
+	# --- 作業エリア・ステージングエリア ---
+
+	# git diff
+	di = diff
+
+	# git diff --staged
+	di-s = diff --staged
+
+	# 作業エリアで変更差分があるファイルを検索し選択されたファイルの差分を確認する (di-f = diff find)
+	di-f = "!git diff $(git status -s | fzf -m | awk '{print $2}')"
+
+	# ステージングエリアで変更差分があるファイルを検索し選択されたファイルの差分を確認する (di-f = diff find)
+	di-s-f = "!git diff --staged $(git status -s | fzf -m | awk '{print $2}')"
+
+	# drupal.org からおすすめされたパッチの記載方法
+	diffup = "!f() { git log --oneline --first-parent --reverse @{u}... && git diff $1... > $2 && git diff @{u} > interdiff.txt && echo; }; f"
+
+	# add . (add allの略)
+
+	aa = add .
+
+	# restore
+
+	res = restore
+
+	# restore --staged
+
+	ress = restore --staged
+
+[init]
+	defaultBranch = develop
+[commit]
+	gpgsign = true
+	template = ~/.dotfiles/.git/.commit_template
+[tag]
+	gpgSign = true
+[gpg]
+	program = gpg
+
+[color]
+	ui = auto
+
+[color "branch"]
+
+	current = yellow reverse
+	local = yellow
+	remote = green
+
+[color "diff"]
+
+	meta = yellow bold
+	frag = magenta bold # line info
+	old = red # deletions
+	new = green # additions
+
+[color "status"]
+
+	added = yellow
+	changed = green
+	untracked = cyan
