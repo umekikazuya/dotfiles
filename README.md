@@ -1,6 +1,6 @@
 # My Dotfiles
 
-Thi is my dotfiles!!
+This is my dotfiles!!
 
 ## Installation
 
