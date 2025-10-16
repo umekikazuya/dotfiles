@@ -97,7 +97,7 @@
 	defaultBranch = develop
 [commit]
 	gpgsign = true
-	template = ~/.dotfiles/.git/.commit_template
+	template = ~/.dotfiles/git/.commit_template
 [tag]
 	gpgSign = true
 [gpg]
