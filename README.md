@@ -1,2 +1,2 @@
-# dotfile
-my dotfile
+# dotfiles
+my dotfiles
