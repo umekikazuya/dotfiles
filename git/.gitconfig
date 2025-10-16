@@ -4,7 +4,7 @@
 	email = 108924738+umekikazuya@users.noreply.github.com
 
 [include]
-	path = ~/.gitconfig.local
+	path = ~/.dotfiles/git/.gitconfig.local
 
 [core]
 	editor = vim
