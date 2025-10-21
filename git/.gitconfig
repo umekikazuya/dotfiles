@@ -14,7 +14,7 @@
 
 [push]
 	default = simple
-	utoSetupRemote = true
+	autoSetupRemote = true
 
 [ghq]
 	root = ./src
