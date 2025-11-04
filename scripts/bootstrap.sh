@@ -10,3 +10,9 @@ ln -sfv "$DOTFILES_DIR/git/.gitconfig" ~
 
 # Create symlink for .zshrc
 ln -sfv "$DOTFILES_DIR/zsh/.zshrc" ~
+
+# Create symlink for .tmux.conf
+ln -sfv "$DOTFILES_DIR/tmux/.tmux.conf" ~
+
+# Create symlink for alacritty
+ln -sfv "$DOTFILES_DIR/alacritty/alacritty.toml" ~/.config/alacritty/alacritty.toml
