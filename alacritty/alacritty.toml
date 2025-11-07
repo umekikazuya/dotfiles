@@ -9,7 +9,7 @@ opacity = 0.75
 blur = true
 
 [scrolling]
-history = 100000
+history = 1000000
 multiplier = 5
 
 [font]
