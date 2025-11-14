@@ -9,7 +9,6 @@ opacity = 0.75
 blur = true
 
 [scrolling]
-history = 1000000
 multiplier = 5
 
 [font]
@@ -19,6 +18,7 @@ italic = { family = "Mint Mono", style = "Italic" }
 bold_italic = { family = "Mint Mono", style = "Bold Italic" }
 size = 12.0
 offset = { x = 2, y = 4 }
+fallbacks = ["Hack Nerd Font"]
 
 [terminal]
 shell = { program = "/bin/zsh", args = ["-l", "-c", "tmux a -t 0 || tmux"] }
