@@ -10,14 +10,14 @@
 	editor = vim
 	quotepath = false
 	hooksPath = ~/.dotfiles/git/hooks
-	excludesfile = /Users/umekikazuya/.dotfiles/git/.gitignore_global
+	excludesfile = ~/.dotfiles/git/.gitignore_global
 
 [push]
 	default = simple
 	autoSetupRemote = true
 
 [ghq]
-	root = ./src
+	root = ~/src
 
 [filter "lfs"]
 
