@@ -1,6 +1,6 @@
 [general]
 import = [
-    "~/.config/alacritty/themes/themes/duskfox.toml"
+    "~/.config/alacritty/themes/themes/ayu_mirage.toml"
 ]
 
 [window]
@@ -16,9 +16,8 @@ normal = { family = "Mint Mono", style = "Regular" }
 bold = { family = "Mint Mono", style = "Bold" }
 italic = { family = "Mint Mono", style = "Italic" }
 bold_italic = { family = "Mint Mono", style = "Bold Italic" }
-size = 12.0
+size = 14.0
 offset = { x = 2, y = 4 }
-fallbacks = ["Hack Nerd Font"]
 
 [terminal]
 shell = { program = "/bin/zsh", args = ["-l", "-c", "tmux a -t 0 || tmux"] }
