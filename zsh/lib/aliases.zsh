@@ -22,4 +22,4 @@ alias dcl='docker system df && docker volume ls -qf dangling=true | xargs -r doc
 alias sshli="cat ~/.ssh/config |grep ^Host\  |sed -e 's/^Host\ //g'"
 
 # ghq管理下のリポジトリから選択して移動
-alias ghcd="cd \$(ghq root)/\$(ghq list | fzf)"
+alias ghcd="cd \$(ghq root)/\$(ghq list | fzf --reverse --height=40%)"
