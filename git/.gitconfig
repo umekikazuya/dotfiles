@@ -7,7 +7,7 @@
 	path = ~/.dotfiles/git/.gitconfig.local
 
 [core]
-	editor = vim
+	editor = nvim
 	quotepath = false
 	hooksPath = ~/.dotfiles/git/hooks
 	excludesfile = ~/.dotfiles/git/.gitignore_global
@@ -56,6 +56,9 @@
 
 	# 直前の内容を再コミット(メッセージ変更なし)
 	ame-no = commit --amend --no-edit
+
+	# fzfで選択したファイルのみをgit add
+  af = !git add $(git status -s | fzf -m | awk '{print $2}')
 
 	# --- コミット履歴 ---
 
