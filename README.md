@@ -7,13 +7,13 @@ This is my dotfiles!!
 ### 1.  **Clone this repository:**
 
 ```bash
-git clone https://github.com/umekikazuya/dotfiles.git ~/.dotfiles
+ghq get https://github.com/umekikazuya/dotfiles.git
 ```
 
 ### 2. Set up
 
 ```bash
-cd ~/.dotfiles
+cd <リポジトリルート>
 ./scripts/bootstrap.sh
 ```
 

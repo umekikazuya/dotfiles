@@ -3,7 +3,7 @@
 # This script creates symlinks from the home directory to any desired dotfiles in ~/dotfiles
 
 # dotfiles directory
-DOTFILES_DIR=~/.dotfiles
+DOTFILES_DIR=~/src/github.com/umekikazuya/dotfiles
 
 # Create symlink for .gitconfig
 ln -sfv "$DOTFILES_DIR/git/.gitconfig" ~
