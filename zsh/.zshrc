@@ -7,7 +7,7 @@
 # ------------------------------------------------------------------------------
 
 # Define the lib directory, assuming .zshrc is in the zsh directory of the dotfiles repo
-ZSH_LIB_DIR="${ZDOTDIR:-$HOME/.dotfiles}/zsh/lib"
+ZSH_LIB_DIR="${ZDOTDIR:-$HOME}/src/github.com/umekikazuya/dotfiles/zsh/lib"
 
 # Source all .zsh files in the lib directory
 for file in "$ZSH_LIB_DIR"/*.zsh; do
