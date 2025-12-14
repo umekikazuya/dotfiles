@@ -16,3 +16,6 @@ ln -sfv "$DOTFILES_DIR/tmux/.tmux.conf" ~
 
 # Create symlink for alacritty
 ln -sfv "$DOTFILES_DIR/alacritty/alacritty.toml" ~/.config/alacritty/alacritty.toml
+
+# Create symlink for nvim
+ln -sfv "$DOTFILES_DIR/nvim" ~/.config/nvim
