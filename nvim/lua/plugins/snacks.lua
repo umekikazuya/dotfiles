@@ -1,0 +1,19 @@
+return {
+  "folke/snacks.nvim",
+  priority = 1000,
+  lazy = false,
+  ---@type snacks.Config
+  opts = {
+    dashboard = {
+      preset = {
+        header = [[
+Say Hello!!
+]],
+      },
+      formats = {
+        header = { "%s", align = "center" },
+      },
+      enabled = true,
+    },
+  },
+}
