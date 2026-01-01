@@ -4,9 +4,11 @@
 # ]
 
 [window]
-padding = { x = 4, y = 2 }
+padding = { x = 0, y = 0 }
+dynamic_padding = true
 opacity = 0.7
 blur = true
+decorations = "Full"
 
 [scrolling]
 multiplier = 5
