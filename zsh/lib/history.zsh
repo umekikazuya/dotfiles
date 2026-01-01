@@ -16,3 +16,13 @@ setopt hist_ignore_all_dups     # ヒストリーに重複を表示しない
 setopt hist_save_no_dups        # 重複するコマンドが保存されるとき、古い方を削除する。
 setopt extended_history         # コマンドのタイムスタンプをHISTFILEに記録する
 setopt hist_expire_dups_first   # HISTFILEのサイズがHISTSIZEを超える場合は、最初に重複を削除します
+
+# ignore
+setopt extended_glob
+function zshaddhistory() {
+    local line=${1%%$'\n'}
+    if [[ "$line" =~ "^(ls|cd|pwd|tm|exit|git ci|git add|git res|git ress|git ame|git st|git push -f)" ]]; then
+        return 1 # 履歴に保存しない
+    fi
+    return 0 # 履歴に保存する
+}
