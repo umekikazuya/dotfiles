@@ -4,3 +4,11 @@
 
 -- インサートモード中に 'jj' を素早く入力すると Esc とみなす
 vim.keymap.set("i", "jj", "<Esc>", { desc = "Escape with jj" })
+-- 入力モード中に Ctrl + h/j/k/l でカーソル移動
+vim.keymap.set("i", "<C-j>", "<Down>", { desc = "Down" })
+vim.keymap.set("i", "<C-k>", "<Up>", { desc = "Up" })
+vim.keymap.set("i", "<C-h>", "<Left>", { desc = "Left" })
+vim.keymap.set("i", "<C-l>", "<Right>", { desc = "Right" })
+
+-- 日本語入力モードで "jj" (っj) を入力しても Esc とみなす
+vim.keymap.set("i", "っj", "<Esc>", { desc = "Escape with jj (Japanese)" })

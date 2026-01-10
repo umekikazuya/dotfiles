@@ -2,9 +2,12 @@
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
 
--- 不可視文字を表示モードにする
-vim.opt.list = true
-
+-- 表示設定
+vim.opt.list = true -- 不可視文字を表示モードにする
+vim.opt.number = true -- 行番号表示
+vim.opt.relativenumber = false -- 相対行番号を無効にする
+vim.opt.laststatus = 2
+vim.opt.cursorline = true
 vim.opt.listchars = {
   -- タブの設定: "  " (スペース2つ) に設定することで、見た目を「透明」に変更
   tab = "  ",
@@ -15,26 +18,26 @@ vim.opt.listchars = {
   -- 行末の余計なスペースは警告として表示
   trail = "·",
 }
+-- 文字・カーソル
 
--- フォーカスが外れた時に自動保存
-vim.opt.autowrite = true
+-- エンコーディングとファイル設定
+vim.opt.encoding = "utf-8"
+vim.scriptencoding = "utf-8"
+vim.opt.fileencoding = "utf-8"
+vim.opt.fileformats = "unix,dos,mac"
+
+-- 検索
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.wrapscan = true
+vim.opt.incsearch = true
+vim.opt.hlsearch = true
+
+-- その他
+vim.opt.autowrite = true -- フォーカスが外れた時に自動保存
 
 -- クリップボードをOSと共有する
 vim.opt.clipboard = "unnamedplus"
-
--- 検索時に大文字小文字を区別しない
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-
--- 行番号を表示する
-vim.opt.number = true
-
--- 相対行番号を無効にする
-vim.opt.relativenumber = false
-
--- インデントの設定（デフォルトは2スペース）
--- vim.opt.tabstop = 4
--- vim.opt.shiftwidth = 4
 
 -- LuaRocks (hererocks) のインストールエラー
 vim.g.loaded_python3_provider = 0

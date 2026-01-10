@@ -18,20 +18,8 @@ require("lazy").setup({
   spec = {
     -- add LazyVim and import its plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
-    -- Golang
-    { import = "lazyvim.plugins.extras.lang.go" },
-    -- TypeScript
-    { import = "lazyvim.plugins.extras.lang.typescript" },
-    -- JSON
-    { import = "lazyvim.plugins.extras.lang.json" },
-    -- YAML
-    { import = "lazyvim.plugins.extras.lang.yaml" },
-    -- PHP
-    { import = "lazyvim.plugins.extras.lang.php" },
-    -- Docker
-    { import = "lazyvim.plugins.extras.lang.docker" },
-    -- Markdown
-    { import = "lazyvim.plugins.extras.lang.markdown" },
+    -- Import Extras from config/extras.lua
+    { import = "config.extras" },
     -- import/override with your plugins
     { import = "plugins" },
   },
@@ -44,7 +32,6 @@ require("lazy").setup({
     version = false, -- always use the latest git commit
     -- version = "*", -- try installing the latest stable version for plugins that support semver
   },
-  install = { colorscheme = { "tokyonight", "habamax" } },
   checker = {
     enabled = true, -- check for plugin updates periodically
     notify = false, -- notify on update
