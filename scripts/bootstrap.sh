@@ -19,3 +19,6 @@ ln -sfv "$DOTFILES_DIR/alacritty/alacritty.toml" ~/.config/alacritty/alacritty.t
 
 # Create symlink for nvim
 ln -sfv "$DOTFILES_DIR/nvim" ~/.config/nvim
+
+# Create symlink for bat
+ln -sfv "$DOTFILES_DIR/bat" ~/.config/bat
