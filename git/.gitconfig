@@ -71,10 +71,10 @@
 	# --- 作業エリア・ステージングエリア ---
 
 	# git diff
-	di = diff
+	di = !git diff --name-only --relative -z | xargs -0 -I{} sh -c 'git diff --relative "{}" | bat --language diff --file-name "{}"'
 
 	# git diff --staged
-	di-s = diff --staged
+	di-s = !git diff --staged --name-only --relative -z | xargs -0 -I{} sh -c 'git diff --staged --relative "{}" | bat --language diff --file-name "{}"'
 
 	# 作業エリアで変更差分があるファイルを検索し選択されたファイルの差分を確認する (di-f = diff find)
 	di-f = "!git diff $(git status -s | fzf -m | awk '{print $2}')"
