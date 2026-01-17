@@ -6,7 +6,7 @@
 [window]
 padding = { x = 0, y = 0 }
 dynamic_padding = true
-opacity = 0.7
+opacity = 0.9
 blur = true
 decorations = "Full"
 
