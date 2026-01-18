@@ -18,7 +18,10 @@ ln -sfv "$DOTFILES_DIR/tmux/.tmux.conf" ~
 ln -sfv "$DOTFILES_DIR/alacritty/alacritty.toml" ~/.config/alacritty/alacritty.toml
 
 # Create symlink for nvim
-ln -sfv "$DOTFILES_DIR/nvim" ~/.config/nvim
+ln -sfvn "$DOTFILES_DIR/nvim" ~/.config/nvim
 
 # Create symlink for bat
-ln -sfv "$DOTFILES_DIR/bat" ~/.config/bat
+ln -sfvn "$DOTFILES_DIR/bat" ~/.config/bat
+
+# Create symlink for mise
+ln -sfvn "$DOTFILES_DIR/mise" ~/.config/mise
