@@ -15,5 +15,13 @@ Say Hello!!
       },
       enabled = true,
     },
+    picker = {
+      sources = {
+        files = {
+          hidden = true,
+          ignored = false,
+        },
+      },
+    },
   },
 }
