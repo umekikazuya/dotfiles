@@ -20,3 +20,8 @@ gemini-cli = "latest"
 awscli = { version = "latest", symlink_bins = "true" }
 task = "latest"
 stripe-cli = "latest"
+colima = "latest"
+lima = "latest"
+docker-cli = "latest"
+docker-compose = "latest"
+"aqua:docker/buildx" = "latest"
