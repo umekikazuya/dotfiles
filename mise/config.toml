@@ -25,3 +25,31 @@ lima = "latest"
 docker-cli = "latest"
 docker-compose = "latest"
 "aqua:docker/buildx" = "latest"
+
+[tasks.cleanup]
+description = "システム全体のキャッシュ掃除"
+run = """
+  echo "Cleaning Go cache..." && go clean -modcache -cache -testcache
+  echo "Cleaning Docker..." && docker system df && docker volume ls -qf dangling=true | xargs -r docker volume rm && docker images -f 'dangling=true' -q | xargs -r docker rmi && docker container prune --force --filter 'until=168h' && docker ps --filter 'status=exited' | grep 'weeks ago' | awk '{print $1}' | xargs -r docker rm && docker builder prune && docker system df
+  echo "Cleaning npm cache..." && npm cache clean --force
+  echo "Cleaning brew cache..." && brew cleanup
+"""
+
+[tasks.doctor]
+run = "mise doctor && mise reshim"
+
+[shell_alias]
+mr = "mise run"
+clm = "colima"
+d = "docker"
+dc = "docker compose"
+dps = "docker ps"
+dpsa = "docker ps -a"
+dst = "docker stats"
+dil = "docker images"
+dclog = "docker compose logs -f"
+dex = "docker exec -it"
+dcex = "docker compose exec -it"
+drm = "docker rm"
+dri = "docker rmi"
+dcl = '''docker system df && docker volume ls -qf dangling=true | xargs -r docker volume rm && docker images -f 'dangling=true' -q | xargs -r docker rmi && docker container prune --force --filter 'until=168h' && docker ps --filter 'status=exited' | grep 'weeks ago' | awk '{print $1}' | xargs -r docker rm && docker builder prune && docker system df'''
