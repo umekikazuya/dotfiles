@@ -23,8 +23,9 @@ stripe-cli = "latest"
 colima = "latest"
 lima = "latest"
 docker-cli = "latest"
-docker-compose = "latest"
+docker-compose = { version = "latest", postinstall = "ln -s $(which docker-cli-plugin-docker-compose) ~/.docker/cli-plugins/docker-compose" }
 "aqua:docker/buildx" = "latest"
+"npm:aws-cdk" = "latest"
 
 [tasks.cleanup]
 description = "システム全体のキャッシュ掃除"
