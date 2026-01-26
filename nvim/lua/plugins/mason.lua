@@ -7,19 +7,8 @@ return {
         "stylua",
         "shfmt",
 
-        -- Markdown
-        "markdown-toc",
-
         -- SQL
         "sqlfluff",
-
-        -- PHP
-        "intelephense",
-        "phpstan",
-        "phpcbf",
-        -- Twig
-        "twigcs",
-        "twig-cs-fixer",
       },
     },
   },
