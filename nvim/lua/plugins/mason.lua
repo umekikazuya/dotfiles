@@ -17,6 +17,9 @@ return {
         "intelephense",
         "phpstan",
         "phpcbf",
+        -- Twig
+        "twigcs",
+        "twig-cs-fixer",
 
         -- Go
         "gofumpt",
