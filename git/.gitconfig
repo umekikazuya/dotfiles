@@ -40,7 +40,7 @@
 
 	# --- リモート・ローカル同期 ---
 
-	fp = fetch --prune
+	fp = fetch --prune --all
 
 	# --- ブランチ操作 ---
 	sw = switch
