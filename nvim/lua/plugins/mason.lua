@@ -20,9 +20,6 @@ return {
         -- Twig
         "twigcs",
         "twig-cs-fixer",
-
-        -- Go
-        "gofumpt",
       },
     },
   },
