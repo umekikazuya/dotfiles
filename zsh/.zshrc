@@ -6,6 +6,8 @@
 #
 # ------------------------------------------------------------------------------
 
+export PATH="$HOME/.local/bin:$PATH"
+
 # Define the lib directory, assuming .zshrc is in the zsh directory of the dotfiles repo
 ZSH_LIB_DIR="${ZDOTDIR:-$HOME}/src/github.com/umekikazuya/dotfiles/zsh/lib"
 
@@ -20,5 +22,7 @@ done
 if [ -f "${HOME}/.zshrc.local" ]; then
   source "${HOME}/.zshrc.local"
 fi
+
+eval "$(~/.local/bin/mise activate zsh)"
 
 unset ZSH_LIB_DIR file
