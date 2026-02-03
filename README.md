@@ -8,6 +8,7 @@ This is my dotfiles!!
 
 ```bash
 ghq get https://github.com/umekikazuya/dotfiles.git
+# git clone https://github.com/umekikazuya/dotfiles.git ~/src/github.com/umekikazuya/dotfiles
 ```
 
 ### 2. Set up
