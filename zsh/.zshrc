@@ -8,6 +8,14 @@
 
 export PATH="$HOME/.local/bin:$PATH"
 
+autoload -Uz compinit
+compinit
+
+# Completion improvements
+zstyle ':completion:*' menu select
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+
+
 # Define the lib directory, assuming .zshrc is in the zsh directory of the dotfiles repo
 ZSH_LIB_DIR="${ZDOTDIR:-$HOME}/src/github.com/umekikazuya/dotfiles/zsh/lib"
 
