@@ -8,9 +8,6 @@
 
 export PATH="$HOME/.local/bin:$PATH"
 
-# Add gh completion to fpath
-fpath=($HOME/src/github.com/umekikazuya/dotfiles/gh/completions $fpath)
-
 autoload -Uz compinit
 compinit
 
@@ -35,5 +32,6 @@ if [ -f "${HOME}/.zshrc.local" ]; then
 fi
 
 eval "$(~/.local/bin/mise activate zsh)"
+eval "$(gh completion -s zsh)"
 
 unset ZSH_LIB_DIR file
