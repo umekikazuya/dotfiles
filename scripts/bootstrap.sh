@@ -29,3 +29,6 @@ ln -sfvn "$DOTFILES_DIR/bat" ~/.config/bat
 
 # Create symlink for mise
 ln -sfvn "$DOTFILES_DIR/mise" ~/.config/mise
+
+# Create symlink for gh
+ln -sfvn "$DOTFILES_DIR/gh" ~/.config/gh
