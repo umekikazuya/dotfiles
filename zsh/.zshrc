@@ -8,6 +8,9 @@
 
 export PATH="$HOME/.local/bin:$PATH"
 
+# Add gh completion to fpath
+fpath=($HOME/src/github.com/umekikazuya/dotfiles/gh/completions $fpath)
+
 autoload -Uz compinit
 compinit
 
