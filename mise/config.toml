@@ -28,6 +28,7 @@ docker-compose = { version = "latest", postinstall = "ln -s $(which docker-cli-p
 "npm:aws-cdk" = "latest"
 git-lfs = "latest"
 lazygit = "latest"
+claude = "latest"
 
 [tasks.cleanup]
 description = "システム全体のキャッシュ掃除"
