@@ -14,3 +14,15 @@ vim.filetype.add({
   },
 })
 
+vim.api.nvim_create_augroup("MyAutoSave", { clear = true })
+vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {
+  group = "MyAutoSave",
+  pattern = "*",
+  callback = function()
+    -- 編集可能かつファイル名がある場合のみ保存
+    if vim.bo.modifiable and vim.fn.expand("%") ~= "" and vim.bo.filetype ~= "" then
+      vim.cmd("silent! update")
+      print("󰆓 Saved at " .. vim.fn.strftime("%H:%M:%S"))
+    end
+  end,
+})
