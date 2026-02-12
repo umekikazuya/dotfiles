@@ -1,0 +1,49 @@
+# Start command
+command = /bin/zsh -l -c "tmux a -t 0 || tmux"
+
+# 独自ショートカットの無効設定
+keybind = clear
+keybind = super+c=copy_to_clipboard
+keybind = super+v=paste_from_clipboard
+keybind = super+q=quit
+# The syntax is "key = value". The whitespace around the
+# equals doesn't matter.
+background = 282c34
+foreground = ffffff
+
+# Comments start with a `#` and are only valid on their own line.
+# Blank lines are ignored!
+
+keybind = ctrl+z=close_surface
+keybind = ctrl+d=new_split:right
+
+# Empty values reset the configuration to the default value
+# Font
+font-family = "Mint Mono"
+font-family-bold = "Mint Mono Bold"
+font-size = 14
+font-thicken = true
+adjust-cell-width = 2
+adjust-cell-height = 20%
+
+palette = 0=#14171d
+palette = 1=#c4746e
+palette = 2=#8a9a7b
+palette = 3=#c4b28a
+palette = 4=#8ba4b0
+palette = 5=#a292a3
+palette = 6=#8ea4a2
+palette = 7=#a4a7a4
+palette = 8=#5C6066
+palette = 9=#e46876
+palette = 10=#87a987
+palette = 11=#e6c384
+palette = 12=#7fb4ca
+palette = 13=#938aa9
+palette = 14=#7aa89f
+palette = 15=#c5c9c7
+
+background = #14171d
+foreground = #c5c9c7
+cursor-color = #c5c9c7
+selection-background = #3E424A
