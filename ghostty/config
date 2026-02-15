@@ -22,7 +22,7 @@ keybind = ctrl+d=new_split:right
 font-family = "Mint Mono"
 font-family-bold = "Mint Mono Bold"
 font-size = 14
-font-thicken = false
+font-thicken = true
 adjust-cell-width = 2
 adjust-cell-height = 20%
 
