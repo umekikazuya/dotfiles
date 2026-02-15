@@ -22,9 +22,15 @@ keybind = ctrl+d=new_split:right
 font-family = "Mint Mono"
 font-family-bold = "Mint Mono Bold"
 font-size = 14
-font-thicken = true
+font-thicken = false
 adjust-cell-width = 2
 adjust-cell-height = 20%
+
+# Window
+window-show-tab-bar = "never"
+
+# MacOS
+macos-icon = "chalkboard"
 
 palette = 0=#14171d
 palette = 1=#c4746e
