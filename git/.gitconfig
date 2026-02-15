@@ -63,7 +63,7 @@
 	# --- コミット履歴 ---
 
 	# グラフ表示
-	lg = log --graph --all --pretty=format:'%C(yellow)%h%C(reset) - %C(bold red)%d%C(reset) %s %C(green)(%ad)%C(reset) %C(bold blue)<%an>%C(reset)' --date=format:'%Y/%m/%d %H:%M:%S'
+	lg = log --graph --all --date-order --pretty=format:'%C(yellow)%h%C(reset) - %C(bold red)%d%C(reset) %s %C(green)(%ad)%C(reset) %C(bold blue)<%an>%C(reset)' --date=format:'%Y/%m/%d %H:%M:%S'
 
 	# Find By Commit Message(略してfbcm) コミットメッセージを検索して作業内容を確認する
 	fbcm = "!git show $(git log --oneline | fzf -m | awk '{print $1}')"
