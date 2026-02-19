@@ -20,6 +20,7 @@ vim.opt.listchars = {
 }
 
 -- 文字・カーソル
+vim.opt.guicursor = "n-v-c-sm:block,i-ci-ve:ver25-iCursor,r-cr-o:hor20"
 
 -- エンコーディングとファイル設定
 vim.opt.encoding = "utf-8"
