@@ -33,5 +33,6 @@ fi
 
 eval "$(~/.local/bin/mise activate zsh)"
 eval "$(gh completion -s zsh)"
+eval "$(starship init zsh)"
 
 unset ZSH_LIB_DIR file

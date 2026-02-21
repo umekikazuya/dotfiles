@@ -35,3 +35,6 @@ ln -sfvn "$DOTFILES_DIR/gh" ~/.config/gh
 
 # Create symlink for ghostty
 ln -sfvn "$DOTFILES_DIR/ghostty" ~/.config/ghostty
+
+# Create symlink for starship
+ln -sf "$DOTFILES_DIR/starship/starship.toml" ~/.config/starship.toml

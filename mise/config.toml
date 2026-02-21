@@ -29,6 +29,7 @@ docker-compose = { version = "latest", postinstall = "ln -s $(which docker-cli-p
 git-lfs = "latest"
 lazygit = "latest"
 claude = "latest"
+starship = "latest"
 
 [tasks.cleanup]
 description = "システム全体のキャッシュ掃除"
