@@ -53,3 +53,6 @@ vim.opt.wrap = false
 
 -- スクロール時の余白（カーソルが画面端に来る前に行をスクロールさせる）
 vim.opt.scrolloff = 8
+
+--- Lazyvimのピッカーを指定
+vim.g.lazyvim_picker = "snacks"
