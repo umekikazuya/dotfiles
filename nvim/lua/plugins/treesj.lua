@@ -6,6 +6,6 @@ return {
   dependencies = { "nvim-treesitter/nvim-treesitter" },
   opts = {
     use_default_keymaps = false, -- デフォルトのキーマップ(gS/gJ)は使わず、<leader>mでトグルさせる
-    max_join_length = 120, -- 120文字までは1行にまとめられるようにする
+    max_join_length = 1000, -- 実質無制限に近くし、長いTableテストなども1行にまとめられるようにする
   },
 }
