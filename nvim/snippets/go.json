@@ -1,0 +1,47 @@
+{
+  "Value Object Set": {
+    "prefix": "voset",
+    "body": [
+      "type ${1:Name} struct {",
+      "\tvalue ${2:string}",
+      "}",
+      "",
+      "func New${1}(v ${2}) (${1}, error) {",
+      "\tif ${3:condition} {",
+      "\t\treturn ${1}{}, fmt.Errorf(\"invalid ${1}: %v\", v)",
+      "\t}",
+      "\treturn ${1}{value: v}, nil",
+      "}",
+      "",
+      "func (v ${1}) Value() ${2} {",
+      "\treturn v.value",
+      "}"
+    ]
+  },
+  "Table Driven Test": {
+    "prefix": "tdt",
+    "body": [
+      "tests := []struct {",
+      "\tname    string",
+      "\targs    args",
+      "\twant    want",
+      "}{",
+      "\t{",
+      "\t\tname: \"${1:success}\",",
+      "\t\targs: args{",
+      "\t\t\t${2}",
+      "\t\t},",
+      "\t\twant: want{",
+      "\t\t\t${3}",
+      "\t\t},",
+      "\t},",
+      "}",
+      "for _, tt := range tests {",
+      "\tt.Run(tt.name, func(t *testing.T) {",
+      "\t\t${0}",
+      "\t})",
+      "}"
+    ],
+    "description": "Table Driven Test template for Go"
+  }
+}
