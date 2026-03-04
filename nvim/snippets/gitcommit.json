@@ -1,0 +1,10 @@
+{
+  "Co-authored-by": {
+    "prefix": "cab",
+    "body": [
+      "",
+      "Co-authored-by: ${1:Name} <${2:email@example.com}>"
+    ],
+    "description": "Add GitHub Co-authored-by trailer"
+  }
+}
