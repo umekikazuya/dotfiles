@@ -3,7 +3,7 @@
     "prefix": "cab",
     "body": [
       "",
-      "Co-authored-by: ${1:Name} <${2:email@example.com}>"
+      "Co-authored-by: ${1:Name} <${1}@users.noreply.github.com>"
     ],
     "description": "Add GitHub Co-authored-by trailer"
   }
