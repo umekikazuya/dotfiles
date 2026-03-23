@@ -1,6 +1,6 @@
 [tools]
 go = "latest"
-golangci-lint = "v2.7.2"
+golangci-lint = "v2.11.3"
 node = "latest"
 jq = "latest"
 fd = "latest"
