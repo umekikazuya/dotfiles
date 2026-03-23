@@ -1,0 +1,61 @@
+{
+  "GitHub Actions Workflow": {
+    "prefix": "workflow",
+    "body": [
+      "name: ${1:CI}",
+      "",
+      "on:",
+      "  push:",
+      "    branches: [${2:main}]",
+      "  pull_request:",
+      "    branches: [${2:main}]",
+      "",
+      "jobs:",
+      "  ${3:build}:",
+      "    runs-on: ubuntu-latest",
+      "    steps:",
+      "      - uses: actions/checkout@v4",
+      "      ${0}"
+    ],
+    "description": "GitHub Actions workflow template"
+  },
+  "GitHub Actions Job": {
+    "prefix": "job",
+    "body": [
+      "${1:job-name}:",
+      "  runs-on: ${2:ubuntu-latest}",
+      "  steps:",
+      "    ${0}"
+    ],
+    "description": "GitHub Actions job definition"
+  },
+  "GitHub Actions Step": {
+    "prefix": "step",
+    "body": [
+      "- name: ${1:Step name}",
+      "  ${2|uses,run|}: ${0}"
+    ],
+    "description": "GitHub Actions step with name"
+  },
+  "Go Test Step": {
+    "prefix": "gotest",
+    "body": [
+      "- uses: actions/checkout@v4",
+      "",
+      "- uses: actions/setup-go@v5",
+      "  with:",
+      "    go-version: '${1:1.24}'",
+      "",
+      "- name: Test",
+      "  run: go test ./..."
+    ],
+    "description": "Go test steps: checkout + setup-go + test"
+  },
+  "Checkout Step": {
+    "prefix": "checkout",
+    "body": [
+      "- uses: actions/checkout@v4"
+    ],
+    "description": "actions/checkout@v4 step"
+  }
+}
