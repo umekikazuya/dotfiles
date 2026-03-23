@@ -43,5 +43,60 @@
       "}"
     ],
     "description": "Table Driven Test template for Go"
+  },
+  "If Error": {
+    "prefix": "iferr",
+    "body": [
+      "if err != nil {",
+      "\treturn ${1:err}",
+      "}"
+    ],
+    "description": "if err != nil { return err }"
+  },
+  "Error Wrap": {
+    "prefix": "errw",
+    "body": [
+      "if err != nil {",
+      "\treturn fmt.Errorf(\"${1:operation}: %w\", err)",
+      "}"
+    ],
+    "description": "Wrap error with context"
+  },
+  "Struct with Constructor": {
+    "prefix": "strct",
+    "body": [
+      "type ${1:Name} struct {",
+      "\t${2:field} ${3:string}",
+      "}",
+      "",
+      "func New${1}(${2} ${3}) *${1} {",
+      "\treturn &${1}{",
+      "\t\t${2}: ${2},",
+      "\t}",
+      "}"
+    ],
+    "description": "Struct with New constructor"
+  },
+  "Interface": {
+    "prefix": "iface",
+    "body": [
+      "type ${1:Name} interface {",
+      "\t${0}",
+      "}"
+    ],
+    "description": "Interface definition"
+  },
+  "HTTP Handler": {
+    "prefix": "http",
+    "body": [
+      "http.HandleFunc(\"${1:/path}\", func(w http.ResponseWriter, r *http.Request) {",
+      "\t${0}",
+      "})",
+      "",
+      "if err := http.ListenAndServe(\":${2:8080}\", nil); err != nil {",
+      "\tlog.Fatal(err)",
+      "}"
+    ],
+    "description": "HTTP handler + ListenAndServe"
   }
 }
