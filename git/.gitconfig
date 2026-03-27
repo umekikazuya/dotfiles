@@ -11,6 +11,7 @@
 	quotepath = false
 	hooksPath = ~/src/github.com/umekikazuya/dotfiles/git/hooks
 	excludesfile = ~/src/github.com/umekikazuya/dotfiles/git/.gitignore_global
+	pager = delta
 
 [push]
 	default = simple
@@ -99,15 +100,37 @@
 
 [init]
 	defaultBranch = develop
+
 [commit]
 	gpgsign = true
 	template = ~/src/github.com/umekikazuya/dotfiles/git/.commit_template
+
 [tag]
 	gpgSign = true
+
 [gpg]
 	program = gpg
 
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+  navigate = true  # use n and N to move between diff sections
+  light = true      # or `light = true`, or omit for auto-detection
+  line-numbers = true
+	hyperlinks = true
+	side-by-side = true
+  whitespace-error-style = 22 reverse
+	true-color = always
+
+[merge]
+    conflictStyle = zdiff3
+
+# --- color ---
+
 [color]
+
 	ui = auto
 
 [color "branch"]
