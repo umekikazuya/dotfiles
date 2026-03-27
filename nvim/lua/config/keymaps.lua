@@ -9,3 +9,23 @@ vim.keymap.set("i", "<C-j>", "<Down>", { desc = "Down" })
 vim.keymap.set("i", "<C-k>", "<Up>", { desc = "Up" })
 vim.keymap.set("i", "<C-h>", "<Left>", { desc = "Left" })
 vim.keymap.set("i", "<C-l>", "<Right>", { desc = "Right" })
+
+vim.keymap.set("n", "<leader>gr", function()
+  require("utils.github").insert_saved_reply()
+end, { desc = "GitHub Saved Reply" })
+-- フローティグターミナル
+vim.keymap.set("n", "<leader>ft", function()
+  Snacks.terminal(nil, {
+    win = {
+      position = "float",
+      backdrop = 90, -- 背景を少し暗くして集中しやすくする
+      width = 0.8, -- 画面幅の80%
+      height = 0.8, -- 画面高さの80%
+      border = "rounded",
+      wo = {
+        winhighlight = "Normal:SnacksTerminalDark,NormalFloat:SnacksTerminalDark,FloatBorder:SnacksTerminalBorder",
+        winblend = 2, -- 10% 透過
+      },
+    },
+  })
+end, { desc = "Floating Terminal" })
