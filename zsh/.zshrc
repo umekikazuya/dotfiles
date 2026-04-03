@@ -27,8 +27,8 @@ for file in "$ZSH_LIB_DIR"/*.zsh; do
 done
 
 # Load local settings if they exist
-if [ -f "${HOME}/.zshrc.local" ]; then
-  source "${HOME}/.zshrc.local"
+if [ -f "${HOME}/src/github.com/umekikazuya/dotfiles/zsh/.zshrc.local" ]; then
+  source "${HOME}/src/github.com/umekikazuya/dotfiles/zsh/.zshrc.local"
 fi
 
 eval "$(~/.local/bin/mise activate zsh)"
