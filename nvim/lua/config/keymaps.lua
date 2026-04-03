@@ -22,10 +22,6 @@ vim.keymap.set("n", "<leader>ft", function()
       width = 0.8, -- 画面幅の80%
       height = 0.8, -- 画面高さの80%
       border = "rounded",
-      wo = {
-        winhighlight = "Normal:SnacksTerminalDark,NormalFloat:SnacksTerminalDark,FloatBorder:SnacksTerminalBorder",
-        winblend = 2, -- 10% 透過
-      },
     },
   })
 end, { desc = "Floating Terminal" })
