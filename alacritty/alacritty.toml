@@ -19,7 +19,7 @@ bold = { family = "Mint Mono", style = "Bold" }
 italic = { family = "Mint Mono", style = "Italic" }
 bold_italic = { family = "Mint Mono", style = "Bold Italic" }
 size = 14.0
-offset = { x = 4, y = 8 }
+offset = { x = 3, y = 8 }
 
 [terminal]
 shell = { program = "/bin/zsh", args = ["-l", "-c", "tmux a -t 0 || tmux"] }
