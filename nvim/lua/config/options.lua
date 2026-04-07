@@ -41,11 +41,11 @@ vim.opt.autowrite = true -- フォーカスが外れた時に自動保存
 -- クリップボードをOSと共有する
 vim.opt.clipboard = "unnamedplus"
 
--- LuaRocks (hererocks) のインストールエラー
+-- 未使用プロバイダーを無効化 (checkhealth の警告を抑制)
 vim.g.loaded_python3_provider = 0
-
--- Pythonパッケージの無効化
-vim.g.loaded_python3_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_node_provider = 0
 
 -- 行の折り返し（ラップ）の設定
 -- false: 折り返さない（横スクロールする）, true: 画面端で折り返す
