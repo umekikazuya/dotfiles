@@ -6,6 +6,7 @@ vim.env.PATH = vim.env.HOME .. "/.local/share/mise/shims:" .. vim.env.PATH
 -- Add any additional options here
 
 -- 表示設定
+vim.opt.showtabline = 0 -- タブラインを非表示
 vim.opt.list = true -- 不可視文字を表示モードにする
 vim.opt.number = true -- 行番号表示
 vim.opt.relativenumber = false -- 相対行番号を無効にする
