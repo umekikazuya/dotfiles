@@ -10,6 +10,18 @@ function tm() {
     # フルパスを使ってセッション作成
     if ! tmux has-session -t "$session_name" 2>/dev/null; then
       tmux new-session -ds "$session_name" -c "$full_path"
+
+      tmux split-window -t "$session_name" -h -p 20 -c "$full_path"
+
+      tmux select-pane -t "$session_name" -U
+
+      tmux new-window -t "$session_name" -c "$full_path"
+
+      tmux split-window -t "$session_name" -v -p 20 -c "$full_path"
+
+      tmux select-pane -t "$session_name" -L
+
+      tmux select-window -t "$session_name:^"
     fi
 
     if [ -n "$TMUX" ]; then
