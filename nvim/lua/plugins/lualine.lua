@@ -11,12 +11,32 @@ return {
         section_separators = { left = "", right = "" },
       },
       sections = {
-        lualine_a = { { "mode", icon = "💻" } },
-        lualine_b = { { "branch", icon = "" } },
+        lualine_a = {
+          {
+            "mode",
+            color = {
+              gui = "italic",
+              fg = "#cccccc",
+            },
+            fmt = function(str)
+              return str
+            end,
+            padding = { left = 1, right = 1 },
+          },
+        },
+        lualine_b = { { "branch" } },
         lualine_c = {
-          LazyVim.lualine.root_dir(),
           { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
-          { LazyVim.lualine.pretty_path() },
+          {
+            "filename",
+            padding = { left = 0, right = 0 },
+            path = 1,
+            symbols = {
+              modified = " ●",
+              readonly = " ",
+              unnamed = "[No Name]",
+            },
+          },
         },
         lualine_y = {
           {
