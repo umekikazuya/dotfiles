@@ -26,33 +26,29 @@ return {
         },
         lualine_b = { { "branch" } },
         lualine_c = {
-          { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
           {
             "filename",
-            padding = { left = 0, right = 0 },
+            padding = { left = 1, right = 1 },
             path = 1,
             symbols = {
               modified = " ●",
               readonly = " ",
               unnamed = "[No Name]",
             },
+            color = { fg = "#3b3248", bg = "#cccccc", gui = "italic,bold" },
           },
         },
         lualine_y = {
-          {
-            function()
-              return require("noice").api.status.command.get()
-            end,
-            cond = function()
-              return package.loaded["noice"] and require("noice").api.status.command.has()
-            end,
-          },
           { "diagnostics" },
-          { "diff" },
         },
         lualine_z = {
-          { "progress", separator = " ", padding = { left = 1, right = 0 } },
-          { "location", padding = { left = 0, right = 1 } },
+          {
+            function()
+              return vim.fn.line(".") .. "/" .. vim.fn.line("$")
+            end,
+            padding = { left = 1, right = 1 },
+            color = { fg = "#3b3248", bg = "#ece8df" },
+          },
         },
       },
     }
