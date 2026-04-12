@@ -56,6 +56,9 @@ return {
       colorscheme = "kanso-pearl",
     },
   },
-  -- タブラインを非表示にするため bufferline を無効化
-  { "akinsho/bufferline.nvim", enabled = false },
+  -- タブラインを非表示
+  {
+    "akinsho/bufferline.nvim",
+    enabled = false,
+  },
 }
