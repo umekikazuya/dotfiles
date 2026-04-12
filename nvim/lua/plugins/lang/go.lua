@@ -8,9 +8,6 @@ return {
     opts = {
       ensure_installed = {
         "gopls",
-        "goimports",
-        "gofumpt",
-        "golangci-lint",
       },
     },
   },
@@ -40,12 +37,22 @@ return {
                 functionTypeParameters = true,
                 parameterNames = true,
                 rangeVariableTypes = true,
+                unusedparams = true,
+                unusedwrite = true,
+                unusedvariable = true,
+                nilness = true,
+                shadow = true,
+                unusedcolumn = true,
               },
               analyses = {
+                ST1000 = false,
                 nilness = true,
                 unusedparams = true,
                 unusedwrite = true,
                 useany = true,
+                fieldalignment = true,
+                nonewvars = true,
+                fillreturns = true,
               },
               usePlaceholders = true,
               completeUnimported = true,
@@ -63,14 +70,6 @@ return {
     opts = {
       formatters_by_ft = {
         go = { "goimports", "gofumpt" },
-      },
-    },
-  },
-  {
-    "mfussenegger/nvim-lint",
-    opts = {
-      linters_by_ft = {
-        go = { "golangcilint" },
       },
     },
   },
