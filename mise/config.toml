@@ -30,7 +30,6 @@ git-lfs = "latest"
 lazygit = "latest"
 claude = "latest"
 starship = "latest"
-oapi-codegen = "latest"
 yq = "latest"
 tree-sitter = "latest"
 
