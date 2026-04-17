@@ -6,10 +6,25 @@
 #
 # ------------------------------------------------------------------------------
 
+# vimモード
+bindkey -v
+bindkey '^?' backward-delete-char
+bindkey '^H' backward-delete-char
+bindkey '^W' backward-kill-word
+bindkey '^U' backward-kill-line
+
+# 1. コマンドライン編集機能を読み込む
+autoload -Uz edit-command-line
+# 2. その機能を「エディタ呼び出し」として登録
+zle -N edit-command-line
+# 3. ノーマルモード（vicmd）のときに「v」でそれを実行するように紐付け
+bindkey -M vicmd 'v' edit-command-line
+
 export PATH="$HOME/.local/bin:$PATH"
 
 autoload -Uz compinit
 compinit
+
 
 # Completion improvements
 zstyle ':completion:*' menu select
