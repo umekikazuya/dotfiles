@@ -36,6 +36,7 @@ tree-sitter = "latest"
 [env]
 
 EDITOR = "nvim"
+AWS_PROFILE = "floci"
 
 [tasks.cleanup]
 description = "システム全体のキャッシュ掃除"
