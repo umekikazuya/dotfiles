@@ -2,25 +2,32 @@ return {
   "folke/snacks.nvim",
   priority = 1000,
   lazy = false,
-  opts = {
-    dashboard = {
-      preset = {
-        header = [[
+  opts = function()
+    local dashboard = require("utils.dashboard")
+
+    return {
+      dashboard = {
+        width = 100,
+        preset = {
+          header = [[
 Say Hello!!
 ]],
+          keys = dashboard.keys(),
+        },
+        formats = {
+          header = { "%s", align = "center" },
+        },
+        sections = dashboard.sections(),
+        enabled = true,
       },
-      formats = {
-        header = { "%s", align = "center" },
-      },
-      enabled = true,
-    },
-    picker = {
-      sources = {
-        files = {
-          hidden = true,
-          ignored = false,
+      picker = {
+        sources = {
+          files = {
+            hidden = true,
+            ignored = false,
+          },
         },
       },
-    },
-  },
+    }
+  end,
 }
