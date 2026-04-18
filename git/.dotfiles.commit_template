@@ -1,0 +1,11 @@
+scope: summary
+# 例:
+#   tmux: disable repeat pane navigation
+#   nvim: tweak snacks dashboard
+#   zsh: add gh alias
+#   git: update commit template
+#   scripts: add bootstrap helper
+#
+# よく使うscope:
+#   tmux, nvim, zsh, git, ghostty, alacritty, starship,
+#   bat, mise, gh, scripts, README
