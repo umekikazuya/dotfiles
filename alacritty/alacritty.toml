@@ -14,12 +14,12 @@ decorations = "Full"
 multiplier = 5
 
 [font]
-normal = { family = "Mint Mono", style = "Regular" }
-bold = { family = "Mint Mono", style = "Bold" }
-italic = { family = "Mint Mono", style = "Italic" }
-bold_italic = { family = "Mint Mono", style = "Bold Italic" }
-size = 14.0
-offset = { x = 3, y = 8 }
+normal = { family = "MintMono Nerd Font Mono", style = "Regular" }
+bold = { family = "MintMono Nerd Font Mono", style = "Bold" }
+italic = { family = "MintMono Nerd Font Mono", style = "Italic" }
+bold_italic = { family = "MintMono Nerd Font Mono", style = "Bold Italic" }
+size = 13.0
+offset = { x = -8, y = 8 }
 
 [terminal]
 shell = { program = "/bin/zsh", args = ["-l", "-c", "tmux a -t 0 || tmux"] }
