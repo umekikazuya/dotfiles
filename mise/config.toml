@@ -33,6 +33,7 @@ starship = "latest"
 yq = "latest"
 tree-sitter = "latest"
 glow = "latest"
+gotestsum = "latest"
 
 [env]
 
