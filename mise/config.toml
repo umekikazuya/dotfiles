@@ -65,3 +65,4 @@ dcex = "docker compose exec -it"
 drm = "docker rm"
 dri = "docker rmi"
 dcl = '''docker system df && docker volume ls -qf dangling=true | xargs -r docker volume rm && docker images -f 'dangling=true' -q | xargs -r docker rmi && docker container prune --force --filter 'until=168h' && docker ps --filter 'status=exited' | grep 'weeks ago' | awk '{print $1}' | xargs -r docker rm && docker builder prune && docker system df'''
+pn = "pnpm"
