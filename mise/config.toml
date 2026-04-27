@@ -32,6 +32,7 @@ claude = "latest"
 starship = "latest"
 yq = "latest"
 tree-sitter = "latest"
+glow = "latest"
 
 [env]
 
