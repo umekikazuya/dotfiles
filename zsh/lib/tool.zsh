@@ -4,3 +4,5 @@ export FZF_DEFAULT_OPTS="--color 'fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer
 
 # go-task
 eval "$(task --completion zsh)"
+
+complete -C '$(which aws_completer)' aws
