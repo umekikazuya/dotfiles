@@ -17,7 +17,7 @@ delta = "latest"
 gomigrate = "latest"
 gemini-cli = "latest"
 "npm:@github/copilot" = "latest"
-awscli = { version = "latest", symlink_bins = "true", postinstall = "complete -C '$(which aws_completer)' aws" }
+awscli = { version = "latest", symlink_bins = "true" }
 task = "latest"
 stripe-cli = "latest"
 colima = "latest"
