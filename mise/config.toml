@@ -34,6 +34,7 @@ yq = "latest"
 tree-sitter = "latest"
 glow = "latest"
 gotestsum = "latest"
+"aqua:mfridman/tparse" = "latest"
 
 [env]
 
