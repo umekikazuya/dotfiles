@@ -4,18 +4,11 @@ return {
     opts = { ensure_installed = { "go", "gomod", "gowork", "gosum" } },
   },
   {
-    "mason-org/mason.nvim",
-    opts = {
-      ensure_installed = {
-        "gopls",
-      },
-    },
-  },
-  {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
         gopls = {
+          mason = false,
           settings = {
             gopls = {
               gofumpt = true,
