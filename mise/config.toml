@@ -31,7 +31,6 @@ docker-compose = { version = "latest", postinstall = "rm ~/.docker/cli-plugins/d
 "npm:aws-cdk" = "latest"
 git-lfs = "latest"
 lazygit = "latest"
-claude = "latest"
 starship = "latest"
 yq = "latest"
 tree-sitter = "latest"
