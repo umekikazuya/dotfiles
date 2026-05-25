@@ -1,2 +1,5 @@
+[user]
+	signingkey = YOUR_GPG_KEY_ID
+
 [coderabbit]
 	machineId = cli/replace-with-your-machine-id
