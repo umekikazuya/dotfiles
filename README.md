@@ -18,7 +18,17 @@ cd <リポジトリルート>
 ./scripts/bootstrap.sh
 ```
 
-### 3. Restart terminal
+### 3. Create local config files
+
+```bash
+cp mise/config.local.toml.example mise/config.local.toml
+cp git/.gitconfig.local.example git/.gitconfig.local
+cp zsh/.zshrc.local.example zsh/.zshrc.local
+```
+
+`*.local` ファイルには、マシン固有値・資格情報だけを入れてください（git 管理対象外）。
+
+### 4. Restart terminal
 
 ```bash
 source ~/.zshrc
@@ -34,4 +44,3 @@ Alacritty では [yuru7/mint-mono](https://github.com/yuru7/mint-mono) に Nerd 
 
 依存: `docker` (colima などで起動済み), `gh`, `unzip`。
 デフォルトで通常版と 35 版の両方をインストール。片方だけ欲しい場合は `--variant normal` / `--variant 35` を指定。
-

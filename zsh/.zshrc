@@ -31,8 +31,14 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
 
-# Define the lib directory, assuming .zshrc is in the zsh directory of the dotfiles repo
-ZSH_LIB_DIR="${ZDOTDIR:-$HOME}/src/github.com/umekikazuya/dotfiles/zsh/lib"
+# Prefer XDG config path first to keep dotfiles location independent.
+ZSH_CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
+ZSH_LIB_DIR="$ZSH_CONFIG_DIR/lib"
+
+# Backward-compatible fallback for direct .zshrc symlink layout.
+if [ ! -d "$ZSH_LIB_DIR" ]; then
+  ZSH_LIB_DIR="${${(%):-%N}:A:h}/lib"
+fi
 
 # Source all .zsh files in the lib directory
 for file in "$ZSH_LIB_DIR"/*.zsh; do
@@ -42,12 +48,14 @@ for file in "$ZSH_LIB_DIR"/*.zsh; do
 done
 
 # Load local settings if they exist
-if [ -f "${HOME}/src/github.com/umekikazuya/dotfiles/zsh/.zshrc.local" ]; then
-  source "${HOME}/src/github.com/umekikazuya/dotfiles/zsh/.zshrc.local"
+if [ -f "$ZSH_CONFIG_DIR/.zshrc.local" ]; then
+  source "$ZSH_CONFIG_DIR/.zshrc.local"
 fi
 
-eval "$(~/.local/bin/mise activate zsh)"
+if command -v mise >/dev/null 2>&1; then
+  eval "$(mise activate zsh)"
+fi
 eval "$(gh completion -s zsh)"
 eval "$(starship init zsh)"
 
-unset ZSH_LIB_DIR file
+unset ZSH_CONFIG_DIR ZSH_LIB_DIR file

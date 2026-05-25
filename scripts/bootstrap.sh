@@ -1,40 +1,40 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
-# This script creates symlinks from the home directory to any desired dotfiles in ~/dotfiles
+# This script creates symlinks from the home directory to dotfiles.
 
-# dotfiles directory
-DOTFILES_DIR=~/src/github.com/umekikazuya/dotfiles
+set -euo pipefail
 
-# Create symlink for .gitconfig
-ln -sfv "$DOTFILES_DIR/git/.gitconfig" ~
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+DOTFILES_DIR="$(cd "${SCRIPT_DIR}/.." && pwd)"
+CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}"
 
-# Create symlink for .zshrc
-ln -sfv "$DOTFILES_DIR/zsh/.zshrc" ~
+link_file() {
+  local source_path="$1"
+  local target_path="$2"
+  mkdir -p "$(dirname "$target_path")"
+  ln -sfnv "$source_path" "$target_path"
+}
 
-# Create symlink for .zprofile
-ln -sfv "$DOTFILES_DIR/zsh/.zprofile" ~
+link_dir() {
+  local source_path="$1"
+  local target_path="$2"
+  mkdir -p "$(dirname "$target_path")"
+  ln -sfnv "$source_path" "$target_path"
+}
 
-# Create symlink for .tmux.conf
-ln -sfv "$DOTFILES_DIR/tmux/.tmux.conf" ~
+link_dir "$DOTFILES_DIR/git" "$CONFIG_DIR/git"
+link_file "$CONFIG_DIR/git/.gitconfig" "$HOME/.gitconfig"
 
-# Create symlink for alacritty
-mkdir -p ~/.config/alacritty
-ln -sfv "$DOTFILES_DIR/alacritty/alacritty.toml" ~/.config/alacritty/alacritty.toml
+link_dir "$DOTFILES_DIR/zsh" "$CONFIG_DIR/zsh"
+link_file "$CONFIG_DIR/zsh/.zshrc" "$HOME/.zshrc"
+link_file "$CONFIG_DIR/zsh/.zprofile" "$HOME/.zprofile"
 
-# Create symlink for nvim
-ln -sfvn "$DOTFILES_DIR/nvim" ~/.config/nvim
+link_file "$DOTFILES_DIR/tmux/.tmux.conf" "$HOME/.tmux.conf"
 
-# Create symlink for bat
-ln -sfvn "$DOTFILES_DIR/bat" ~/.config/bat
-
-# Create symlink for mise
-ln -sfvn "$DOTFILES_DIR/mise" ~/.config/mise
-
-# Create symlink for gh
-ln -sfvn "$DOTFILES_DIR/gh" ~/.config/gh
-
-# Create symlink for ghostty
-ln -sfvn "$DOTFILES_DIR/ghostty" ~/.config/ghostty
-
-# Create symlink for starship
-ln -sf "$DOTFILES_DIR/starship/starship.toml" ~/.config/starship.toml
+link_file "$DOTFILES_DIR/alacritty/alacritty.toml" "$CONFIG_DIR/alacritty/alacritty.toml"
+link_dir "$DOTFILES_DIR/nvim" "$CONFIG_DIR/nvim"
+link_dir "$DOTFILES_DIR/bat" "$CONFIG_DIR/bat"
+link_dir "$DOTFILES_DIR/mise" "$CONFIG_DIR/mise"
+link_dir "$DOTFILES_DIR/gh" "$CONFIG_DIR/gh"
+link_dir "$DOTFILES_DIR/ghostty" "$CONFIG_DIR/ghostty"
+link_file "$DOTFILES_DIR/starship/starship.toml" "$CONFIG_DIR/starship.toml"

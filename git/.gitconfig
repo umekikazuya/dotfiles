@@ -4,13 +4,13 @@
 	email = 108924738+umekikazuya@users.noreply.github.com
 
 [include]
-	path = ~/src/github.com/umekikazuya/dotfiles/git/.gitconfig.local
+	path = ~/.config/git/.gitconfig.local
 
 [core]
 	editor = nvim
 	quotepath = false
-	hooksPath = ~/src/github.com/umekikazuya/dotfiles/git/hooks
-	excludesfile = ~/src/github.com/umekikazuya/dotfiles/git/.gitignore_global
+	hooksPath = ~/.config/git/hooks
+	excludesfile = ~/.config/git/.gitignore_global
 	pager = delta
 
 [push]
@@ -103,7 +103,7 @@
 
 [commit]
 	gpgsign = true
-	template = ~/src/github.com/umekikazuya/dotfiles/git/.commit_template
+	template = ~/.config/git/.commit_template
 
 [tag]
 	gpgSign = true

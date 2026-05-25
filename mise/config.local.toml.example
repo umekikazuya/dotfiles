@@ -1,0 +1,4 @@
+[env]
+COMPOSE_FILE = { value = "/path/to/your/compose/docker-compose.override.yml" }
+FLOCI_PORT = { value = "4566" }
+AWS_PROFILE = { value = "your-profile" }
