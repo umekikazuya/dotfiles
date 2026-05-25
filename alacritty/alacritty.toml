@@ -24,40 +24,40 @@ offset = { x = -8, y = 8 }
 [terminal]
 shell = { program = "/bin/zsh", args = ["-l", "-c", "tmux a -t 0 || tmux"] }
 
-# Kanso Mist Alacritty Colors
+# Kanso Pearl Alacritty Colors
 
 [colors.primary]
-background = '#22262D'
-foreground = '#C5C9C7'
+background = '#f2f1ef'
+foreground = '#545464'
 
 [colors.normal]
-black = '#22262D'
-red = '#c4746e'
-green = '#8a9a7b'
-yellow = '#c4b28a'
-blue = '#8ba4b0'
-magenta = '#a292a3'
-cyan = '#8ea4a2'
-white = '#a4a7a4'
+black = "#14171d"
+red = "#c84053"
+green = "#6f894e"
+yellow = "#77713f"
+blue = "#4d699b"
+magenta = "#b35b79"
+cyan = "#597b75"
+white = "#545464"
 
 [colors.bright]
-black = '#5C6066'
-red = '#e46876'
-green = '#87a987'
-yellow = '#e6c384'
-blue = '#7fb4ca'
-magenta = '#938aa9'
-cyan = '#7aa89f'
-white = '#C5C9C7'
+black = "#8a8980"
+red = "#d7474b"
+green = "#6e915f"
+yellow = "#836f4a"
+blue = "#6693bf"
+magenta = "#624c83"
+cyan = "#5e857a"
+white = "#43436c"
 
 [colors.selection]
-background = '#43464E'
-foreground = '#C5C9C7'
+background = '#c9cbd1'
+foreground = '#14171d'
 
 [[colors.indexed_colors]]
 index = 16
-color = '#b6927b'
+color = '#e98a00'
 
 [[colors.indexed_colors]]
 index = 17
-color = '#b98d7b'
+color = '#e82424'
