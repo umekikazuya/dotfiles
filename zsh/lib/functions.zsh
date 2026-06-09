@@ -1,5 +1,5 @@
-# tmux(session) + ghq
-function tm() {
+# sw: ghq+fzfでプロジェクトをswitch
+function sw() {
   local selected=$(ghq list | fzf --reverse --height=40%)
 
   if [ -n "$selected" ]; then
