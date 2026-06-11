@@ -8,7 +8,7 @@ return {
         accent = "#8b5cf6",
         accent_soft = "#ddd3fb",
         bg_cursorline = "#ece8df",
-        bg_float = "#f7f2ea",
+        bg_float = "#ffffff",
         bg_search = "#e5dbfb",
         bg_visual = "#ebe4fb",
         border = "#c9c2b4",
@@ -24,7 +24,7 @@ return {
           return {
             CursorLine = { bg = colors.bg_cursorline },
             CursorLineNr = { fg = colors.accent, bold = true },
-            FloatBorder = { bg = colors.bg_float, fg = colors.border },
+            FloatBorder = { bg = colors.bg_float, fg = colors.accent },
             FloatTitle = { bg = colors.bg_float, fg = colors.accent, bold = true },
             IncSearch = { bg = colors.accent, fg = "#ffffff", bold = true },
             NormalFloat = { bg = colors.bg_float },
