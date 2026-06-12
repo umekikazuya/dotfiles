@@ -21,8 +21,9 @@ return {
         noice_border = "#d8c4ad",
         picker_border = "#d8c4ad",
 
-        noice_title_cmdline = "#8b5cf6",
+        noice_title_cmdline = "#7b66b8",
         noice_title_search = "#c68a4b",
+        picker_file = "#6e6291",
 
         terminal_bg = "#1b1825",
         terminal_border = "#6b6284",
@@ -80,7 +81,11 @@ return {
             SnacksPickerPreviewBorder = hl(palette.bg_picker, palette.picker_border),
             SnacksPickerTitle = hl(palette.bg_picker, palette.accent, { bold = true }),
             SnacksPickerPrompt = { fg = palette.accent, bold = true },
-            SnacksPickerDir = { fg = palette.accent },
+            SnacksPickerDir = { fg = palette.fg },
+            SnacksPickerDirectory = { fg = palette.fg },
+            SnacksPickerFile = { fg = palette.picker_file, bold = true },
+            SnacksPickerPathHidden = { fg = palette.border },
+            SnacksPickerPathIgnored = { fg = palette.border },
 
             -- snacks terminal
             SnacksTerminalBorder = hl(palette.terminal_bg, palette.terminal_border),
