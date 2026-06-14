@@ -1,3 +1,6 @@
+[settings]
+minimum_release_age = "1h"
+
 [tools]
 
 # go
