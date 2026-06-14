@@ -10,7 +10,8 @@ return {
         fg = "#3b3248",
         white = "#ffffff",
 
-        bg_cursorline = "#eee9f6",
+        line_nr = "#d6cce4",
+
         bg_float = "#ffffff",
         bg_noice = "#faf9f6",
         bg_picker = "#faf9f6",
@@ -38,8 +39,9 @@ return {
       require("kanso").setup({
         overrides = function()
           return {
+            LineNr = { fg = palette.line_nr },
             CursorLine = { bg = palette.bg_cursorline },
-            CursorLineNr = { fg = palette.accent, bold = true },
+            CursorLineNr = { fg = palette.picker_file, bold = true },
 
             FloatBorder = hl(palette.bg_float, palette.accent),
             FloatTitle = hl(palette.bg_float, palette.accent, { bold = true }),
