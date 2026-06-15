@@ -10,7 +10,7 @@ go = "latest"
 "go:mvdan.cc/gofumpt" = "latest"
 golangci-lint = "v2.12.2"
 gotestsum = "latest"
-"aqua:mfridman/tparse" = "latest"
+"go:github.com/mfridman/tparse" = "latest"
 # gomigrate = "latest"
 
 # docker
