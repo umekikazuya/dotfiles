@@ -3,6 +3,7 @@ return {
     "saghen/blink.cmp",
     dependencies = {
       "Kaiser-Yang/blink-cmp-git",
+      "moyiz/blink-emoji.nvim",
     },
 
     opts = {
@@ -10,12 +11,9 @@ return {
         ghost_text = {
           enabled = false,
         },
-        -- list = {
-        --   selection = { preselect = false, auto_insert = false },
-        -- },
       },
       sources = {
-        default = { "git", "lsp", "path", "snippets", "buffer" },
+        default = { "git", "lsp", "path", "snippets", "buffer", "emoji" },
         providers = {
 
           git = {
@@ -28,7 +26,7 @@ return {
             --- @type blink-cmp-git.Options
             opts = {
               commit = {
-                triggers = { ":" },
+                triggers = { ";" },
               },
               git_centers = {
                 github = {
@@ -38,6 +36,21 @@ return {
                 },
               },
             },
+          },
+          emoji = {
+            module = "blink-emoji",
+            name = "Emoji",
+            score_offset = 15,
+            opts = {
+              insert = true,
+              ---@type string|table|fun():table
+              trigger = function()
+                return { ":" }
+              end,
+            },
+            should_show_items = function()
+              return vim.tbl_contains({ "gitcommit", "markdown" }, vim.o.filetype)
+            end,
           },
         },
       },
