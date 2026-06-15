@@ -8,8 +8,6 @@ return {
     opts = {
       ensure_installed = {
         "intelephense",
-        "phpstan",
-        "phpcbf",
       },
     },
   },
