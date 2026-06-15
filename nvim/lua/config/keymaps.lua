@@ -14,6 +14,17 @@ vim.keymap.set("i", "<C-l>", "<Right>", { desc = "Right" })
 vim.keymap.set("n", "<leader>gr", function()
   require("utils.github").insert_saved_reply()
 end, { desc = "GitHub Saved Reply" })
+
+vim.keymap.set("n", "<leader>pwd", function()
+  local path = vim.fn.expand("%:.")
+  if path == "" then
+    vim.notify("Current buffer has no file path", vim.log.levels.WARN, { title = "keymaps" })
+    return
+  end
+  vim.fn.setreg("+", path)
+  vim.notify("Copied: " .. path, vim.log.levels.INFO, { title = "keymaps" })
+end, { desc = "Copy Relative Path" })
+
 -- フローティグターミナル
 vim.keymap.set("n", "<leader>ft", function()
   Snacks.terminal(nil, {
