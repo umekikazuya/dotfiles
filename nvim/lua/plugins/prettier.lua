@@ -46,7 +46,6 @@ M.has_parser = LazyVim.memoize(M.has_parser)
 return {
   {
     "mason-org/mason.nvim",
-    opts = { ensure_installed = { "prettier" } },
   },
   {
     "stevearc/conform.nvim",
