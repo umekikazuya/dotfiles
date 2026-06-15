@@ -57,7 +57,7 @@ glow = "latest"
 [env]
 
 EDITOR = "nvim"
-GIT_EDITOR="nvim --clean -c 'syntax on'"
+GIT_EDITOR="vi"
 AWS_PROFILE = "floci"
 
 [tasks.cleanup]
