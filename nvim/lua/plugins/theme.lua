@@ -12,6 +12,7 @@ return {
 
         line_nr = "#d6cce4",
 
+        bg_cursorline = "#e8e6e8",
         bg_float = "#ffffff",
         bg_noice = "#faf9f6",
         bg_picker = "#faf9f6",
@@ -56,6 +57,9 @@ return {
             Pmenu = hl(palette.bg_float, palette.fg),
             PmenuSel = hl(palette.accent_soft, palette.fg, { bold = true }),
             PmenuThumb = { bg = palette.border },
+
+            -- lsp
+            LspSignatureActiveParameter = { bg = "NONE", underline = true },
 
             -- noice
             NoiceCmdlinePopup = hl(palette.bg_noice, palette.fg),
