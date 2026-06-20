@@ -32,8 +32,8 @@ git-lfs = "latest"
 
 # ai
 
-gemini-cli = "latest"
 "npm:@github/copilot" = "latest"
+claude = "latest"
 
 node = "latest"
 jq = "latest"
@@ -53,6 +53,7 @@ starship = "latest"
 yq = "latest"
 tree-sitter = "latest"
 glow = "latest"
+"npm:@marp-team/marp-cli" = "latest"
 
 [env]
 
