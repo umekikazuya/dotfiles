@@ -14,7 +14,7 @@ pager: delta
 aliases:
   co: pr checkout
   pr st: pr status
-  issue pick: '!num=$(gh issue list "$@" --json number,title --jq ".[] | \"\(.number)\t\(.title)\"" | fzf --reverse --height=40% | cut -f1) && [ -n "$num" ] && gh issue edit "$num" "$@"'
+  issue pick: '!issues=$(gh issue list "$@" --json number,title --jq ".[] | \"\(.number)\t\(.title)\""); [ -z "$issues" ] && echo "No issues found" && exit 0; num=$(echo "$issues" | fzf --reverse --height=40% | cut -f1) && [ -n "$num" ] && gh issue edit "$num" "$@"'
 # The path to a unix socket through which to send HTTP connections. If blank, HTTP traffic will be handled by net/http.DefaultTransport.
 http_unix_socket:
 # What web browser gh should use when opening URLs. If blank, will refer to environment.
