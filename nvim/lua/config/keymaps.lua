@@ -10,6 +10,11 @@ vim.keymap.set("i", "<C-k>", "<Up>", { desc = "Up" })
 vim.keymap.set("i", "<C-h>", "<Left>", { desc = "Left" })
 vim.keymap.set("i", "<C-l>", "<Right>", { desc = "Right" })
 
+-- cをレジスタに入れない
+vim.keymap.set({ "n", "v" }, "c", '"_c')
+
+-- 大文字Cをレジスタに入れない
+vim.keymap.set("n", "C", '"_C')
 
 vim.keymap.set("n", "<leader>gr", function()
   require("utils.github").insert_saved_reply()
