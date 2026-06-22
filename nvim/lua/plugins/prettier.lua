@@ -20,6 +20,17 @@ local supported = {
   "yaml",
 }
 
+local function memoize(fn)
+  local cache = {}
+  return function(ctx)
+    local key = ctx.filename
+    if cache[key] == nil then
+      cache[key] = fn(ctx)
+    end
+    return cache[key]
+  end
+end
+
 ---@param ctx ConformCtx
 function M.has_config(ctx)
   vim.fn.system({ "prettier", "--find-config-path", ctx.filename })
@@ -40,8 +51,8 @@ function M.has_parser(ctx)
   return ok and parser and parser ~= vim.NIL
 end
 
-M.has_config = LazyVim.memoize(M.has_config)
-M.has_parser = LazyVim.memoize(M.has_parser)
+M.has_config = memoize(M.has_config)
+M.has_parser = memoize(M.has_parser)
 
 return {
   {
@@ -57,22 +68,12 @@ return {
         opts.formatters_by_ft[ft] = opts.formatters_by_ft[ft] or {}
         table.insert(opts.formatters_by_ft[ft], "prettier")
       end
-
       opts.formatters = opts.formatters or {}
       opts.formatters.prettier = {
         condition = function(_, ctx)
-          return M.has_parser(ctx) and (vim.g.lazyvim_prettier_needs_config ~= true or M.has_config(ctx))
+          return M.has_parser(ctx)
         end,
       }
-    end,
-  },
-  {
-    "nvimtools/none-ls.nvim",
-    optional = true,
-    opts = function(_, opts)
-      local nls = require("null-ls")
-      opts.sources = opts.sources or {}
-      table.insert(opts.sources, nls.builtins.formatting.prettier)
     end,
   },
 }
