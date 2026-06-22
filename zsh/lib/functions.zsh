@@ -1,6 +1,6 @@
 # sw: ghq+fzfでプロジェクトをswitch
 function sw() {
-  local selected=$(ghq list | fzf --reverse --height=40%)
+  local selected=$(ghq list | fzf --reverse --popup 80%)
 
   if [ -n "$selected" ]; then
     local full_path="$(ghq root)/$selected"
