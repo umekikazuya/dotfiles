@@ -1,17 +1,8 @@
 return {
-  recommended = function()
-    return LazyVim.extras.wants({
-      ft = { "json", "jsonc", "json5" },
-      root = { "*.json" },
-    })
-  end,
-
-  -- add json to treesitter
   {
     "nvim-treesitter/nvim-treesitter",
     opts = { ensure_installed = { "json5" } },
   },
-
   {
     "b0o/SchemaStore.nvim",
     lazy = true,
