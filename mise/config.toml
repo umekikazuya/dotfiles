@@ -1,75 +1,10 @@
 [settings]
 minimum_release_age = "1h"
 
-[tools]
-
-# go
-go = "latest"
-"go:golang.org/x/tools/gopls" = "latest"
-"go:golang.org/x/tools/cmd/goimports" = "latest"
-"go:mvdan.cc/gofumpt" = "latest"
-golangci-lint = "v2.12.2"
-gotestsum = "latest"
-"go:github.com/mfridman/tparse" = "latest"
-# gomigrate = "latest"
-
-# docker
-
-lazydocker = "latest"
-colima = "latest"
-lima = "latest"
-docker-cli = "latest"
-docker-compose = { version = "latest", postinstall = "rm ~/.docker/cli-plugins/docker-compose && ln -s $(mise which docker-cli-plugin-docker-compose) ~/.docker/cli-plugins/docker-compose" }
-"aqua:docker/buildx" = { version = "latest", postinstall = "rm ~/.docker/cli-plugins/docker-buildx && ln -s $(mise which docker-cli-plugin-docker-buildx) ~/.docker/cli-plugins/docker-buildx" }
-hadolint = "latest"
-
-# git
-
-ghq = "latest"
-gh = "latest"
-lazygit = "latest"
-git-lfs = "latest"
-
-# ai
-
-"npm:@github/copilot" = "latest"
-claude = "latest"
-
-node = "latest"
-jq = "latest"
-fd = "latest"
-bat = "latest"
-ripgrep = "latest"
-fzf = "latest"
-tmux = "latest"
-terraform = "latest"
-neovim = "latest"
-delta = "latest"
-awscli = { version = "latest", symlink_bins = "true" }
-task = "latest"
-stripe-cli = "latest"
-"npm:aws-cdk" = "latest"
-starship = "latest"
-yq = "latest"
-tree-sitter = "latest"
-glow = "latest"
-"npm:@marp-team/marp-cli" = "latest"
-
 [env]
 
 EDITOR = "nvim"
 AWS_PROFILE = "floci"
-
-[tasks.cleanup]
-description = "システム全体のキャッシュ掃除"
-run = """
-  echo "Cleaning Go cache..." && go clean -modcache -cache -testcache
-  echo "Cleaning Docker..." && docker system df && docker volume ls -qf dangling=true | xargs -r docker volume rm && docker images -f 'dangling=true' -q | xargs -r docker rmi && docker container prune --force --filter 'until=168h' && docker ps --filter 'status=exited' | grep 'weeks ago' | awk '{print $1}' | xargs -r docker rm && docker builder prune && docker system df
-  echo "Cleaning npm cache..." && npm cache clean --force
-"""
-
-[tasks.doctor]
-run = "mise doctor && mise reshim"
 
 [shell_alias]
 dc = "docker compose"

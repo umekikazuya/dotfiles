@@ -1,0 +1,17 @@
+[tools]
+
+ripgrep = "latest"
+fd = "latest"
+fzf = "latest"
+bat = "latest"
+jq = "latest"
+yq = "latest"
+delta = "latest"
+glow = "latest"
+tmux = "latest"
+starship = "latest"
+ghq = "latest"
+gh = "latest"
+lazygit = "latest"
+git-lfs = "latest"
+"npm:@marp-team/marp-cli" = "latest"

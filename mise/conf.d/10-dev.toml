@@ -1,0 +1,17 @@
+[tools]
+
+# go
+go = "latest"
+"go:golang.org/x/tools/gopls" = "latest"
+"go:golang.org/x/tools/cmd/goimports" = "latest"
+"go:mvdan.cc/gofumpt" = "latest"
+golangci-lint = "v2.12.2"
+gotestsum = "latest"
+"go:github.com/mfridman/tparse" = "latest"
+
+# node
+node = "latest"
+
+# coding
+neovim = "latest"
+tree-sitter = "latest"

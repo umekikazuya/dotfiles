@@ -1,0 +1,9 @@
+[tools]
+
+terraform = "latest"
+"npm:aws-cdk" = "latest"
+awscli = { version = "latest", symlink_bins = "true" }
+stripe-cli = "latest"
+task = "latest"
+claude = "latest"
+"npm:@github/copilot" = "latest"
