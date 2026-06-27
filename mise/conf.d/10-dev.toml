@@ -12,6 +12,9 @@ gotestsum = "latest"
 # node
 node = "latest"
 
+# php
+"npm:intelephense" = "latest"
+
 # coding
 neovim = "latest"
 tree-sitter = "latest"

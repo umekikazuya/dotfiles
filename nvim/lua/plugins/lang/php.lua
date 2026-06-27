@@ -4,14 +4,6 @@ return {
     opts = { ensure_installed = { "php" } },
   },
   {
-    "mason-org/mason.nvim",
-    opts = {
-      ensure_installed = {
-        "intelephense",
-      },
-    },
-  },
-  {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
