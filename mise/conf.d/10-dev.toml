@@ -13,6 +13,7 @@ gotestsum = "latest"
 # node
 
 node = "latest"
+"npm:@vtsls/language-server" = "latest"
 
 # LSP
 
