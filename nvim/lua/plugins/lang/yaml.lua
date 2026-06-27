@@ -9,15 +9,6 @@ return {
     version = false,
   },
   {
-    "mason-org/mason.nvim",
-    opts = {
-      ensure_installed = {
-        "yaml-language-server",
-        "prettier",
-      },
-    },
-  },
-  {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {

@@ -18,6 +18,7 @@ node = "latest"
 
 "npm:@tailwindcss/language-server" = "latest"
 "npm:intelephense" = "latest"
+"npm:yaml-language-server" = "latest"
 
 # coding
 
