@@ -4,6 +4,7 @@ minimum_release_age = "1h"
 [env]
 
 EDITOR = "nvim"
+GIT_EDITOR = "nvim -u ~/.config/nvim/minimal.lua"
 AWS_PROFILE = "floci"
 
 [shell_alias]
