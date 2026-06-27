@@ -2,6 +2,10 @@ return {
   "folke/snacks.nvim",
   priority = 1000,
   lazy = false,
+  keys = {
+    { "<leader>e", false },
+    { "<leader>E", false },
+  },
   opts = function()
     local dashboard = require("utils.dashboard")
 
