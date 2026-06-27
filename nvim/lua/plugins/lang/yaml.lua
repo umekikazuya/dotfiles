@@ -13,6 +13,7 @@ return {
     opts = {
       servers = {
         yamlls = {
+          mason = false,
           before_init = function(_, new_config)
             new_config.settings.yaml.schemas = vim.tbl_deep_extend(
               "force",
