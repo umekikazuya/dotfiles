@@ -1,6 +1,7 @@
 [tools]
 
 # go
+
 go = "latest"
 "go:golang.org/x/tools/gopls" = "latest"
 "go:golang.org/x/tools/cmd/goimports" = "latest"
@@ -10,11 +11,15 @@ gotestsum = "latest"
 "go:github.com/mfridman/tparse" = "latest"
 
 # node
+
 node = "latest"
 
-# php
+# LSP
+
+"npm:@tailwindcss/language-server" = "latest"
 "npm:intelephense" = "latest"
 
 # coding
+
 neovim = "latest"
 tree-sitter = "latest"
