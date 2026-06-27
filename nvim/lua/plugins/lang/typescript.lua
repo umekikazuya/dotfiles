@@ -1,3 +1,16 @@
+local lang_settings = {
+  updateImportsOnFileMove = { enabled = "always" },
+  suggest = { completeFunctionCalls = true },
+  inlayHints = {
+    parameterNames = { enabled = "literals" },
+    parameterTypes = { enabled = true },
+    variableTypes = { enabled = false },
+    functionLikeReturnTypes = { enabled = true },
+    enumMemberValues = { enabled = true },
+    propertyDeclarationTypes = { enabled = true },
+  },
+}
+
 return {
   {
     "nvim-treesitter/nvim-treesitter",
@@ -11,28 +24,45 @@ return {
     opts = {
       servers = {
         vtsls = {
-          root_dir = function(fname)
-            local util = require("lspconfig.util")
-            return util.root_pattern("tsconfig.app.json", "tsconfig.json", "package.json")(fname)
-          end,
+          mason = false,
+          filetypes = {
+            "javascript",
+            "javascriptreact",
+            "typescript",
+            "typescriptreact",
+          },
+          keys = {
+            {
+              "gd",
+              function()
+                local params = vim.lsp.util.make_position_params()
+                vim.lsp.buf_request(0, "workspace/executeCommand", {
+                  command = "typescript.goToSourceDefinition",
+                  arguments = { params.textDocument.uri, params.position },
+                }, function(err, result)
+                  if err or not result or vim.tbl_isempty(result) then
+                    vim.lsp.buf.definition()
+                  else
+                    vim.lsp.util.jump_to_location(result[1], "utf-8")
+                  end
+                end)
+              end,
+              desc = "Goto Definition",
+            },
+            { "<leader>cM", LazyVim.lsp.action["source.addMissingImports.ts"], desc = "Add Missing Imports" },
+            { "<leader>cD", LazyVim.lsp.action["source.fixAll.ts"], desc = "Fix All Diagnostics" },
+          },
           settings = {
             vtsls = {
+              enableMoveToFileCodeAction = true,
               autoUseWorkspaceTsdk = true,
               experimental = {
+                maxInlayHintLength = 30,
                 completion = { enableServerSideFuzzyMatch = true },
               },
             },
-            typescript = {
-              updateImportsOnFileMove = { enabled = "always" },
-              suggest = { completeFunctionCalls = true },
-              inlayHints = {
-                parameterNames = { enabled = "literals" },
-                parameterTypes = { enabled = true },
-                variableTypes = { enabled = false },
-                functionLikeReturnTypes = { enabled = true },
-                enumMemberValues = { enabled = true },
-              },
-            },
+            typescript = lang_settings,
+            javascript = lang_settings,
           },
         },
       },
