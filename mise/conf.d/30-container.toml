@@ -7,3 +7,4 @@ docker-compose = { version = "latest", postinstall = "rm ~/.docker/cli-plugins/d
 "aqua:docker/buildx" = { version = "latest", postinstall = "rm ~/.docker/cli-plugins/docker-buildx && ln -s $(mise which docker-cli-plugin-docker-buildx) ~/.docker/cli-plugins/docker-buildx" }
 lazydocker = "latest"
 hadolint = "latest"
+"npm:@microsoft/compose-language-service" = "latest"

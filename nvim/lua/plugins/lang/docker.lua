@@ -19,7 +19,6 @@ return {
     opts = {
       ensure_installed = {
         "dockerfile-language-server",
-        "docker-compose-language-service",
       },
     },
   },
