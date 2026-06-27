@@ -56,9 +56,6 @@ M.has_parser = memoize(M.has_parser)
 
 return {
   {
-    "mason-org/mason.nvim",
-  },
-  {
     "stevearc/conform.nvim",
     optional = true,
     ---@param opts ConformOpts
@@ -71,7 +68,7 @@ return {
       opts.formatters = opts.formatters or {}
       opts.formatters.prettier = {
         condition = function(_, ctx)
-          return M.has_parser(ctx)
+          return M.has_config(ctx) and M.has_parser(ctx)
         end,
       }
     end,
