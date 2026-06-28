@@ -35,10 +35,6 @@ return {
     },
   },
   {
-    "mason-org/mason.nvim",
-    opts = { ensure_installed = { "markdownlint-cli2", "markdown-toc" } },
-  },
-  {
     "mfussenegger/nvim-lint",
     optional = true,
     opts = {
@@ -51,7 +47,9 @@ return {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
-        marksman = {},
+        marksman = {
+          mason = false,
+        },
       },
     },
   },

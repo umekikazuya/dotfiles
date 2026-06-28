@@ -20,6 +20,9 @@ node = "latest"
 "npm:@tailwindcss/language-server" = "latest"
 "npm:intelephense" = "latest"
 "npm:yaml-language-server" = "latest"
+marksman = "latest"
+"npm:markdown-toc" = "latest"
+"npm:markdownlint-cli2" = "latest"
 
 # coding
 
