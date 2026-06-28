@@ -7,9 +7,6 @@ return {
         -- General / Formatting
         "stylua",
         "shfmt",
-
-        -- SQL
-        "sqlfluff",
       })
 
       local seen = {}
