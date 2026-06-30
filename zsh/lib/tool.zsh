@@ -1,6 +1,10 @@
 # fzf
 source <(fzf --zsh)
-export FZF_DEFAULT_OPTS="--color 'fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc,bg:-1,bg+:-1'"
+export FZF_DEFAULT_OPTS="--ansi --color 'fg:#3b3248,fg+:#14171d,bg:-1,bg+:#ddd3fb,hl:#8b5cf6,hl+:#6d28d9,header:#b35b79,info:#7b66b8,pointer:#8b5cf6,marker:#8b5cf6,prompt:#8b5cf6,border:#c9c2b4'"
+export FZF_DEFAULT_COMMAND='fd --type f --color=always --hidden --exclude .git'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_CTRL_T_OPTS="--preview 'bat --color=always --style=numbers {}' --preview-window=right:55%"
+export FZF_CTRL_R_OPTS="--reverse --preview 'echo {}' --preview-window=down:3:wrap"
 
 # go-task
 eval "$(task --completion zsh)"
