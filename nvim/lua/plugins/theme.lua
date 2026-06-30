@@ -40,26 +40,27 @@ return {
       require("kanso").setup({
         overrides = function()
           return {
-            LineNr = { fg = palette.line_nr },
-            CursorLine = { bg = palette.bg_cursorline },
-            CursorLineNr = { fg = palette.picker_file, bold = true },
+            Normal = { bg = "NONE" },
+            --     LineNr = { fg = palette.line_nr },
+            --     CursorLine = { bg = palette.bg_cursorline },
+            --     CursorLineNr = { fg = palette.picker_file, bold = true },
 
-            FloatBorder = hl(palette.bg_float, palette.accent),
-            FloatTitle = hl(palette.bg_float, palette.accent, { bold = true }),
-            NormalFloat = { bg = palette.bg_float },
+            --     FloatBorder = hl(palette.bg_float, palette.accent),
+            --     FloatTitle = hl(palette.bg_float, palette.accent, { bold = true }),
+            --     NormalFloat = { bg = palette.bg_float },
 
-            IncSearch = hl(palette.accent, palette.white, { bold = true }),
-            Search = hl(palette.bg_search, palette.fg),
-            Visual = { bg = palette.bg_visual },
-            WinSeparator = { fg = palette.border },
-            iCursor = { bg = palette.accent },
+            --     IncSearch = hl(palette.accent, palette.white, { bold = true }),
+            --     Search = hl(palette.bg_search, palette.fg),
+            --     Visual = { bg = palette.bg_visual },
+            --     WinSeparator = { fg = palette.border },
+            --     iCursor = { bg = palette.accent },
 
-            Pmenu = hl(palette.bg_float, palette.fg),
-            PmenuSel = hl(palette.accent_soft, palette.fg, { bold = true }),
-            PmenuThumb = { bg = palette.border },
+            --     Pmenu = hl(palette.bg_float, palette.fg),
+            --     PmenuSel = hl(palette.accent_soft, palette.fg, { bold = true }),
+            --     PmenuThumb = { bg = palette.border },
 
-            -- lsp
-            LspSignatureActiveParameter = { bg = "NONE", underline = true },
+            --     -- lsp
+            --     LspSignatureActiveParameter = { bg = "NONE", underline = true },
 
             -- noice
             NoiceCmdlinePopup = hl(palette.bg_noice, palette.fg),
@@ -76,26 +77,35 @@ return {
             NoicePopup = hl(palette.bg_noice, palette.fg),
             NoicePopupBorder = hl(palette.bg_noice, palette.noice_border),
 
-            -- snacks picker
-            SnacksPicker = hl(palette.bg_picker, palette.fg),
-            SnacksPickerBorder = hl(palette.bg_picker, palette.picker_border),
-            SnacksPickerBoxBorder = hl(palette.bg_picker, palette.picker_border),
-            SnacksPickerInput = hl(palette.bg_picker, palette.fg),
-            SnacksPickerInputBorder = hl(palette.bg_picker, palette.picker_border),
-            SnacksPickerList = hl(palette.bg_picker, palette.fg),
-            SnacksPickerPreview = hl(palette.bg_picker, palette.fg),
-            SnacksPickerPreviewBorder = hl(palette.bg_picker, palette.picker_border),
-            SnacksPickerTitle = hl(palette.bg_picker, palette.accent, { bold = true }),
-            SnacksPickerPrompt = { fg = palette.accent, bold = true },
-            SnacksPickerDir = { fg = palette.fg },
-            SnacksPickerDirectory = { fg = palette.fg },
-            SnacksPickerFile = { fg = palette.picker_file, bold = true },
-            SnacksPickerPathHidden = { fg = palette.border },
-            SnacksPickerPathIgnored = { fg = palette.border },
+            --     -- snacks picker
+            --     SnacksPicker = hl(palette.bg_picker, palette.fg),
+            --     SnacksPickerBorder = hl(palette.bg_picker, palette.picker_border),
+            --     SnacksPickerBoxBorder = hl(palette.bg_picker, palette.picker_border),
+            --     SnacksPickerInput = hl(palette.bg_picker, palette.fg),
+            --     SnacksPickerInputBorder = hl(palette.bg_picker, palette.picker_border),
+            --     SnacksPickerList = hl(palette.bg_picker, palette.fg),
+            --     SnacksPickerPreview = hl(palette.bg_picker, palette.fg),
+            --     SnacksPickerPreviewBorder = hl(palette.bg_picker, palette.picker_border),
+            --     SnacksPickerTitle = hl(palette.bg_picker, palette.accent, { bold = true }),
+            --     SnacksPickerPrompt = { fg = palette.accent, bold = true },
+            --     SnacksPickerDir = { fg = palette.fg },
+            --     SnacksPickerDirectory = { fg = palette.fg },
+            --     SnacksPickerFile = { fg = palette.picker_file, bold = true },
+            --     SnacksPickerPathHidden = { fg = palette.border },
+            --     SnacksPickerPathIgnored = { fg = palette.border },
 
-            -- snacks terminal
-            SnacksTerminalBorder = hl(palette.terminal_bg, palette.terminal_border),
-            SnacksTerminalDark = hl(palette.terminal_bg, palette.terminal_fg),
+            --     -- snacks terminal
+            --     SnacksTerminalBorder = hl(palette.terminal_bg, palette.terminal_border),
+            --     SnacksTerminalDark = hl(palette.terminal_bg, palette.terminal_fg),
+
+            -- blink.cmp (liquid glass)
+            BlinkCmpMenu = hl("NONE", palette.fg),
+            BlinkCmpMenuBorder = hl("NONE", palette.border),
+            BlinkCmpMenuSelection = hl(palette.accent_soft, palette.fg),
+            BlinkCmpLabel = { fg = palette.fg },
+            BlinkCmpLabelMatch = { fg = palette.accent, bold = true },
+            BlinkCmpDoc = hl("NONE", palette.fg),
+            BlinkCmpDocBorder = hl("NONE", palette.border),
           }
         end,
       })
