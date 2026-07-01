@@ -19,7 +19,7 @@ return {
           height = "auto",
         },
         border = {
-          style = { " ", "━", " ", " ", " ", "━", " ", " " },
+          style = "rounded",
           padding = { 0, 1 },
         },
         win_options = {},
