@@ -22,7 +22,7 @@ Say Hello!!
           header = { "%s", align = "center" },
         },
         sections = dashboard.sections(),
-        enabled = true,
+        enabled = false,
       },
       picker = {
         sources = {
