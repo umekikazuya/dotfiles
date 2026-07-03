@@ -6,6 +6,7 @@ dynamic_padding = true
 opacity = 0.85
 blur = true
 decorations = "Full"
+option_as_alt = "OnlyLeft"
 
 [scrolling]
 multiplier = 5
