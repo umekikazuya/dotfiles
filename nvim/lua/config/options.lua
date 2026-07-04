@@ -59,4 +59,4 @@ vim.opt.wrap = false
 vim.opt.scrolloff = 8
 
 --- Lazyvimのピッカーを指定
-vim.g.lazyvim_picker = "snacks"
+vim.g.lazyvim_picker = "fzf"

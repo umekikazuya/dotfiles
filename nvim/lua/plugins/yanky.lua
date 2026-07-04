@@ -12,9 +12,7 @@ return {
   keys = {
     {
       "<leader>p",
-      function()
-        Snacks.picker.yanky()
-      end,
+      "<cmd>YankyRingHistory<cr>",
       mode = { "n", "x" },
       desc = "Open Yank History",
     },

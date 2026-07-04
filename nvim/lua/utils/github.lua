@@ -17,6 +17,7 @@ function M.insert_saved_reply()
   end
 
   local items = {}
+  local entries = {}
   for _, node in ipairs(nodes) do
     table.insert(items, {
       text = node.title, -- 検索・表示用タイトル
@@ -24,25 +25,30 @@ function M.insert_saved_reply()
     })
   end
 
-  -- 2. Snacks.picker を起動
-  Snacks.picker({
-    source = "github_saved_replies",
-    items = items,
-    layout = "select",
-    -- format を指定して、何を表示するか明示する
-    format = function(item)
-      return { { item.text, "SnacksLabel" } }
-    end,
-    confirm = function(picker, item)
-      picker:close()
-      if item then
-        vim.schedule(function()
-          local lines = vim.split(item.body, "\n")
-          -- 'l' は行全体、'c' は文字単位。
-          vim.api.nvim_put(lines, "c", true, true)
-        end)
-      end
-    end,
+  for i, item in ipairs(items) do
+    entries[i] = string.format("%03d\t%s", i, item.text)
+  end
+
+  -- 2. fzf-lua を起動
+  require("fzf-lua").fzf_exec(entries, {
+    prompt = "Saved Replies> ",
+    actions = {
+      ["default"] = function(selected)
+        local choice = selected and selected[1]
+        if not choice then
+          return
+        end
+        local idx = tonumber(choice:match("^(%d+)\t"))
+        local item = idx and items[idx] or nil
+        if item then
+          vim.schedule(function()
+            local lines = vim.split(item.body, "\n")
+            -- 'l' は行全体、'c' は文字単位。
+            vim.api.nvim_put(lines, "c", true, true)
+          end)
+        end
+      end,
+    },
   })
 end
 

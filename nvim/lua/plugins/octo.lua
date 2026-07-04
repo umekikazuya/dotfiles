@@ -1,9 +1,9 @@
 return {
   "pwntester/octo.nvim",
   cmd = "Octo",
-  dependencies = { "folke/snacks.nvim" },
+  dependencies = { "ibhagwan/fzf-lua" },
   opts = {
-    picker = "snacks",
+    picker = "fzf-lua",
     enable_builtin = true,
     default_mappings = true,
     mappings = {

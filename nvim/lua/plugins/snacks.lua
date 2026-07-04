@@ -24,14 +24,6 @@ Say Hello!!
         sections = dashboard.sections(),
         enabled = false,
       },
-      picker = {
-        sources = {
-          files = {
-            hidden = true,
-            ignored = false,
-          },
-        },
-      },
     }
   end,
 }
