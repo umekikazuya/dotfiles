@@ -2,7 +2,7 @@ return {
   "gbprod/yanky.nvim",
   recommended = true,
   desc = "Better Yank/Paste",
-  event = "LazyFile",
+  event = { "BufReadPost", "BufNewFile" },
   opts = {
     system_clipboard = {
       sync_with_ring = not vim.env.SSH_CONNECTION,
@@ -16,7 +16,7 @@ return {
       mode = { "n", "x" },
       desc = "Open Yank History",
     },
-        -- stylua: ignore
+    -- stylua: ignore
     { "y", "<Plug>(YankyYank)", mode = { "n", "x" }, desc = "Yank Text" },
     { "p", "<Plug>(YankyPutAfter)", mode = { "n", "x" }, desc = "Put Text After Cursor" },
     { "P", "<Plug>(YankyPutBefore)", mode = { "n", "x" }, desc = "Put Text Before Cursor" },

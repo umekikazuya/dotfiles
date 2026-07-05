@@ -6,7 +6,12 @@ return {
       "moyiz/blink-emoji.nvim",
     },
 
+    ---@module 'blink.cmp'
+    ---@type blink.cmp.Config
     opts = {
+      fuzzy = {
+        implementation = "lua",
+      },
       completion = {
         ghost_text = {
           enabled = false,

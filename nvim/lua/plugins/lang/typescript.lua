@@ -11,6 +11,18 @@ local lang_settings = {
   },
 }
 
+local function apply_ts_code_action(action_kind)
+  return function()
+    vim.lsp.buf.code_action({
+      apply = true,
+      context = {
+        only = { action_kind },
+        diagnostics = {},
+      },
+    })
+  end
+end
+
 return {
   {
     "nvim-treesitter/nvim-treesitter",
@@ -49,8 +61,8 @@ return {
               end,
               desc = "Goto Definition",
             },
-            { "<leader>cM", LazyVim.lsp.action["source.addMissingImports.ts"], desc = "Add Missing Imports" },
-            { "<leader>cD", LazyVim.lsp.action["source.fixAll.ts"], desc = "Fix All Diagnostics" },
+            { "<leader>cM", apply_ts_code_action("source.addMissingImports.ts"), desc = "Add Missing Imports" },
+            { "<leader>cD", apply_ts_code_action("source.fixAll.ts"), desc = "Fix All Diagnostics" },
           },
           settings = {
             vtsls = {

@@ -109,13 +109,8 @@ return {
           }
         end,
       })
+      vim.cmd.colorscheme("kanso-pearl")
     end,
-  },
-  {
-    "LazyVim/LazyVim",
-    opts = {
-      colorscheme = "kanso-pearl",
-    },
   },
   -- タブラインを非表示
   {
