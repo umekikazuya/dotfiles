@@ -61,3 +61,21 @@ vim.opt.scrolloff = 8
 
 --- Lazyvimのピッカーを指定
 vim.g.lazyvim_picker = "fzf"
+
+vim.o.wildmode = "noselect:lastused,full"
+vim.o.wildoptions = "pum"
+
+vim.api.nvim_create_autocmd("CmdlineChanged", {
+  pattern = { ":", "/", "?" },
+  callback = function()
+    vim.fn.wildtrigger()
+  end,
+})
+
+vim.keymap.set("c", "<Up>", function()
+  return vim.fn.wildmenumode() == 1 and "<CE><Up>" or "<Up>"
+end, { expr = true })
+
+vim.keymap.set("c", "<Down>", function()
+  return vim.fn.wildmenumode() == 1 and "<CE><Down>" or "<Down>"
+end, { expr = true })
