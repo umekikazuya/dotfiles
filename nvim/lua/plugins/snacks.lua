@@ -7,23 +7,9 @@ return {
     { "<leader>E", false },
   },
   opts = function()
-    local dashboard = require("utils.dashboard")
-
     return {
-      dashboard = {
-        width = 100,
-        preset = {
-          header = [[
-Say Hello!!
-]],
-          keys = dashboard.keys(),
-        },
-        formats = {
-          header = { "%s", align = "center" },
-        },
-        sections = dashboard.sections(),
-        enabled = false,
-      },
+      dashboard = { enabled = false },
+      notifier = { enabled = false },
     }
   end,
 }

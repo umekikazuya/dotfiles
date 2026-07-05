@@ -56,6 +56,7 @@ return {
           ["alt-h"] = { actions.toggle_hidden },
         },
       },
+      lsp = { keymap = false },
     }
   end,
   config = function(_, opts)
