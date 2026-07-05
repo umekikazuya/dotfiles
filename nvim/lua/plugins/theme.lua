@@ -112,9 +112,4 @@ return {
       vim.cmd.colorscheme("kanso-pearl")
     end,
   },
-  -- タブラインを非表示
-  {
-    "akinsho/bufferline.nvim",
-    enabled = false,
-  },
 }
