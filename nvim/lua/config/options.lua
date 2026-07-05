@@ -12,6 +12,7 @@ vim.opt.number = true -- 行番号表示
 vim.opt.relativenumber = false -- 相対行番号を無効にする
 vim.opt.laststatus = 2
 vim.opt.cursorline = true
+vim.opt.cmdheight = 0
 vim.opt.listchars = {
   -- タブの設定: "  " (スペース2つ) に設定することで、見た目を「透明」に変更
   tab = "  ",
