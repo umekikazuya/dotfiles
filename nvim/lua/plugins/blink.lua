@@ -1,7 +1,9 @@
 return {
   {
     "saghen/blink.cmp",
+    branch = "v2",
     dependencies = {
+      "saghen/blink.lib",
       "Kaiser-Yang/blink-cmp-git",
       "moyiz/blink-emoji.nvim",
     },
@@ -9,9 +11,28 @@ return {
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
     opts = {
-      fuzzy = {
-        implementation = "lua",
+      keymap = {
+        preset = "none",
+        ["<CR>"] = { "accept", "fallback" },
+        ["<C-y>"] = { "accept", "fallback" },
+
+        ["<C-n>"] = { "select_next", "fallback" },
+        ["<C-p>"] = { "select_prev", "fallback" },
+
+        ["<C-e>"] = { "hide", "show", "fallback" },
+        ["<C-f>"] = { "scroll_documentation_down", "fallback" },
+        ["<C-b>"] = { "scroll_documentation_up", "fallback" },
       },
+      fuzzy = {
+        implementation = "rust",
+      },
+      cmdline = {
+        enabled = true,
+        completion = {
+          ghost_text = { enabled = true },
+        },
+      },
+      appearance = { use_nvim_cmp_as_default = true },
       completion = {
         ghost_text = {
           enabled = false,

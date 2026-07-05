@@ -20,8 +20,9 @@ require("lazy").setup({
   },
   {
     "saghen/blink.cmp",
-    version = "*",
+    branch = "v2",
     dependencies = {
+      "saghen/blink.lib",
       "Kaiser-Yang/blink-cmp-git",
       "moyiz/blink-emoji.nvim",
     },
