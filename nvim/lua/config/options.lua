@@ -79,3 +79,7 @@ end, { expr = true })
 vim.keymap.set("c", "<Down>", function()
   return vim.fn.wildmenumode() == 1 and "<CE><Down>" or "<Down>"
 end, { expr = true })
+
+vim.o.inccommand = "split"
+vim.o.splitkeep = "screen"
+vim.o.breakindent = true
