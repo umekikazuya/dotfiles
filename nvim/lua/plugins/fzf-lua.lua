@@ -27,6 +27,22 @@ return {
       end
     end)
   end,
+  keys = {
+    {
+      "<leader><leader>",
+      function()
+        require("fzf-lua").files()
+      end,
+      desc = "Find Files",
+    },
+    {
+      "grr",
+      function()
+        require("fzf-lua").lsp_references()
+      end,
+      desc = "LSP References",
+    },
+  },
   opts = function()
     local actions = require("fzf-lua.actions")
     return {
@@ -56,7 +72,7 @@ return {
           ["alt-h"] = { actions.toggle_hidden },
         },
       },
-      lsp = { keymap = false },
+      -- lsp = { keymap = false },
     }
   end,
   config = function(_, opts)
