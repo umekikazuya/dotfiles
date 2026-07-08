@@ -16,6 +16,7 @@ ghq get https://github.com/umekikazuya/dotfiles.git
 ```bash
 cd <リポジトリルート>
 ./scripts/bootstrap.sh
+mise i
 ```
 
 ### 3. Create local config files
@@ -26,8 +27,6 @@ cp git/.gitconfig.local.example git/.gitconfig.local
 cp zsh/.zshrc.local.example zsh/.zshrc.local
 ```
 
-`*.local` ファイルには、マシン固有値・資格情報だけを入れてください（git 管理対象外）。
-
 ### 4. Restart terminal
 
 ```bash
@@ -36,7 +35,7 @@ source ~/.zshrc
 
 ## Fonts (optional)
 
-Alacritty では [yuru7/mint-mono](https://github.com/yuru7/mint-mono) に Nerd Fonts のグリフをパッチしたものを使用。
+[yuru7/mint-mono](https://github.com/yuru7/mint-mono) に Nerd Fonts のグリフをパッチしたものを使用。
 
 ```bash
 ./scripts/build-mintmono-nf.sh
