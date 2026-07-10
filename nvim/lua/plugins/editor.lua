@@ -59,6 +59,12 @@ return {
     },
   },
   {
+    "nvim-mini/mini.ai",
+    opts = {
+      n_lines = 500,
+    },
+  },
+  {
     "Wansmer/treesj",
     keys = {
       { "<leader>m", "<CMD>TSJToggle<CR>", desc = "Toggle Split/Join" },
