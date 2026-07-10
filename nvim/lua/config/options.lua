@@ -55,6 +55,8 @@ vim.g.loaded_node_provider = 0
 -- 行の折り返し（ラップ）の設定
 -- false: 折り返さない（横スクロールする）, true: 画面端で折り返す
 vim.opt.wrap = false
+vim.opt.autoindent = true
+vim.opt.smartindent = true
 
 -- スクロール時の余白（カーソルが画面端に来る前に行をスクロールさせる）
 vim.opt.scrolloff = 8
