@@ -1,0 +1,19 @@
+[dotfiles]
+
+"~/.config/git" = { source = "~/src/github.com/umekikazuya/dotfiles/git" }
+"~/.gitconfig" = { source = "~/src/github.com/umekikazuya/dotfiles/git/.gitconfig" }
+
+"~/.config/zsh" = { source = "~/src/github.com/umekikazuya/dotfiles/zsh" }
+"~/.zshrc" = { source = "~/src/github.com/umekikazuya/dotfiles/zsh/.zshrc" }
+"~/.zprofile" = { source = "~/src/github.com/umekikazuya/dotfiles/zsh/.zprofile" }
+
+"~/.tmux.conf" = { source = "~/src/github.com/umekikazuya/dotfiles/tmux/.tmux.conf" }
+"~/.vimrc" = { source = "~/src/github.com/umekikazuya/dotfiles/vim/.vimrc" }
+
+"~/.config/alacritty/alacritty.toml" = { source = "~/src/github.com/umekikazuya/dotfiles/alacritty/alacritty.toml" }
+"~/.config/nvim" = { source = "~/src/github.com/umekikazuya/dotfiles/nvim" }
+"~/.config/bat" = { source = "~/src/github.com/umekikazuya/dotfiles/bat" }
+"~/.config/mise" = { source = "~/src/github.com/umekikazuya/dotfiles/mise" }
+"~/.config/gh" = { source = "~/src/github.com/umekikazuya/dotfiles/gh" }
+"~/.config/ghostty" = { source = "~/src/github.com/umekikazuya/dotfiles/ghostty" }
+"~/.config/starship.toml" = { source = "~/src/github.com/umekikazuya/dotfiles/starship/starship.toml" }

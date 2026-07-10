@@ -1,10 +1,11 @@
 [settings]
 minimum_release_age = "1h"
+dotfiles.default_mode = "symlink"
 
 [env]
 
 EDITOR = "nvim"
-GIT_EDITOR = "nvim -u ~/.config/nvim/minimal.lua"
+GIT_EDITOR = "nvim"
 AWS_PROFILE = "floci"
 
 [shell_alias]
