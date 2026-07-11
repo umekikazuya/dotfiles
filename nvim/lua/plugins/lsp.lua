@@ -94,6 +94,16 @@ local function setup_lsp_attach(servers)
       if client:supports_method("textDocument/inlayHint") then
         vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
       end
+
+      if client:supports_method("textDocument/foldingRange") then
+        local win = vim.api.nvim_get_current_win()
+        if vim.wo[win].foldmethod == "manual" then
+          vim.wo[win].foldmethod = "expr"
+          vim.wo[win].foldexpr = "v:lua.vim.lsp.foldexpr()"
+        end
+        vim.wo[win].foldlevel = 99
+        vim.o.foldlevelstart = 99
+      end
     end,
   })
 end
