@@ -43,6 +43,7 @@ vim.opt.hlsearch = true
 
 -- その他
 vim.opt.autowrite = true -- フォーカスが外れた時に自動保存
+vim.opt.splitright = true
 
 -- クリップボードをOSと共有する
 vim.opt.clipboard = "unnamedplus"
