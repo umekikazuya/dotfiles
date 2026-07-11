@@ -1,9 +1,8 @@
 -- Prepend mise shims to PATH
 vim.env.PATH = vim.env.HOME .. "/.local/share/mise/shims:" .. vim.env.PATH
 
--- Options are automatically loaded before lazy.nvim startup
--- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
--- Add any additional options here
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
 
 -- 表示設定
 vim.opt.showtabline = 0 -- タブラインを非表示
@@ -60,9 +59,6 @@ vim.opt.smartindent = true
 
 -- スクロール時の余白（カーソルが画面端に来る前に行をスクロールさせる）
 vim.opt.scrolloff = 8
-
---- Lazyvimのピッカーを指定
-vim.g.lazyvim_picker = "fzf"
 
 vim.o.wildmode = "noselect:lastused,full"
 vim.o.wildoptions = "pum"

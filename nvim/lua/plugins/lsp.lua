@@ -1,139 +1,149 @@
+local function set_keymap(mode, lhs, rhs, opts)
+  local keymap_opts = vim.tbl_extend("force", { silent = true }, opts or {})
+  vim.keymap.set(mode, lhs, rhs, keymap_opts)
+end
+
+local function setup_diagnostic_keymaps()
+  set_keymap("n", "[d", function()
+    vim.diagnostic.jump({ count = -1, float = true })
+  end, { desc = "Previous Diagnostic" })
+  set_keymap("n", "]d", function()
+    vim.diagnostic.jump({ count = 1, float = true })
+  end, { desc = "Next Diagnostic" })
+  set_keymap("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
+  set_keymap("n", "<leader>xl", function()
+    vim.diagnostic.setloclist({ open = true })
+  end, { desc = "Diagnostics to Location List" })
+  set_keymap("n", "<leader>xq", function()
+    vim.diagnostic.setqflist({ open = true })
+  end, { desc = "Diagnostics to Quickfix List" })
+end
+
+local function setup_diagnostics()
+  vim.diagnostic.config({
+    underline = true,
+    update_in_insert = false,
+    severity_sort = true,
+    virtual_text = { spacing = 2, source = "if_many", prefix = "●" },
+    signs = {
+      text = {
+        [vim.diagnostic.severity.ERROR] = " ",
+        [vim.diagnostic.severity.WARN] = " ",
+        [vim.diagnostic.severity.HINT] = " ",
+        [vim.diagnostic.severity.INFO] = " ",
+      },
+    },
+  })
+end
+
+local function map_server_keys(bufnr, server_opts)
+  if type(server_opts) ~= "table" or type(server_opts.keys) ~= "table" then
+    return
+  end
+
+  for _, key in ipairs(server_opts.keys) do
+    local lhs = key[1]
+    local rhs = key[2]
+    if type(lhs) == "string" and rhs ~= nil then
+      set_keymap(key.mode or "n", lhs, rhs, {
+        buffer = bufnr,
+        desc = key.desc,
+        expr = key.expr,
+        nowait = key.nowait,
+        remap = key.remap,
+        silent = key.silent,
+      })
+    end
+  end
+end
+
+local function setup_lsp_attach(servers)
+  vim.api.nvim_create_autocmd("LspAttach", {
+    callback = function(args)
+      local bufnr = args.buf
+      local client = vim.lsp.get_client_by_id(args.data.client_id)
+      if not client then
+        return
+      end
+
+      local function map(mode, lhs, rhs, desc)
+        set_keymap(mode, lhs, rhs, { buffer = bufnr, desc = desc })
+      end
+
+      map("n", "grr", function()
+        local ok, fzf = pcall(require, "fzf-lua")
+        if ok then
+          local opened = pcall(fzf.lsp_references)
+          if opened then
+            return
+          end
+        end
+        vim.lsp.buf.references()
+      end, "LSP References")
+      map("n", "<leader>cr", vim.lsp.buf.rename, "Rename")
+      map("n", "<leader>cl", "<cmd>LspInfo<cr>", "LSP Info")
+
+      map_server_keys(bufnr, servers[client.name])
+
+      if client:supports_method("textDocument/codeLens") then
+        map("n", "<leader>cc", vim.lsp.codelens.run, "Run Codelens")
+        map("x", "<leader>cc", vim.lsp.codelens.run, "Run Codelens")
+        map("n", "<leader>cC", vim.lsp.codelens.refresh, "Refresh Codelens")
+      end
+
+      if client:supports_method("textDocument/inlayHint") then
+        vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+      end
+    end,
+  })
+end
+
+local function setup_capabilities()
+  local ok, blink = pcall(require, "blink.cmp")
+  if not ok then
+    return
+  end
+
+  vim.lsp.config("*", {
+    capabilities = blink.get_lsp_capabilities({
+      workspace = {
+        fileOperations = { didRename = true, willRename = true },
+      },
+    }),
+  })
+end
+
+local function setup_servers(opts)
+  local servers = opts.servers or {}
+  local defaults = servers["*"] or {}
+
+  for name, server_opts in pairs(servers) do
+    if name ~= "*" and type(server_opts) == "table" and server_opts.enabled ~= false then
+      local config = vim.tbl_deep_extend("force", vim.deepcopy(defaults), vim.deepcopy(server_opts))
+      config.mason = nil
+      config.enabled = nil
+      config.keys = nil
+      vim.lsp.config(name, config)
+      vim.lsp.enable(name)
+    end
+  end
+
+  return servers
+end
+
 return {
   {
     "neovim/nvim-lspconfig",
+    dependencies = { "saghen/blink.cmp" },
     opts = {
-      servers = {
-        ["*"] = {
-          keys = {
-            { "gr", false },
-          },
-        },
-      },
+      servers = {},
     },
+    config = function(_, opts)
+      setup_capabilities()
+      local servers = setup_servers(opts or {})
+      setup_diagnostics()
+      setup_diagnostic_keymaps()
+      setup_lsp_attach(servers)
+    end,
   },
 }
--- return {
---   { "mason-org/mason-lspconfig.nvim", enabled = false },
---
---   {
---     "neovim/nvim-lspconfig",
---     event = { "BufReadPre", "BufNewFile" },
---     dependencies = { "saghen/blink.cmp" },
---     opts = { servers = {} },
---     config = function(_, opts)
---       vim.lsp.config("*", {
---         capabilities = require("blink.cmp").get_lsp_capabilities({
---           workspace = {
---             fileOperations = { didRename = true, willRename = true },
---           },
---         }),
---       })
---
---       for name, server_opts in pairs(opts.servers or {}) do
---         if name == "*" or type(server_opts) ~= "table" or server_opts.enabled == false then
---           goto continue
---         end
---         local config = vim.tbl_deep_extend("force", {}, server_opts)
---         config.mason = nil
---         config.enabled = nil
---         config.keys = nil
---         vim.lsp.config(name, config)
---         vim.lsp.enable(name)
---         ::continue::
---       end
---
---       vim.api.nvim_create_autocmd("LspAttach", {
---         callback = function(args)
---           local buf = args.buf
---           local client = vim.lsp.get_client_by_id(args.data.client_id)
---           if not client then
---             return
---           end
---
---           local function map(lhs, rhs, desc, mode)
---             vim.keymap.set(mode or "n", lhs, rhs, { buffer = buf, desc = desc })
---           end
---
---           -- 情報
---           map("gK", vim.lsp.buf.signature_help, "Signature Help")
---           map("<c-k>", vim.lsp.buf.signature_help, "Signature Help", "i")
---           map("<leader>cl", function()
---             Snacks.picker.lsp_config()
---           end, "Lsp Info")
---           map("<leader>ss", function()
---             Snacks.picker.lsp_symbols()
---           end, "LSP Symbols")
---           map("<leader>sS", function()
---             Snacks.picker.lsp_workspace_symbols()
---           end, "LSP Workspace Symbols")
---
---           -- 操作
---           map("<leader>cr", vim.lsp.buf.rename, "Rename")
---           map("<leader>cR", function()
---             Snacks.rename.rename_file()
---           end, "Rename File")
---           map("<leader>ca", vim.lsp.buf.code_action, "Code Action")
---           map("<leader>ca", vim.lsp.buf.code_action, "Code Action", "x")
---           map("<leader>cA", function()
---             vim.lsp.buf.code_action({ context = { only = { "source" }, diagnostics = {} } })
---           end, "Source Action")
---           map("<leader>co", function()
---             vim.lsp.buf.code_action({ context = { only = { "source.organizeImports" } } })
---           end, "Organize Imports")
---
---           -- codelens（対応サーバーのみ）
---           if client:supports_method("textDocument/codeLens") then
---             map("<leader>cc", vim.lsp.codelens.run, "Run Codelens")
---             map("<leader>cc", vim.lsp.codelens.run, "Run Codelens", "x")
---             map("<leader>cC", vim.lsp.codelens.refresh, "Refresh Codelens")
---           end
---
---           -- 同じ単語の参照ジャンプ（対応サーバーのみ）
---           if client:supports_method("textDocument/documentHighlight") and Snacks.words.is_enabled() then
---             map("]]", function()
---               Snacks.words.jump(vim.v.count1)
---             end, "Next Reference")
---             map("[[", function()
---               Snacks.words.jump(-vim.v.count1)
---             end, "Prev Reference")
---             map("<a-n>", function()
---               Snacks.words.jump(vim.v.count1, true)
---             end, "Next Reference")
---             map("<a-p>", function()
---               Snacks.words.jump(-vim.v.count1, true)
---             end, "Prev Reference")
---           end
---
---           -- inlay hints
---           if client:supports_method("textDocument/inlayHint") then
---             vim.lsp.inlay_hint.enable(true, { bufnr = buf })
---           end
---
---           -- LSP folding（za で開閉できるようになる）
---           if client:supports_method("textDocument/foldingRange") then
---             local win = vim.api.nvim_get_current_win()
---             if vim.wo[win].foldmethod == "manual" then
---               vim.wo[win].foldmethod = "expr"
---               vim.wo[win].foldexpr = "v:lua.vim.lsp.foldexpr()"
---             end
---           end
---         end,
---       })
---
---       vim.diagnostic.config({
---         underline = true,
---         update_in_insert = false,
---         virtual_text = { spacing = 4, source = "if_many", prefix = "●" },
---         severity_sort = true,
---         signs = {
---           text = {
---             [vim.diagnostic.severity.ERROR] = " ",
---             [vim.diagnostic.severity.WARN] = " ",
---             [vim.diagnostic.severity.HINT] = " ",
---             [vim.diagnostic.severity.INFO] = " ",
---           },
---         },
---       })
---     end,
---   },
--- }

@@ -30,30 +30,6 @@ return {
     dependencies = {
       { "nvim-mini/mini.icons", opts = {} },
     },
-    init = function()
-      local picker = {
-        name = "fzf",
-        commands = {
-          files = "files",
-        },
-        open = function(command, opts)
-          opts = opts or {}
-          if opts.cmd == nil and command == "git_files" and opts.show_untracked then
-            opts.cmd = "git ls-files --exclude-standard --cached --others"
-          end
-          require("fzf-lua")[command](opts)
-        end,
-      }
-      LazyVim.pick.register(picker)
-
-      LazyVim.on_very_lazy(function()
-        vim.ui.select = function(...)
-          require("lazy").load({ plugins = { "fzf-lua" } })
-          require("fzf-lua").register_ui_select()
-          return vim.ui.select(...)
-        end
-      end)
-    end,
     keys = {
       {
         "<leader><leader>",
@@ -63,11 +39,18 @@ return {
         desc = "Find Files",
       },
       {
-        "grr",
+        "<leader>sg",
         function()
-          require("fzf-lua").lsp_references()
+          require("fzf-lua").live_grep()
         end,
-        desc = "LSP References",
+        desc = "Search by Grep",
+      },
+      {
+        "<leader>sb",
+        function()
+          require("fzf-lua").buffers()
+        end,
+        desc = "Search Buffers",
       },
     },
     opts = function()
