@@ -13,10 +13,10 @@ return {
       vim.api.nvim_create_autocmd("VimEnter", {
         nested = true,
         callback = function()
-          if vim.fn.argc() == 0 then
-            require("oil")
-            vim.cmd.edit(vim.fn.getcwd())
+          if vim.fn.argc() ~= 0 then
+            return
           end
+          vim.cmd("Oil " .. vim.fn.getcwd())
         end,
       })
     end,
