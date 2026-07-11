@@ -9,6 +9,7 @@ vim.opt.showtabline = 0 -- タブラインを非表示
 vim.opt.list = true -- 不可視文字を表示モードにする
 vim.opt.number = true -- 行番号表示
 vim.opt.relativenumber = false -- 相対行番号を無効にする
+vim.opt.foldcolumn = "1"
 vim.opt.laststatus = 2
 vim.opt.cursorline = true
 vim.opt.cmdheight = 0
