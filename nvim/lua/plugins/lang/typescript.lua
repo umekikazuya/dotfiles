@@ -44,23 +44,6 @@ return {
             "typescriptreact",
           },
           keys = {
-            {
-              "gd",
-              function()
-                local params = vim.lsp.util.make_position_params()
-                vim.lsp.buf_request(0, "workspace/executeCommand", {
-                  command = "typescript.goToSourceDefinition",
-                  arguments = { params.textDocument.uri, params.position },
-                }, function(err, result)
-                  if err or not result or vim.tbl_isempty(result) then
-                    vim.lsp.buf.definition()
-                  else
-                    vim.lsp.util.jump_to_location(result[1], "utf-8")
-                  end
-                end)
-              end,
-              desc = "Goto Definition",
-            },
             { "<leader>cM", apply_ts_code_action("source.addMissingImports.ts"), desc = "Add Missing Imports" },
             { "<leader>cD", apply_ts_code_action("source.fixAll.ts"), desc = "Fix All Diagnostics" },
           },

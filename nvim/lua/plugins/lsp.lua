@@ -69,6 +69,13 @@ local function setup_lsp_attach(servers)
       local function map(mode, lhs, rhs, desc)
         set_keymap(mode, lhs, rhs, { buffer = bufnr, desc = desc })
       end
+      local function ensure_default_map(mode, lhs, rhs, desc)
+        local existing = vim.fn.maparg(lhs, mode, false, true)
+        if type(existing) == "table" and next(existing) ~= nil then
+          return
+        end
+        map(mode, lhs, rhs, desc)
+      end
 
       map("n", "grr", function()
         local ok, fzf = pcall(require, "fzf-lua")
@@ -80,6 +87,9 @@ local function setup_lsp_attach(servers)
         end
         vim.lsp.buf.references()
       end, "LSP References")
+      ensure_default_map("n", "gd", function()
+        vim.lsp.buf.definition({ reuse_win = true })
+      end, "Goto Definition")
       map("n", "<leader>cr", vim.lsp.buf.rename, "Rename")
       map("n", "<leader>cl", "<cmd>LspInfo<cr>", "LSP Info")
 
