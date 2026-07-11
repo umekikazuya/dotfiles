@@ -5,7 +5,6 @@ return {
     dependencies = {
       "saghen/blink.lib",
       "Kaiser-Yang/blink-cmp-git",
-      "moyiz/blink-emoji.nvim",
     },
 
     ---@module 'blink.cmp'
@@ -24,7 +23,7 @@ return {
         ["<C-b>"] = { "scroll_documentation_up", "fallback" },
       },
       fuzzy = {
-        implementation = "rust",
+        implementation = "prefer_rust_with_warning",
       },
       cmdline = {
         enabled = true,
@@ -47,7 +46,7 @@ return {
         },
       },
       sources = {
-        default = { "git", "lsp", "path", "snippets", "buffer", "emoji" },
+        default = { "git", "lsp", "path", "snippets", "buffer" },
         providers = {
 
           git = {
@@ -71,21 +70,21 @@ return {
               },
             },
           },
-          emoji = {
-            module = "blink-emoji",
-            name = "Emoji",
-            score_offset = 15,
-            opts = {
-              insert = true,
-              ---@type string|table|fun():table
-              trigger = function()
-                return { ":" }
-              end,
-            },
-            should_show_items = function()
-              return vim.tbl_contains({ "gitcommit", "markdown" }, vim.o.filetype)
-            end,
-          },
+          -- emoji = {
+          --   module = "blink-emoji",
+          --   name = "Emoji",
+          --   score_offset = 15,
+          --   opts = {
+          --     insert = true,
+          --     ---@type string|table|fun():table
+          --     trigger = function()
+          --       return { ":" }
+          --     end,
+          --   },
+          --   should_show_items = function()
+          --     return vim.tbl_contains({ "gitcommit", "markdown" }, vim.o.filetype)
+          --   end,
+          -- },
         },
       },
     },
