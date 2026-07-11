@@ -5,10 +5,13 @@ return {
   config = function()
     require("rainbow-delimiters.setup").setup({
       strategy = {
-        -- ...
+        [""] = "rainbow-delimiters.strategy.global",
       },
       query = {
-        -- ...
+        [""] = "rainbow-delimiters",
+      },
+      priority = {
+        [""] = 210,
       },
       highlight = {
         "RainbowDelimiterYellow",

@@ -134,6 +134,7 @@ end
 
 local setup_modules = {
   ["blink.cmp"] = "blink.cmp",
+  ["conform.nvim"] = "conform",
   ["fidget.nvim"] = "fidget",
   ["flash.nvim"] = "flash",
   ["gitlinker.nvim"] = "gitlinker",
@@ -145,10 +146,12 @@ local setup_modules = {
   ["mini.icons"] = "mini.icons",
   ["mini.surround"] = "mini.surround",
   ["nvim-lint"] = "lint",
+  ["nvim-ts-autotag"] = "nvim-ts-autotag",
   ["nvim-treesitter"] = "nvim-treesitter.configs",
   ["oil.nvim"] = "oil",
   ["persistence.nvim"] = "persistence",
   ["render-markdown.nvim"] = "render-markdown",
+  ["ts-comments.nvim"] = "ts-comments",
   ["trouble.nvim"] = "trouble",
   ["treesj"] = "treesj",
   ["yanky.nvim"] = "yanky",
@@ -338,6 +341,13 @@ function M.setup()
         has_config = true
         pcall(spec.config, spec, opts)
       end
+    end
+
+    if group.name == "conform.nvim" and type(opts) == "table" and opts.format_on_save == nil then
+      opts.format_on_save = {
+        timeout_ms = 3000,
+        lsp_format = "fallback",
+      }
     end
 
     if not has_config and opts ~= nil then
