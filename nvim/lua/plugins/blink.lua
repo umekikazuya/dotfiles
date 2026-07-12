@@ -11,7 +11,7 @@ return {
       "saghen/blink.lib",
       "Kaiser-Yang/blink-cmp-git",
       "rafamadriz/friendly-snippets",
-      "nvim.mini/mini.icons",
+      "nvim-mini/mini.icons",
     },
 
     ---@module 'blink.cmp'
