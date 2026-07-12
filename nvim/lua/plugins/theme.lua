@@ -20,11 +20,7 @@ return {
         bg_visual = "#ebe4fb",
 
         border = "#c9c2b4",
-        noice_border = "#d8c4ad",
-        picker_border = "#d8c4ad",
 
-        noice_title_cmdline = "#7b66b8",
-        noice_title_search = "#c68a4b",
         picker_file = "#6e6291",
 
         terminal_bg = "#1b1825",
@@ -62,43 +58,7 @@ return {
             --     -- lsp
             --     LspSignatureActiveParameter = { bg = "NONE", underline = true },
 
-            -- noice
-            NoiceCmdlinePopup = hl("#EDECEA", palette.fg),
-            NoiceCmdlinePopupBorder = hl("NONE", palette.border),
-            NoiceCmdlinePopupBorderSearch = hl("NONE", palette.border),
-            NoiceCmdlinePopupTitle = hl("NONE", palette.noice_title_cmdline, { bold = true }),
-            NoiceCmdlinePopupTitleCmdline = hl("NONE", palette.noice_title_cmdline, { bold = true }),
-            NoiceCmdlinePopupTitleSearch = hl("NONE", palette.noice_title_search, { bold = true }),
-            NoiceCmdlineIcon = hl("#EDECEA", palette.noice_title_cmdline),
-            NoiceCmdlineIconCmdline = hl("#EDECEA", palette.noice_title_cmdline),
-            NoiceCmdlineIconSearch = hl("#EDECEA", palette.noice_title_search),
-            NoiceConfirm = hl("#EDECEA", palette.fg),
-            NoiceConfirmBorder = hl("NONE", palette.border),
-            NoicePopup = hl("#EDECEA", palette.fg),
-            NoicePopupBorder = hl("NONE", palette.border),
-
-            --     -- snacks picker
-            --     SnacksPicker = hl(palette.bg_picker, palette.fg),
-            --     SnacksPickerBorder = hl(palette.bg_picker, palette.picker_border),
-            --     SnacksPickerBoxBorder = hl(palette.bg_picker, palette.picker_border),
-            --     SnacksPickerInput = hl(palette.bg_picker, palette.fg),
-            --     SnacksPickerInputBorder = hl(palette.bg_picker, palette.picker_border),
-            --     SnacksPickerList = hl(palette.bg_picker, palette.fg),
-            --     SnacksPickerPreview = hl(palette.bg_picker, palette.fg),
-            --     SnacksPickerPreviewBorder = hl(palette.bg_picker, palette.picker_border),
-            --     SnacksPickerTitle = hl(palette.bg_picker, palette.accent, { bold = true }),
-            --     SnacksPickerPrompt = { fg = palette.accent, bold = true },
-            --     SnacksPickerDir = { fg = palette.fg },
-            --     SnacksPickerDirectory = { fg = palette.fg },
-            --     SnacksPickerFile = { fg = palette.picker_file, bold = true },
-            --     SnacksPickerPathHidden = { fg = palette.border },
-            --     SnacksPickerPathIgnored = { fg = palette.border },
-
-            --     -- snacks terminal
-            --     SnacksTerminalBorder = hl(palette.terminal_bg, palette.terminal_border),
-            --     SnacksTerminalDark = hl(palette.terminal_bg, palette.terminal_fg),
-
-            -- blink.cmp (liquid glass)
+            -- blink.cmp
             BlinkCmpMenu = hl("NONE", palette.fg),
             BlinkCmpMenuBorder = hl("NONE", palette.border),
             BlinkCmpMenuSelection = hl(palette.accent_soft, palette.fg),
