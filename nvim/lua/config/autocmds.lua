@@ -14,6 +14,9 @@ vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged", "FocusLost", "BufLea
   pattern = "*",
   nested = true,
   callback = function()
+    if vim.snippet.active() then
+      return
+    end
     -- 編集可能かつファイル名がある場合のみ保存
     if not (vim.bo.modifiable and vim.fn.expand("%") ~= "" and vim.bo.filetype ~= "") then
       return
