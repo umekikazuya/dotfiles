@@ -12,6 +12,7 @@ vim.api.nvim_create_augroup("MyAutoSave", { clear = true })
 vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged", "FocusLost", "BufLeave" }, {
   group = "MyAutoSave",
   pattern = "*",
+  nested = true,
   callback = function()
     -- 編集可能かつファイル名がある場合のみ保存
     if not (vim.bo.modifiable and vim.fn.expand("%") ~= "" and vim.bo.filetype ~= "") then
