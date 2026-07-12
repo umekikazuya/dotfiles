@@ -35,6 +35,10 @@ return {
     },
   },
   {
+    "nvim-mini/mini.pairs",
+    opts = {},
+  },
+  {
     "nvim-mini/mini.surround",
     keys = {
       { "gsa", desc = "Add Surrounding", mode = { "n", "x" } },

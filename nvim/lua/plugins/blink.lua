@@ -2,9 +2,16 @@ return {
   {
     "saghen/blink.cmp",
     branch = "v2",
+    build = function()
+      if vim.fn.executable("cargo") == 1 then
+        require("blink.cmp").build({ force = true }):pwait()
+      end
+    end,
     dependencies = {
       "saghen/blink.lib",
       "Kaiser-Yang/blink-cmp-git",
+      "rafamadriz/friendly-snippets",
+      "nvim.mini/mini.icons",
     },
 
     ---@module 'blink.cmp'
@@ -23,7 +30,7 @@ return {
         ["<C-b>"] = { "scroll_documentation_up", "fallback" },
       },
       fuzzy = {
-        implementation = "prefer_rust_with_warning",
+        implementation = vim.fn.executable("cargo") == 1 and "rust" or "lua",
       },
       cmdline = {
         enabled = true,
@@ -38,12 +45,29 @@ return {
         },
         menu = {
           border = "rounded",
+          draw = {
+            components = {
+              kind_icon = {
+                text = function(ctx)
+                  local ok, mini_icons = pcall(require, "mini.icons")
+                  if not ok then
+                    return ctx.kind_icon .. ctx.icon_gap
+                  end
+                  local icon = mini_icons.get("lsp", ctx.kind)
+                  return (icon or ctx.kind_icon) .. ctx.icon_gap
+                end,
+              },
+            },
+          },
         },
         documentation = {
           window = {
             border = "rounded",
           },
         },
+      },
+      snippets = {
+        preset = "default",
       },
       sources = {
         default = { "git", "lsp", "path", "snippets", "buffer" },

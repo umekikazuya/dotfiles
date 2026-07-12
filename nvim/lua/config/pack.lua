@@ -143,6 +143,7 @@ local setup_modules = {
   ["lualine.nvim"] = "lualine",
   ["mason.nvim"] = "mason",
   ["mini.ai"] = "mini.ai",
+  ["mini.pairs"] = "mini.pairs",
   ["mini.icons"] = "mini.icons",
   ["mini.surround"] = "mini.surround",
   ["nvim-lint"] = "lint",
@@ -150,6 +151,7 @@ local setup_modules = {
   ["nvim-treesitter"] = "nvim-treesitter.configs",
   ["oil.nvim"] = "oil",
   ["persistence.nvim"] = "persistence",
+  ["which-key.nvim"] = "which-key",
   ["render-markdown.nvim"] = "render-markdown",
   ["ts-comments.nvim"] = "ts-comments",
   ["trouble.nvim"] = "trouble",
@@ -358,7 +360,14 @@ function M.setup()
         if setup_module then
           local ok, mod = pcall(require, setup_module)
           if ok and type(mod.setup) == "function" then
-            pcall(mod.setup, opts)
+            local setup_ok, setup_err = pcall(mod.setup, opts)
+            if not setup_ok then
+              vim.notify(
+                ("Failed to setup %s: %s"):format(group.name, tostring(setup_err)),
+                vim.log.levels.ERROR,
+                { title = "config.pack" }
+              )
+            end
           end
         end
       end
