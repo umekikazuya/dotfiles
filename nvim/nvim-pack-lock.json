@@ -74,7 +74,7 @@
     },
     "mini-icons": {
       "rev": "98faae31e9be1cc054ae63485e58ceb185efcad0",
-      "src": "https://github.com/nvim.mini/mini.icons.git"
+      "src": "https://github.com/nvim-mini/mini.icons.git"
     },
     "mini-pairs": {
       "rev": "b1fd9df3bb4a41c8f45778a3859ee80ef6b367e3",
