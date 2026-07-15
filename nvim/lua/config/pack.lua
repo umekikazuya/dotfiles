@@ -129,7 +129,7 @@ local function pack_name_for(spec_name, explicit_name)
   if type(explicit_name) == "string" and explicit_name ~= "" then
     return explicit_name
   end
-  return spec_name:gsub("%.", "-")
+  return spec_name
 end
 
 local setup_modules = {
