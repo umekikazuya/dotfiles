@@ -12,7 +12,6 @@ vim.api.nvim_create_augroup("MyAutoSave", { clear = true })
 vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged", "FocusLost", "BufLeave" }, {
   group = "MyAutoSave",
   pattern = "*",
-  nested = true,
   callback = function()
     if vim.snippet.active() then
       return
