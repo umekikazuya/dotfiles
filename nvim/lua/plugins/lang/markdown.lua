@@ -69,9 +69,6 @@ return {
         desc = "Markdown Preview",
       },
     },
-    config = function()
-      vim.cmd([[do FileType]])
-    end,
   },
 
   {
@@ -84,15 +81,19 @@ return {
       },
       heading = {
         sign = false,
-        icons = {},
+        position = "inline",
       },
-      checkbox = {
-        enabled = false,
+      quote = {
+        repeat_linebreak = true,
+      },
+      completions = {
+        lsp = { enabled = true },
       },
     },
     ft = { "markdown", "norg", "rmd", "org", "codecompanion" },
     config = function(_, opts)
       require("render-markdown").setup(opts)
+      vim.api.nvim_exec_autocmds("FileType", { pattern = vim.bo.filetype, modeline = false })
     end,
   },
 }
