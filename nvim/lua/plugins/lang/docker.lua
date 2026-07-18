@@ -5,8 +5,8 @@ return {
     init = function()
       vim.filetype.add({
         pattern = {
-          ["docker-compose.*%.yml"] = "yaml.docker-compose",
-          ["docker-compose.*%.yaml"] = "yaml.docker-compose",
+          ["docker%-compose.*%.yml"] = "yaml.docker-compose",
+          ["docker%-compose.*%.yaml"] = "yaml.docker-compose",
           ["compose.*%.yml"] = "yaml.docker-compose",
           ["compose.*%.yaml"] = "yaml.docker-compose",
         },
@@ -15,21 +15,11 @@ return {
   },
 
   {
-    "mason-org/mason.nvim",
-    opts = {
-      ensure_installed = {
-        "dockerfile-language-server",
-      },
-    },
-  },
-  {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
-        dockerls = {},
-        docker_compose_language_service = {
-          mason = false,
-        },
+        docker_language_server = {},
+        docker_compose_language_service = {},
       },
     },
   },
