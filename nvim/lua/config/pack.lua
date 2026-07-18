@@ -133,24 +133,11 @@ local function pack_name_for(spec_name, explicit_name)
 end
 
 local setup_modules = {
-  ["blink.cmp"] = "blink.cmp",
   ["conform.nvim"] = "conform",
-  ["fidget.nvim"] = "fidget",
-  ["flash.nvim"] = "flash",
-  ["gitlinker.nvim"] = "gitlinker",
-  ["gitsigns.nvim"] = "gitsigns",
-  ["lualine.nvim"] = "lualine",
-  ["mini.ai"] = "mini.ai",
-  ["mini.pairs"] = "mini.pairs",
-  ["mini.icons"] = "mini.icons",
-  ["mini.surround"] = "mini.surround",
   ["nvim-lint"] = "lint",
   ["nvim-ts-autotag"] = "nvim-ts-autotag",
-  ["oil.nvim"] = "oil",
   ["render-markdown.nvim"] = "render-markdown",
   ["ts-comments.nvim"] = "ts-comments",
-  ["trouble.nvim"] = "trouble",
-  ["treesj"] = "treesj",
 }
 
 local function apply_lsp(opts)

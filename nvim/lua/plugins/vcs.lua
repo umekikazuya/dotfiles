@@ -1,155 +1,120 @@
-return {
-  {
-    "lewis6991/gitsigns.nvim",
-    opts = {
-      current_line_blame = false,
-      on_attach = function(bufnr)
-        local gs = package.loaded.gitsigns
+vim.pack.add({
+  "https://github.com/nvim-lua/plenary.nvim.git",
+  "https://github.com/lewis6991/gitsigns.nvim.git",
+  "https://github.com/ruifm/gitlinker.nvim.git",
+  "https://github.com/pwntester/octo.nvim.git",
+}, { confirm = false })
 
-        local function map(mode, lhs, rhs, desc)
-          vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, desc = desc })
-        end
+require("gitsigns").setup({
+  current_line_blame = false,
+  on_attach = function(bufnr)
+    local gs = package.loaded.gitsigns
 
-        map("n", "]h", function()
-          if vim.wo.diff then
-            vim.cmd.normal({ "]c", bang = true })
-          else
-            gs.nav_hunk("next")
-          end
-        end, "Next Hunk")
-        map("n", "[h", function()
-          if vim.wo.diff then
-            vim.cmd.normal({ "[c", bang = true })
-          else
-            gs.nav_hunk("prev")
-          end
-        end, "Prev Hunk")
-        map("n", "]H", function()
-          gs.nav_hunk("last")
-        end, "Last Hunk")
-        map("n", "[H", function()
-          gs.nav_hunk("first")
-        end, "First Hunk")
+    local function map(mode, lhs, rhs, desc)
+      vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, desc = desc })
+    end
 
-        map({ "n", "x" }, "<leader>ghs", ":Gitsigns stage_hunk<CR>", "Stage Hunk")
-        map({ "n", "x" }, "<leader>ghr", ":Gitsigns reset_hunk<CR>", "Reset Hunk")
-        map("n", "<leader>ghS", gs.stage_buffer, "Stage Buffer")
-        map("n", "<leader>ghu", gs.undo_stage_hunk, "Undo Stage Hunk")
-        map("n", "<leader>ghR", gs.reset_buffer, "Reset Buffer")
-        map("n", "<leader>ghp", gs.preview_hunk_inline, "Preview Hunk Inline")
-        map("n", "<leader>ghb", function()
-          gs.blame_line({ full = true })
-        end, "Blame Line")
-        map("n", "<leader>ghB", gs.blame, "Blame Buffer")
-        map("n", "<leader>ghd", gs.diffthis, "Diff This")
-        map("n", "<leader>ghD", function()
-          gs.diffthis("~")
-        end, "Diff This ~")
-        map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "Select Hunk")
-      end,
+    map("n", "]h", function()
+      if vim.wo.diff then
+        vim.cmd.normal({ "]c", bang = true })
+      else
+        gs.nav_hunk("next")
+      end
+    end, "Next Hunk")
+    map("n", "[h", function()
+      if vim.wo.diff then
+        vim.cmd.normal({ "[c", bang = true })
+      else
+        gs.nav_hunk("prev")
+      end
+    end, "Prev Hunk")
+    map("n", "]H", function()
+      gs.nav_hunk("last")
+    end, "Last Hunk")
+    map("n", "[H", function()
+      gs.nav_hunk("first")
+    end, "First Hunk")
+
+    map({ "n", "x" }, "<leader>ghs", ":Gitsigns stage_hunk<CR>", "Stage Hunk")
+    map({ "n", "x" }, "<leader>ghr", ":Gitsigns reset_hunk<CR>", "Reset Hunk")
+    map("n", "<leader>ghS", gs.stage_buffer, "Stage Buffer")
+    map("n", "<leader>ghu", gs.undo_stage_hunk, "Undo Stage Hunk")
+    map("n", "<leader>ghR", gs.reset_buffer, "Reset Buffer")
+    map("n", "<leader>ghp", gs.preview_hunk_inline, "Preview Hunk Inline")
+    map("n", "<leader>ghb", function()
+      gs.blame_line({ full = true })
+    end, "Blame Line")
+    map("n", "<leader>ghB", gs.blame, "Blame Buffer")
+    map("n", "<leader>ghd", gs.diffthis, "Diff This")
+    map("n", "<leader>ghD", function()
+      gs.diffthis("~")
+    end, "Diff This ~")
+    map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "Select Hunk")
+  end,
+})
+
+require("gitlinker").setup({
+  mappings = nil,
+})
+vim.keymap.set("n", "<leader>gB", function()
+  require("gitlinker").get_buf_range_url("n", {
+    action_callback = require("gitlinker.actions").open_in_browser,
+  })
+end, { desc = "Git Browse (open)" })
+vim.keymap.set("x", "<leader>gB", function()
+  require("gitlinker").get_buf_range_url("v", {
+    action_callback = require("gitlinker.actions").open_in_browser,
+  })
+end, { desc = "Git Browse (open)" })
+vim.keymap.set("n", "<leader>gY", function()
+  require("gitlinker").get_buf_range_url("n")
+end, { desc = "Git Browse (copy)" })
+vim.keymap.set("x", "<leader>gY", function()
+  require("gitlinker").get_buf_range_url("v")
+end, { desc = "Git Browse (copy)" })
+
+require("octo").setup({
+  picker = "fzf-lua",
+  enable_builtin = true,
+  default_mappings = true,
+  mappings = {
+    review_diff = {
+      add_review_comment = { lhs = "<localleader>ca", desc = "add a new review comment", mode = { "n", "x" } },
+      add_review_suggestion = { lhs = "<localleader>sa", desc = "add a new review suggestion", mode = { "n", "x" } },
+      add_comment = { lhs = "ca", desc = "add a new review comment" },
+      add_suggestion = { lhs = "sa", desc = "add a new review suggestion" },
+      delete_comment = { lhs = "cd", desc = "delete a review comment" },
+      next_thread = { lhs = "]c", desc = "move to next thread" },
+      prev_thread = { lhs = "[c", desc = "move to previous thread" },
+      select_next_entry = { lhs = "]q", desc = "move to next changed file" },
+      select_prev_entry = { lhs = "[q", desc = "move to previous changed file" },
+      close_review_tab = { lhs = "<C-c>", desc = "close review tab" },
+      toggle_viewed = { lhs = "<leader>tv", desc = "toggle viewed state" },
     },
   },
-  {
-    "ruifm/gitlinker.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    opts = {
-      mappings = nil,
-    },
-    keys = {
-      {
-        "<leader>gB",
-        function()
-          require("gitlinker").get_buf_range_url("n", {
-            action_callback = require("gitlinker.actions").open_in_browser,
-          })
-        end,
-        mode = "n",
-        desc = "Git Browse (open)",
-      },
-      {
-        "<leader>gB",
-        function()
-          require("gitlinker").get_buf_range_url("v", {
-            action_callback = require("gitlinker.actions").open_in_browser,
-          })
-        end,
-        mode = "x",
-        desc = "Git Browse (open)",
-      },
-      {
-        "<leader>gY",
-        function()
-          require("gitlinker").get_buf_range_url("n")
-        end,
-        mode = "n",
-        desc = "Git Browse (copy)",
-      },
-      {
-        "<leader>gY",
-        function()
-          require("gitlinker").get_buf_range_url("v")
-        end,
-        mode = "x",
-        desc = "Git Browse (copy)",
-      },
-    },
-  },
-  {
-    "pwntester/octo.nvim",
-    cmd = "Octo",
-    dependencies = { "ibhagwan/fzf-lua" },
-    opts = {
-      picker = "fzf-lua",
-      enable_builtin = true,
-      default_mappings = true,
-      mappings = {
-        review_diff = {
-          add_review_comment = { lhs = "<localleader>ca", desc = "add a new review comment", mode = { "n", "x" } },
-          add_review_suggestion = { lhs = "<localleader>sa", desc = "add a new review suggestion", mode = { "n", "x" } },
-          add_comment = { lhs = "ca", desc = "add a new review comment" },
-          add_suggestion = { lhs = "sa", desc = "add a new review suggestion" },
-          delete_comment = { lhs = "cd", desc = "delete a review comment" },
-          next_thread = { lhs = "]c", desc = "move to next thread" },
-          prev_thread = { lhs = "[c", desc = "move to previous thread" },
-          select_next_entry = { lhs = "]q", desc = "move to next changed file" },
-          select_prev_entry = { lhs = "[q", desc = "move to previous changed file" },
-          close_review_tab = { lhs = "<C-c>", desc = "close review tab" },
-          toggle_viewed = { lhs = "<leader>tv", desc = "toggle viewed state" },
-        },
-      },
-    },
-    config = function(_, opts)
-      require("octo").setup(opts)
+})
 
-      -- Treesitterの登録
-      vim.treesitter.language.register("markdown", "octo")
+-- Treesitterの登録
+vim.treesitter.language.register("markdown", "octo")
 
-      -- Autocmdの設定
-      vim.api.nvim_create_autocmd("ExitPre", {
-        group = vim.api.nvim_create_augroup("octo_exit_pre", { clear = true }),
-        callback = function()
-          local keep = { "octo" }
-          for _, win in ipairs(vim.api.nvim_list_wins()) do
-            local buf = vim.api.nvim_win_get_buf(win)
-            if vim.tbl_contains(keep, vim.bo[buf].filetype) then
-              vim.bo[buf].buftype = ""
-            end
-          end
-        end,
-      })
-    end,
-    keys = {
-      { "<leader>oi", "<CMD>Octo issue list<CR>", desc = "List GitHub Issues" },
-      { "<leader>op", "<CMD>Octo pr list<CR>", desc = "List GitHub PullRequests" },
-      { "<leader>od", "<CMD>Octo discussion list<CR>", desc = "List GitHub Discussions" },
-      { "<leader>on", "<CMD>Octo notification list<CR>", desc = "List GitHub Notifications" },
-      {
-        "<leader>os",
-        function()
-          require("octo.utils").create_base_search_command({ include_current_repo = true })
-        end,
-        desc = "Search GitHub",
-      },
-    },
-  },
-}
+-- Autocmdの設定
+vim.api.nvim_create_autocmd("ExitPre", {
+  group = vim.api.nvim_create_augroup("octo_exit_pre", { clear = true }),
+  callback = function()
+    local keep = { "octo" }
+    for _, win in ipairs(vim.api.nvim_list_wins()) do
+      local buf = vim.api.nvim_win_get_buf(win)
+      if vim.tbl_contains(keep, vim.bo[buf].filetype) then
+        vim.bo[buf].buftype = ""
+      end
+    end
+  end,
+})
+
+vim.keymap.set("n", "<leader>oi", "<CMD>Octo issue list<CR>", { desc = "List GitHub Issues" })
+vim.keymap.set("n", "<leader>op", "<CMD>Octo pr list<CR>", { desc = "List GitHub PullRequests" })
+vim.keymap.set("n", "<leader>od", "<CMD>Octo discussion list<CR>", { desc = "List GitHub Discussions" })
+vim.keymap.set("n", "<leader>on", "<CMD>Octo notification list<CR>", { desc = "List GitHub Notifications" })
+vim.keymap.set("n", "<leader>os", function()
+  require("octo.utils").create_base_search_command({ include_current_repo = true })
+end, { desc = "Search GitHub" })
