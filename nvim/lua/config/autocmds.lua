@@ -9,15 +9,15 @@ vim.filetype.add({
 })
 
 vim.api.nvim_create_augroup("MyAutoSave", { clear = true })
-vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged", "FocusLost", "BufLeave" }, {
+vim.api.nvim_create_autocmd("InsertLeave", {
   group = "MyAutoSave",
   pattern = "*",
   callback = function()
     if vim.snippet.active() then
-      return
+      vim.snippet.stop()
     end
-    -- 編集可能かつファイル名がある場合のみ保存
-    if not (vim.bo.modifiable and vim.fn.expand("%") ~= "" and vim.bo.filetype ~= "") then
+    -- 編集可能な通常ファイルだけを保存する
+    if not (vim.bo.modifiable and vim.bo.buftype == "" and vim.api.nvim_buf_get_name(0) ~= "") then
       return
     end
     -- 変更があるときだけ保存 & 通知

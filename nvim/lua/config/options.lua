@@ -42,7 +42,7 @@ vim.opt.incsearch = true
 vim.opt.hlsearch = true
 
 -- その他
-vim.opt.autowrite = true -- フォーカスが外れた時に自動保存
+vim.opt.autowrite = false -- 自動保存は InsertLeave の autocmd に限定する
 vim.opt.splitright = true
 
 -- クリップボードをOSと共有する
