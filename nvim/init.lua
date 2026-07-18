@@ -2,5 +2,40 @@ require("config.options")
 require("config.keymaps")
 require("config.autocmds")
 
--- bootstrap vim.pack and plugins
-require("config.pack").setup()
+-- ロード順が仕様:
+--   theme が最初（ハイライトのちらつき防止）
+--   blink → lsp（capabilities 依存）
+--   lsp → lang/*（LspAttach・診断を先に整える）
+local mods = {
+  "plugins.theme",
+  "plugins.treesitter",
+  "plugins.ui",
+  "plugins.navigation",
+  "plugins.editor",
+  "plugins.which-key",
+  "plugins.yanky",
+  "plugins.persistence",
+  "plugins.rainbow-delmiters",
+  "plugins.indent-blankline",
+  "plugins.tmux",
+  "plugins.vcs",
+  "plugins.blink",
+  "plugins.lsp",
+  "plugins.conform",
+  "plugins.lint",
+  "plugins.lang.docker",
+  "plugins.lang.go",
+  "plugins.lang.json",
+  "plugins.lang.markdown",
+  "plugins.lang.php",
+  "plugins.lang.tailwind",
+  "plugins.lang.typescript",
+  "plugins.lang.yaml",
+}
+
+for _, mod in ipairs(mods) do
+  local ok, err = pcall(require, mod)
+  if not ok then
+    vim.notify(("Failed to load %s:\n%s"):format(mod, err), vim.log.levels.ERROR)
+  end
+end
