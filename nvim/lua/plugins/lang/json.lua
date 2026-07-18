@@ -13,7 +13,6 @@ return {
     opts = {
       servers = {
         jsonls = {
-          mason = false,
           cmd = { "vscode-json-languageserver", "--stdio" },
           before_init = function(_, new_config)
             new_config.settings.json.schemas = new_config.settings.json.schemas or {}

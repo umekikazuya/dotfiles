@@ -141,7 +141,6 @@ local setup_modules = {
   ["gitsigns.nvim"] = "gitsigns",
   ["indent-blankline.nvim"] = "ibl",
   ["lualine.nvim"] = "lualine",
-  ["mason.nvim"] = "mason",
   ["mini.ai"] = "mini.ai",
   ["mini.pairs"] = "mini.pairs",
   ["mini.icons"] = "mini.icons",
@@ -168,7 +167,6 @@ local function apply_lsp(opts)
   for name, server_opts in pairs(servers) do
     if name ~= "*" and type(server_opts) == "table" and server_opts.enabled ~= false then
       local config = vim.deepcopy(server_opts)
-      config.mason = nil
       config.enabled = nil
       config.keys = nil
       vim.lsp.config(name, config)

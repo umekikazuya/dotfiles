@@ -140,7 +140,6 @@ local function setup_servers(opts)
   for name, server_opts in pairs(servers) do
     if name ~= "*" and type(server_opts) == "table" and server_opts.enabled ~= false then
       local config = vim.tbl_deep_extend("force", vim.deepcopy(defaults), vim.deepcopy(server_opts))
-      config.mason = nil
       config.enabled = nil
       config.keys = nil
       vim.lsp.config(name, config)

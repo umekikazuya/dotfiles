@@ -8,7 +8,6 @@ return {
     opts = {
       servers = {
         gopls = {
-          mason = false,
           settings = {
             gopls = {
               gofumpt = true,

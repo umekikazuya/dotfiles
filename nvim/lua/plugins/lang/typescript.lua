@@ -36,7 +36,6 @@ return {
     opts = {
       servers = {
         vtsls = {
-          mason = false,
           filetypes = {
             "javascript",
             "javascriptreact",

@@ -24,6 +24,7 @@ marksman = "latest"
 "npm:markdown-toc" = "latest"
 "npm:markdownlint-cli2" = "latest"
 "npm:vscode-json-languageserver" = "latest"
+"stylua" = "latest"
 
 # coding
 
