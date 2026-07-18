@@ -1,38 +1,32 @@
-return {
-  "gbprod/yanky.nvim",
-  recommended = true,
-  desc = "Better Yank/Paste",
-  event = { "BufReadPost", "BufNewFile" },
-  opts = {
-    system_clipboard = {
-      sync_with_ring = not vim.env.SSH_CONNECTION,
-    },
-    highlight = { timer = 150 },
+vim.pack.add({
+  "https://github.com/gbprod/yanky.nvim.git",
+}, { confirm = false })
+
+require("yanky").setup({
+  system_clipboard = {
+    sync_with_ring = not vim.env.SSH_CONNECTION,
   },
-  keys = {
-    {
-      "<leader>p",
-      "<cmd>YankyRingHistory<cr>",
-      mode = { "n", "x" },
-      desc = "Open Yank History",
-    },
-    -- stylua: ignore
-    { "y", "<Plug>(YankyYank)", mode = { "n", "x" }, desc = "Yank Text" },
-    { "p", "<Plug>(YankyPutAfter)", mode = { "n", "x" }, desc = "Put Text After Cursor" },
-    { "P", "<Plug>(YankyPutBefore)", mode = { "n", "x" }, desc = "Put Text Before Cursor" },
-    { "gp", "<Plug>(YankyGPutAfter)", mode = { "n", "x" }, desc = "Put Text After Selection" },
-    { "gP", "<Plug>(YankyGPutBefore)", mode = { "n", "x" }, desc = "Put Text Before Selection" },
-    { "<C-p>", "<Plug>(YankyCycleForward)", desc = "Cycle Forward Through Yank History" },
-    { "<C-n>", "<Plug>(YankyCycleBackward)", desc = "Cycle Backward Through Yank History" },
-    { "]p", "<Plug>(YankyPutIndentAfterLinewise)", desc = "Put Indented After Cursor (Linewise)" },
-    { "[p", "<Plug>(YankyPutIndentBeforeLinewise)", desc = "Put Indented Before Cursor (Linewise)" },
-    { "]P", "<Plug>(YankyPutIndentAfterLinewise)", desc = "Put Indented After Cursor (Linewise)" },
-    { "[P", "<Plug>(YankyPutIndentBeforeLinewise)", desc = "Put Indented Before Cursor (Linewise)" },
-    { ">p", "<Plug>(YankyPutIndentAfterShiftRight)", desc = "Put and Indent Right" },
-    { "<p", "<Plug>(YankyPutIndentAfterShiftLeft)", desc = "Put and Indent Left" },
-    { ">P", "<Plug>(YankyPutIndentBeforeShiftRight)", desc = "Put Before and Indent Right" },
-    { "<P", "<Plug>(YankyPutIndentBeforeShiftLeft)", desc = "Put Before and Indent Left" },
-    { "=p", "<Plug>(YankyPutAfterFilter)", desc = "Put After Applying a Filter" },
-    { "=P", "<Plug>(YankyPutBeforeFilter)", desc = "Put Before Applying a Filter" },
-  },
-}
+  highlight = { timer = 150 },
+})
+
+local map = vim.keymap.set
+map({ "n", "x" }, "<leader>p", "<cmd>YankyRingHistory<cr>", { desc = "Open Yank History" })
+-- stylua: ignore start
+map({ "n", "x" }, "y", "<Plug>(YankyYank)", { desc = "Yank Text" })
+map({ "n", "x" }, "p", "<Plug>(YankyPutAfter)", { desc = "Put Text After Cursor" })
+map({ "n", "x" }, "P", "<Plug>(YankyPutBefore)", { desc = "Put Text Before Cursor" })
+map({ "n", "x" }, "gp", "<Plug>(YankyGPutAfter)", { desc = "Put Text After Selection" })
+map({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)", { desc = "Put Text Before Selection" })
+map("n", "<C-p>", "<Plug>(YankyCycleForward)", { desc = "Cycle Forward Through Yank History" })
+map("n", "<C-n>", "<Plug>(YankyCycleBackward)", { desc = "Cycle Backward Through Yank History" })
+map("n", "]p", "<Plug>(YankyPutIndentAfterLinewise)", { desc = "Put Indented After Cursor (Linewise)" })
+map("n", "[p", "<Plug>(YankyPutIndentBeforeLinewise)", { desc = "Put Indented Before Cursor (Linewise)" })
+map("n", "]P", "<Plug>(YankyPutIndentAfterLinewise)", { desc = "Put Indented After Cursor (Linewise)" })
+map("n", "[P", "<Plug>(YankyPutIndentBeforeLinewise)", { desc = "Put Indented Before Cursor (Linewise)" })
+map("n", ">p", "<Plug>(YankyPutIndentAfterShiftRight)", { desc = "Put and Indent Right" })
+map("n", "<p", "<Plug>(YankyPutIndentAfterShiftLeft)", { desc = "Put and Indent Left" })
+map("n", ">P", "<Plug>(YankyPutIndentBeforeShiftRight)", { desc = "Put Before and Indent Right" })
+map("n", "<P", "<Plug>(YankyPutIndentBeforeShiftLeft)", { desc = "Put Before and Indent Left" })
+map("n", "=p", "<Plug>(YankyPutAfterFilter)", { desc = "Put After Applying a Filter" })
+map("n", "=P", "<Plug>(YankyPutBeforeFilter)", { desc = "Put Before Applying a Filter" })
+-- stylua: ignore end

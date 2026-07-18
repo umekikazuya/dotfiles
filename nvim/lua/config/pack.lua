@@ -139,7 +139,6 @@ local setup_modules = {
   ["flash.nvim"] = "flash",
   ["gitlinker.nvim"] = "gitlinker",
   ["gitsigns.nvim"] = "gitsigns",
-  ["indent-blankline.nvim"] = "ibl",
   ["lualine.nvim"] = "lualine",
   ["mini.ai"] = "mini.ai",
   ["mini.pairs"] = "mini.pairs",
@@ -147,15 +146,11 @@ local setup_modules = {
   ["mini.surround"] = "mini.surround",
   ["nvim-lint"] = "lint",
   ["nvim-ts-autotag"] = "nvim-ts-autotag",
-  ["nvim-treesitter"] = "nvim-treesitter.configs",
   ["oil.nvim"] = "oil",
-  ["persistence.nvim"] = "persistence",
-  ["which-key.nvim"] = "which-key",
   ["render-markdown.nvim"] = "render-markdown",
   ["ts-comments.nvim"] = "ts-comments",
   ["trouble.nvim"] = "trouble",
   ["treesj"] = "treesj",
-  ["yanky.nvim"] = "yanky",
 }
 
 local function apply_lsp(opts)

@@ -1,13 +1,13 @@
-return {
-  {
-    "folke/persistence.nvim",
-    event = "BufReadPre",
-    opts = {},
-    keys = {
-      { "<leader>qs", function() require("persistence").load() end, desc = "Restore Session" },
-      { "<leader>qS", function() require("persistence").select() end, desc = "Select Session" },
-      { "<leader>ql", function() require("persistence").load({ last = true }) end, desc = "Restore Last Session" },
-      { "<leader>qd", function() require("persistence").stop() end, desc = "Don't Save Session" },
-    },
-  },
-}
+vim.pack.add({
+  "https://github.com/folke/persistence.nvim.git",
+}, { confirm = false })
+
+local persistence = require("persistence")
+persistence.setup({})
+
+-- stylua: ignore start
+vim.keymap.set("n", "<leader>qs", function() persistence.load() end, { desc = "Restore Session" })
+vim.keymap.set("n", "<leader>qS", function() persistence.select() end, { desc = "Select Session" })
+vim.keymap.set("n", "<leader>ql", function() persistence.load({ last = true }) end, { desc = "Restore Last Session" })
+vim.keymap.set("n", "<leader>qd", function() persistence.stop() end, { desc = "Don't Save Session" })
+-- stylua: ignore end

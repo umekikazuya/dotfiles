@@ -1,6 +1,7 @@
-return {
-  "folke/which-key.nvim",
-  opts = {
-    preset = "helix",
-  },
-}
+vim.pack.add({
+  "https://github.com/folke/which-key.nvim.git",
+}, { confirm = false })
+
+require("which-key").setup({
+  preset = "helix",
+})
