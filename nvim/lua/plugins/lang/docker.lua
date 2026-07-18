@@ -1,34 +1,16 @@
-return {
-  {
-    "nvim-treesitter/nvim-treesitter",
-    opts = { ensure_installed = { "dockerfile", "yaml" } },
-    init = function()
-      vim.filetype.add({
-        pattern = {
-          ["docker%-compose.*%.yml"] = "yaml.docker-compose",
-          ["docker%-compose.*%.yaml"] = "yaml.docker-compose",
-          ["compose.*%.yml"] = "yaml.docker-compose",
-          ["compose.*%.yaml"] = "yaml.docker-compose",
-        },
-      })
-    end,
+vim.filetype.add({
+  pattern = {
+    -- Lua パターンでは "-" は量指定子なので %- にエスケープが必要
+    ["docker%-compose.*%.yml"] = "yaml.docker-compose",
+    ["docker%-compose.*%.yaml"] = "yaml.docker-compose",
+    ["compose.*%.yml"] = "yaml.docker-compose",
+    ["compose.*%.yaml"] = "yaml.docker-compose",
   },
+})
 
-  {
-    "neovim/nvim-lspconfig",
-    opts = {
-      servers = {
-        docker_language_server = {},
-        docker_compose_language_service = {},
-      },
-    },
-  },
-  {
-    "mfussenegger/nvim-lint",
-    opts = {
-      linters_by_ft = {
-        dockerfile = { "hadolint" },
-      },
-    },
-  },
-}
+-- Docker 公式 LSP（Dockerfile + Compose + Bake）。Compose は Microsoft 版と並存
+vim.lsp.config("docker_language_server", {})
+vim.lsp.enable("docker_language_server")
+
+vim.lsp.config("docker_compose_language_service", {})
+vim.lsp.enable("docker_compose_language_service")

@@ -1,10 +1,2 @@
-return {
-  {
-    "neovim/nvim-lspconfig",
-    opts = {
-      servers = {
-        tailwindcss = {},
-      },
-    },
-  },
-}
+vim.lsp.config("tailwindcss", {})
+vim.lsp.enable("tailwindcss")

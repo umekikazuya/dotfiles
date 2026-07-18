@@ -1,3 +1,11 @@
+vim.pack.add({
+  "https://github.com/windwp/nvim-ts-autotag.git",
+  "https://github.com/folke/ts-comments.nvim.git",
+}, { confirm = false })
+
+require("nvim-ts-autotag").setup({})
+require("ts-comments").setup({})
+
 local lang_settings = {
   updateImportsOnFileMove = { enabled = "always" },
   suggest = { completeFunctionCalls = true },
@@ -23,53 +31,44 @@ local function apply_ts_code_action(action_kind)
   end
 end
 
-return {
-  {
-    "nvim-treesitter/nvim-treesitter",
-    opts = function(_, opts)
-      opts.ensure_installed = opts.ensure_installed or {}
-      vim.list_extend(opts.ensure_installed, { "typescript", "tsx", "javascript" })
-    end,
+vim.lsp.config("vtsls", {
+  filetypes = {
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
   },
-  {
-    "neovim/nvim-lspconfig",
-    opts = {
-      servers = {
-        vtsls = {
-          filetypes = {
-            "javascript",
-            "javascriptreact",
-            "typescript",
-            "typescriptreact",
-          },
-          keys = {
-            { "<leader>cM", apply_ts_code_action("source.addMissingImports.ts"), desc = "Add Missing Imports" },
-            { "<leader>cD", apply_ts_code_action("source.fixAll.ts"), desc = "Fix All Diagnostics" },
-          },
-          settings = {
-            vtsls = {
-              enableMoveToFileCodeAction = true,
-              autoUseWorkspaceTsdk = true,
-              experimental = {
-                maxInlayHintLength = 30,
-                completion = { enableServerSideFuzzyMatch = true },
-              },
-            },
-            typescript = lang_settings,
-            javascript = lang_settings,
-          },
-        },
+  settings = {
+    vtsls = {
+      enableMoveToFileCodeAction = true,
+      autoUseWorkspaceTsdk = true,
+      experimental = {
+        maxInlayHintLength = 30,
+        completion = { enableServerSideFuzzyMatch = true },
       },
     },
+    typescript = lang_settings,
+    javascript = lang_settings,
   },
-  {
-    "windwp/nvim-ts-autotag",
-    event = "VeryLazy",
-    opts = {},
-  },
-  {
-    "folke/ts-comments.nvim",
-    event = "VeryLazy",
-    opts = {},
-  },
-}
+})
+vim.lsp.enable("vtsls")
+
+vim.api.nvim_create_autocmd("LspAttach", {
+  group = vim.api.nvim_create_augroup("my.lsp.vtsls_keys", { clear = true }),
+  callback = function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    if not client or client.name ~= "vtsls" then
+      return
+    end
+    vim.keymap.set("n", "<leader>cM", apply_ts_code_action("source.addMissingImports.ts"), {
+      buffer = args.buf,
+      silent = true,
+      desc = "Add Missing Imports",
+    })
+    vim.keymap.set("n", "<leader>cD", apply_ts_code_action("source.fixAll.ts"), {
+      buffer = args.buf,
+      silent = true,
+      desc = "Fix All Diagnostics",
+    })
+  end,
+})

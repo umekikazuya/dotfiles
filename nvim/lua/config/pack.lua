@@ -132,13 +132,7 @@ local function pack_name_for(spec_name, explicit_name)
   return spec_name
 end
 
-local setup_modules = {
-  ["conform.nvim"] = "conform",
-  ["nvim-lint"] = "lint",
-  ["nvim-ts-autotag"] = "nvim-ts-autotag",
-  ["render-markdown.nvim"] = "render-markdown",
-  ["ts-comments.nvim"] = "ts-comments",
-}
+local setup_modules = {}
 
 local function apply_lsp(opts)
   if type(opts) ~= "table" then
