@@ -37,6 +37,28 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+local function maybe_set_markdown_ft(bufnr)
+  local name = vim.api.nvim_buf_get_name(bufnr)
+  if name == "" then
+    return
+  end
+  if vim.bo[bufnr].filetype ~= "" then
+    return
+  end
+  if name:match("%.mdx$") then
+    vim.bo[bufnr].filetype = "markdown.mdx"
+  elseif name:match("%.md$") then
+    vim.bo[bufnr].filetype = "markdown"
+  end
+end
+
+vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile", "BufEnter", "BufWinEnter" }, {
+  pattern = "*",
+  callback = function(ev)
+    maybe_set_markdown_ft(ev.buf)
+  end,
+})
+
 require("render-markdown").setup({
   code = {
     sign = false,
