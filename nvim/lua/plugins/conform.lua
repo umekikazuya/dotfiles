@@ -78,10 +78,16 @@ local php_service = os.getenv("NVIM_PHP_DOCKER_SERVICE") or "app"
 
 require("conform").setup({
   -- 旧 pack.lua が注入していたデフォルトを明示
-  format_on_save = {
-    timeout_ms = 3000,
-    lsp_format = "fallback",
-  },
+  format_on_save = function(bufnr)
+    if vim.b[bufnr].autosave_in_progress then
+      return nil
+    end
+
+    return {
+      timeout_ms = 3000,
+      lsp_format = "fallback",
+    }
+  end,
   default_format_opts = {
     timeout_ms = 30000,
   },

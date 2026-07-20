@@ -9,7 +9,7 @@ vim.filetype.add({
 })
 
 vim.api.nvim_create_augroup("MyAutoSave", { clear = true })
-vim.api.nvim_create_autocmd("InsertLeave", {
+vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {
   group = "MyAutoSave",
   pattern = "*",
   callback = function(ev)
@@ -30,7 +30,9 @@ vim.api.nvim_create_autocmd("InsertLeave", {
         return
       end
 
+      vim.b[ev.buf].autosave_in_progress = true
       local write_ok, write_err = pcall(vim.cmd, "update")
+      vim.b[ev.buf].autosave_in_progress = false
       -- 保存失敗時は明示的に通知する
       if not write_ok or vim.bo.modified then
         vim.notify("Autosave failed: " .. tostring(write_err or "buffer is still modified"), vim.log.levels.WARN, {
