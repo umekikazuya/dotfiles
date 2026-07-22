@@ -1,7 +1,7 @@
 {
   "plugins": {
     "SchemaStore.nvim": {
-      "rev": "77fb1b0aa0c7528680bed48687f3dd2c2a6ed111",
+      "rev": "3d2c297f7152208daf4a382ea7123f9e4ebf9da1",
       "src": "https://github.com/b0o/SchemaStore.nvim.git"
     },
     "blink-cmp-git": {
@@ -33,7 +33,7 @@
       "src": "https://github.com/rafamadriz/friendly-snippets.git"
     },
     "fzf-lua": {
-      "rev": "532d463f5c83595192fe740572d8fd6902b2217a",
+      "rev": "eced685813841391087fd65f896fc6ce6339a809",
       "src": "https://github.com/ibhagwan/fzf-lua.git"
     },
     "gitlinker.nvim": {
@@ -137,7 +137,7 @@
       "src": "https://github.com/folke/which-key.nvim.git"
     },
     "yanky.nvim": {
-      "rev": "020c22d0cfa60358569e49d1d7b91630f175aef0",
+      "rev": "dd6689fdda85f66cab7d9b1a1664625f3be0920d",
       "src": "https://github.com/gbprod/yanky.nvim.git"
     }
   }
