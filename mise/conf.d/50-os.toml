@@ -1,0 +1,17 @@
+[bootstrap.macos.dock]
+autohide = true
+orientation = "left"
+tilesize = 51
+magnification = false
+show_recents = false
+
+[bootstrap.macos.finder]
+show_all_files = true
+show_pathbar = true
+show_status_bar = true
+show_extensions_warning = false
+preferred_view_style = "column"
+
+[bootstrap.macos.trackpad]
+tap_to_click = false
+three_finger_drag = true
