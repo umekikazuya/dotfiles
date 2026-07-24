@@ -15,3 +15,10 @@ preferred_view_style = "column"
 [bootstrap.macos.trackpad]
 tap_to_click = false
 three_finger_drag = true
+
+[bootstrap.macos.keyboard]
+key_repeat = 1
+initial_key_repeat = 10
+
+[bootstrap.macos.defaults]
+"com.apple.finder" = { _FXSortFoldersFirst = true }
