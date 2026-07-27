@@ -8,6 +8,13 @@ vim.filetype.add({
   },
 })
 
+vim.api.nvim_create_autocmd("VimEnter", {
+  once = true,
+  callback = function()
+    vim.cmd("filetype detect")
+  end,
+})
+
 vim.api.nvim_create_augroup("MyAutoSave", { clear = true })
 vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {
   group = "MyAutoSave",
