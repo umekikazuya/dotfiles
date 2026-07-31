@@ -85,7 +85,7 @@
       "src": "https://github.com/neovim/nvim-lspconfig.git"
     },
     "nvim-treesitter": {
-      "rev": "8b3a191c015dd66a92d51a112ed96af0aac13b63",
+      "rev": "0f32dff7f19476629c77467f887b95e5e2d33509",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter.git"
     },
     "nvim-ts-autotag": {
@@ -93,7 +93,7 @@
       "src": "https://github.com/windwp/nvim-ts-autotag.git"
     },
     "octo.nvim": {
-      "rev": "d05b852ad7eba6e34ffe38ee2db430f0fd6f6225",
+      "rev": "205f024d3ea4a3d81aac751b6bf8e2d01e0c204f",
       "src": "https://github.com/pwntester/octo.nvim.git"
     },
     "oil.nvim": {
