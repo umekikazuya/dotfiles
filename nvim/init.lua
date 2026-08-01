@@ -28,6 +28,7 @@ local mods = {
   "plugins.lang.json",
   "plugins.lang.markdown",
   "plugins.lang.php",
+  "plugins.lang.shell",
   "plugins.lang.tailwind",
   "plugins.lang.typescript",
   "plugins.lang.yaml",
