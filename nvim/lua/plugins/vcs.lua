@@ -3,6 +3,7 @@ vim.pack.add({
   "https://github.com/lewis6991/gitsigns.nvim.git",
   "https://github.com/ruifm/gitlinker.nvim.git",
   "https://github.com/pwntester/octo.nvim.git",
+  "https://github.com/sindrets/diffview.nvim.git",
 }, { confirm = false })
 
 require("gitsigns").setup({
@@ -72,6 +73,8 @@ end, { desc = "Git Browse (copy)" })
 vim.keymap.set("x", "<leader>gY", function()
   require("gitlinker").get_buf_range_url("v")
 end, { desc = "Git Browse (copy)" })
+
+require("diffview").setup()
 
 local function resolve_octo_default_remotes()
   local remotes = vim.fn.systemlist({ "git", "remote" })
@@ -152,23 +155,7 @@ local function ensure_octo()
   octo_initialized = true
 end
 
-vim.keymap.set("n", "<leader>oi", function()
-  ensure_octo()
-  vim.cmd("Octo issue list")
-end, { desc = "List GitHub Issues" })
-vim.keymap.set("n", "<leader>op", function()
-  ensure_octo()
-  vim.cmd("Octo pr list")
-end, { desc = "List GitHub PullRequests" })
-vim.keymap.set("n", "<leader>od", function()
-  ensure_octo()
-  vim.cmd("Octo discussion list")
-end, { desc = "List GitHub Discussions" })
 vim.keymap.set("n", "<leader>on", function()
   ensure_octo()
   vim.cmd("Octo notification list")
 end, { desc = "List GitHub Notifications" })
-vim.keymap.set("n", "<leader>os", function()
-  ensure_octo()
-  require("octo.utils").create_base_search_command({ include_current_repo = true })
-end, { desc = "Search GitHub" })
