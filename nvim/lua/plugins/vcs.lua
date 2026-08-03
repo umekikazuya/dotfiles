@@ -74,7 +74,9 @@ vim.keymap.set("x", "<leader>gY", function()
   require("gitlinker").get_buf_range_url("v")
 end, { desc = "Git Browse (copy)" })
 
-require("diffview").setup()
+require("diffview").setup({
+  use_icons = false,
+})
 
 local function resolve_octo_default_remotes()
   local remotes = vim.fn.systemlist({ "git", "remote" })
@@ -155,7 +157,71 @@ local function ensure_octo()
   octo_initialized = true
 end
 
+-- octo.nvim は plugin/ を持たず、:Octo は setup() 内で作られる。
+-- 起動時に setup() を走らせると約65ms かかるため、軽いスタブだけ登録しておき、
+-- 初回実行時に本体を読み込む（setup() が同名でこのコマンドを上書きする）。
+local OCTO_SUBCOMMANDS = {
+  "assignee",
+  "author",
+  "card",
+  "comment",
+  "discussion",
+  "gist",
+  "issue",
+  "label",
+  "milestone",
+  "notification",
+  "parent",
+  "poll",
+  "pr",
+  "reaction",
+  "release",
+  "repo",
+  "review",
+  "reviewer",
+  "run",
+  "search",
+  "thread",
+  "type",
+  "workflow",
+}
+
+vim.api.nvim_create_user_command("Octo", function(opts)
+  ensure_octo()
+  local range = opts.range == 2 and (opts.line1 .. "," .. opts.line2) or (opts.range == 1 and opts.line1 or "")
+  vim.cmd(("%sOcto %s"):format(range, opts.args))
+end, {
+  nargs = "*",
+  range = true,
+  desc = "Octo (遅延読み込み)",
+  -- 第1引数のみ静的補完。初回実行後は octo 本体の補完に置き換わる
+  complete = function(arglead, cmdline)
+    if not cmdline:match("^%s*%d*,?%d*Octo%s+%S*$") then
+      return {}
+    end
+    return vim.tbl_filter(function(cmd)
+      return cmd:find(arglead, 1, true) == 1
+    end, OCTO_SUBCOMMANDS)
+  end,
+})
+
+vim.keymap.set("n", "<leader>oi", function()
+  ensure_octo()
+  vim.cmd("Octo issue list")
+end, { desc = "List GitHub Issues" })
+vim.keymap.set("n", "<leader>op", function()
+  ensure_octo()
+  vim.cmd("Octo pr list")
+end, { desc = "List GitHub PullRequests" })
+vim.keymap.set("n", "<leader>od", function()
+  ensure_octo()
+  vim.cmd("Octo discussion list")
+end, { desc = "List GitHub Discussions" })
 vim.keymap.set("n", "<leader>on", function()
   ensure_octo()
   vim.cmd("Octo notification list")
 end, { desc = "List GitHub Notifications" })
+vim.keymap.set("n", "<leader>os", function()
+  ensure_octo()
+  require("octo.utils").create_base_search_command({ include_current_repo = true })
+end, { desc = "Search GitHub" })
