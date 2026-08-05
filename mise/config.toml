@@ -1,6 +1,7 @@
 [settings]
 minimum_release_age = "1h"
 dotfiles.default_mode = "symlink"
+color_theme = "base16"
 
 [env]
 
