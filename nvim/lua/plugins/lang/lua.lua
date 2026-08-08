@@ -6,7 +6,15 @@ vim.lsp.config(
         diagnostics = { globals = { "vim" } },
         runtime = { version = "LuaJIT" },
         telemetry = { enable = false },
-        workspace = { checkThirdParty = false, library = vim.api.nvim_get_runtime_file("", true) },
+        workspace = {
+          checkThirdParty = false,
+          library = {
+            vim.env.VIMRUNTIME .. "/lua",
+            vim.fn.stdpath("config") .. "/lua",
+          },
+          maxPreload = 1000,
+          preloadFileSize = 1000,
+        },
       }
     }
   }
