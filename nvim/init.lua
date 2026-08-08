@@ -26,6 +26,7 @@ local mods = {
   "plugins.lang.docker",
   "plugins.lang.go",
   "plugins.lang.json",
+  "plugins.lang.lua",
   "plugins.lang.markdown",
   "plugins.lang.php",
   "plugins.lang.shell",
