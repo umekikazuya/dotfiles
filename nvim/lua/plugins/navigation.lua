@@ -48,12 +48,14 @@ fzf.setup({
     actions = {
       ["alt-i"] = { actions.toggle_ignore },
       ["alt-h"] = { actions.toggle_hidden },
+      ["ctrl-q"] = { fn = require"fzf-lua".actions.file_sel_to_qf, prefix = "select-all" },
     },
   },
   grep = {
     actions = {
       ["alt-i"] = { actions.toggle_ignore },
       ["alt-h"] = { actions.toggle_hidden },
+      ["ctrl-q"] = { fn = require"fzf-lua".actions.file_sel_to_qf, prefix = "select-all" },
     },
   },
   -- lsp = { keymap = false },
