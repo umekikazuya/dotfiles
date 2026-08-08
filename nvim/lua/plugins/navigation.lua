@@ -7,17 +7,6 @@ vim.pack.add({
 -- mini.icons の setup オーナーはこのファイル（blink.lua は add のみ）
 require("mini.icons").setup({})
 
--- 引数なし起動時にカレントディレクトリを開く
-vim.api.nvim_create_autocmd("VimEnter", {
-  nested = true,
-  callback = function()
-    if vim.fn.argc() ~= 0 then
-      return
-    end
-    vim.cmd("Oil " .. vim.fn.getcwd())
-  end,
-})
-
 ---@module 'oil'
 require("oil").setup({
   view_options = {
