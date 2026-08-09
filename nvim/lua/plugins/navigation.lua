@@ -18,6 +18,7 @@ vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open Parent Directory" })
 
 local fzf = require("fzf-lua")
 local actions = require("fzf-lua.actions")
+local qf = actions.file_sel_to_qf
 fzf.setup({
   fzf_colors = true,
   fzf_opts = {
@@ -37,17 +38,21 @@ fzf.setup({
     actions = {
       ["alt-i"] = { actions.toggle_ignore },
       ["alt-h"] = { actions.toggle_hidden },
-      ["ctrl-q"] = { fn = require"fzf-lua".actions.file_sel_to_qf, prefix = "select-all" },
+      ["ctrl-q"] = { fn = qf, prefix = "select-all" },
     },
   },
   grep = {
     actions = {
       ["alt-i"] = { actions.toggle_ignore },
       ["alt-h"] = { actions.toggle_hidden },
-      ["ctrl-q"] = { fn = require"fzf-lua".actions.file_sel_to_qf, prefix = "select-all" },
+      ["ctrl-q"] = { fn = qf, prefix = "select-all" },
     },
   },
-  -- lsp = { keymap = false },
+  lsp = {
+    actions = {
+      ["ctrl-q"] = { fn = qf, prefix = "select-all" },
+    },
+  },
 })
 fzf.register_ui_select()
 

@@ -7,6 +7,19 @@ local function set_keymap(mode, lhs, rhs, opts)
   vim.keymap.set(mode, lhs, rhs, keymap_opts)
 end
 
+local function lsp_references_picker()
+  local fzf_ok, fzf = pcall(require, "fzf-lua")
+  if not fzf_ok then
+    vim.lsp.buf.references()
+    return
+  end
+
+  local opened, err = pcall(fzf.lsp_references, { jump1 = false })
+  if not opened then
+    vim.notify("fzf-lua lsp_references failed: " .. tostring(err), vim.log.levels.WARN, { title = "LSP" })
+  end
+end
+
 -- capabilities（blink.lua はこのファイルより先にロードされる）
 local ok, blink = pcall(require, "blink.cmp")
 if ok then
@@ -66,17 +79,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
       end
       map(mode, lhs, rhs, desc)
     end
-
-    map("n", "grr", function()
-      local fzf_ok, fzf = pcall(require, "fzf-lua")
-      if fzf_ok then
-        local opened = pcall(fzf.lsp_references)
-        if opened then
-          return
-        end
-      end
-      vim.lsp.buf.references()
-    end, "LSP References")
+    map("n", "grr", lsp_references_picker, "LSP References")
     ensure_default_map("n", "gd", function()
       vim.lsp.buf.definition({ reuse_win = true })
     end, "Goto Definition")
