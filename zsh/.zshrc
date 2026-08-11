@@ -8,10 +8,7 @@
 
 # vimモード
 bindkey -v
-bindkey '^?' backward-delete-char
-bindkey '^H' backward-delete-char
-bindkey '^W' backward-kill-word
-bindkey '^U' backward-kill-line
+bindkey -M viins 'jj' vi-cmd-mode
 
 # 1. コマンドライン編集機能を読み込む
 autoload -Uz edit-command-line
@@ -79,3 +76,4 @@ eval "$(gh completion -s zsh)"
 eval "$(starship init zsh)"
 
 unset ZSH_CONFIG_DIR ZSH_LIB_DIR file
+eval "$(/Users/umekikazuya/.local/bin/mise activate zsh)" # added by https://mise.run/zsh
