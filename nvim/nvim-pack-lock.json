@@ -1,7 +1,7 @@
 {
   "plugins": {
     "SchemaStore.nvim": {
-      "rev": "6bcdcb22f02b43b990b650b3ab40c65aa193c3f8",
+      "rev": "3067d706e9738fbed404fa0397199c9d1921fd1c",
       "src": "https://github.com/b0o/SchemaStore.nvim.git"
     },
     "blink-cmp-git": {
@@ -9,7 +9,7 @@
       "src": "https://github.com/Kaiser-Yang/blink-cmp-git.git"
     },
     "blink.cmp": {
-      "rev": "0e63407c28bd09ef0d3604478823f7f92dd8d9ec",
+      "rev": "bd62d0889dabd9419e35996e3ac820e8e1e7665c",
       "src": "https://github.com/saghen/blink.cmp.git"
     },
     "blink.lib": {
