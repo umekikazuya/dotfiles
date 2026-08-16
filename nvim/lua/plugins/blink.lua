@@ -41,6 +41,11 @@ local opts = {
   },
   fuzzy = {
     implementation = vim.fn.executable("cargo") == 1 and "rust" or "lua",
+    sorts = {
+      'score',
+      'sort_text',
+      'label',
+    }
   },
   cmdline = {
     enabled = true,
