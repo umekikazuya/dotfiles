@@ -1,6 +1,7 @@
 require("config.options")
 require("config.keymaps")
 require("config.autocmds")
+require('plugins.pr_comments')
 
 -- ロード順が仕様:
 --   theme が最初（ハイライトのちらつき防止）
