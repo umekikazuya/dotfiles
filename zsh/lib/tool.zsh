@@ -6,6 +6,17 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_T_OPTS="--preview 'bat --color=always --style=numbers {}' --preview-window=right:55%"
 export FZF_CTRL_R_OPTS="--reverse --input-border --preview 'echo {}' --preview-window=down:3:wrap"
 
+_fzf_complete_git() {
+  local -a tokens
+  tokens=(${(z)1})
+
+  [[ ${tokens[2]-} == sw ]] || return
+
+  _fzf_complete --no-multi -- "$@" < <(
+    git for-each-ref --sort=-committerdate --format='%(refname:short)' refs/heads 2>/dev/null
+  )
+}
+
 # go-task
 eval "$(task --completion zsh)"
 
