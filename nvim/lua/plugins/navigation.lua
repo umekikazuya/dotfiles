@@ -13,6 +13,7 @@ require("oil").setup({
     show_hidden = true,
   },
   default_file_explorer = true,
+  skip_confirm_for_simple_edits = false,
 })
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open Parent Directory" })
 

@@ -28,8 +28,9 @@ vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {
       if vim.snippet.active() then
         vim.snippet.stop()
       end
-      -- 編集可能な通常ファイルだけを保存する
-      if not (vim.bo.modifiable and vim.bo.buftype == "" and vim.api.nvim_buf_get_name(0) ~= "") then
+      local is_oil = vim.bo.filetype == "oil"
+      local is_normal_file = vim.bo.modifiable and vim.bo.buftype == "" and vim.api.nvim_buf_get_name(0) ~= ""
+      if not (is_normal_file or is_oil) then
         return
       end
       -- 変更があるときだけ保存 & 通知
@@ -41,7 +42,7 @@ vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {
       local write_ok, write_err = pcall(vim.cmd, "update")
       vim.b[ev.buf].autosave_in_progress = false
       -- 保存失敗時は明示的に通知する
-      if not write_ok or vim.bo.modified then
+      if not write_ok or (not is_oil and vim.bo.modified) then
         vim.notify("Autosave failed: " .. tostring(write_err or "buffer is still modified"), vim.log.levels.WARN, {
           title = "autosave",
         })
