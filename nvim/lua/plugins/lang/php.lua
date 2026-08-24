@@ -4,9 +4,12 @@ vim.lsp.config("intelephense", {
       format = { enable = false },
       files = {
         maxSize = 2000000,
+        exclude = {
+          "**/vendor/**",
+        },
       },
       diagnostics = {
-        undefindTypes = false,
+        undefinedTypes = false,
       },
     }
   }
