@@ -40,7 +40,15 @@ precmd_functions+=(_reset_cursor_shape_precmd)
 export PATH="$HOME/.local/bin:$PATH"
 
 autoload -Uz compinit
-compinit
+ZSH_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
+ZSH_COMPDUMP="$ZSH_CACHE_DIR/.zcompdump"
+
+if [ ! -d "$ZSH_CACHE_DIR" ]; then
+  mkdir -p "$ZSH_CACHE_DIR"
+fi
+
+# Use cached completion dump to skip compaudit on startup.
+compinit -C -d "$ZSH_COMPDUMP"
 
 
 # Completion improvements
@@ -69,11 +77,10 @@ if [ -f "$ZSH_CONFIG_DIR/.zshrc.local" ]; then
   source "$ZSH_CONFIG_DIR/.zshrc.local"
 fi
 
-if command -v mise >/dev/null 2>&1; then
-  eval "$(mise activate zsh)"
+if [ -x "$HOME/.local/bin/mise" ]; then
+  eval "$("$HOME/.local/bin/mise" activate zsh)"
 fi
 eval "$(gh completion -s zsh)"
 eval "$(starship init zsh)"
 
-unset ZSH_CONFIG_DIR ZSH_LIB_DIR file
-eval "$(/Users/umekikazuya/.local/bin/mise activate zsh)" # added by https://mise.run/zsh
+unset ZSH_CONFIG_DIR ZSH_LIB_DIR ZSH_CACHE_DIR ZSH_COMPDUMP file
