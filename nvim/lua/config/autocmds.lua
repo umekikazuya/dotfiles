@@ -2,9 +2,12 @@
 -- with `vim.api.nvim_create_autocmd`
 vim.filetype.add({
   extension = {
-    inc = "php",
-    theme = "php",
-    module = "php",
+    module = 'php',
+    inc = 'php',
+    install = 'php',
+    theme = 'php',
+    profile = 'php',
+    engine = 'php',
   },
 })
 
