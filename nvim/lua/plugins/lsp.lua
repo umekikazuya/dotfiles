@@ -20,17 +20,25 @@ local function lsp_references_picker()
   end
 end
 
--- capabilities（blink.lua はこのファイルより先にロードされる）
-local ok, blink = pcall(require, "blink.cmp")
-if ok then
-  vim.lsp.config("*", {
-    capabilities = blink.get_lsp_capabilities({
-      workspace = {
-        fileOperations = { didRename = true, willRename = true },
-      },
-    }),
-  })
-end
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.workspace = capabilities.workspace or {}
+capabilities.workspace.fileOperations = { didRename = true, willRename = true }
+
+capabilities.textDocument = capabilities.textDocument or {}
+capabilities.textDocument.completion = capabilities.textDocument.completion or {}
+capabilities.textDocument.completion.completionItem = capabilities.textDocument.completion.completionItem or {}
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.completion.completionItem.resolveSupport = {
+  properties = {
+    "documentation",
+    "detail",
+    "additionalTextEdits",
+  },
+}
+
+vim.lsp.config("*", {
+  capabilities = capabilities,
+})
 
 vim.diagnostic.config({
   underline = true,

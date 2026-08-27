@@ -5,8 +5,9 @@ require('plugins.pr_comments')
 
 -- ロード順が仕様:
 --   theme が最初（ハイライトのちらつき防止）
---   blink → lsp（capabilities 依存）
---   lsp → lang/*（LspAttach・診断を先に整える）
+--   lsp は先に常駐（診断・LspAttach を先に整える）
+--   blink は InsertEnter/CmdlineEnter で遅延初期化
+--   lang/* は lsp 設定の後に適用
 local mods = {
   "plugins.theme",
   "plugins.treesitter",

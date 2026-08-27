@@ -4,7 +4,7 @@ vim.pack.add({
 
 local ts = require("nvim-treesitter")
 
-ts.install({
+local parsers = {
   "dockerfile",
   "go",
   "gomod",
@@ -16,7 +16,11 @@ ts.install({
   "tsx",
   "typescript",
   "yaml",
-})
+}
+
+vim.api.nvim_create_user_command("TSInstallManaged", function()
+  ts.install(parsers)
+end, { desc = "Install managed Treesitter parsers" })
 
 vim.api.nvim_create_autocmd("FileType", {
   group = vim.api.nvim_create_augroup("my.treesitter", { clear = true }),

@@ -31,8 +31,27 @@ require("mini.ai").setup({
   n_lines = 500,
 })
 
-require("treesj").setup({
-  use_default_keymaps = false, -- デフォルトのキーマップ(gS/gJ)は使わず、<leader>mでトグルさせる
-  max_join_length = 1000,      -- 実質無制限に近くし、長いTableテストなども1行にまとめられるようにする
-})
-vim.keymap.set("n", "<leader>m", "<CMD>TSJToggle<CR>", { desc = "Toggle Split/Join" })
+local treesj_initialized = false
+local function ensure_treesj()
+  if treesj_initialized then
+    return true
+  end
+  local ok, treesj = pcall(require, "treesj")
+  if not ok then
+    vim.notify("Failed to load treesj", vim.log.levels.ERROR)
+    return false
+  end
+  treesj.setup({
+    use_default_keymaps = false, -- デフォルトのキーマップ(gS/gJ)は使わず、<leader>mでトグルさせる
+    max_join_length = 1000,      -- 実質無制限に近くし、長いTableテストなども1行にまとめられるようにする
+  })
+  treesj_initialized = true
+  return true
+end
+
+vim.keymap.set("n", "<leader>m", function()
+  if not ensure_treesj() then
+    return
+  end
+  vim.cmd("TSJToggle")
+end, { desc = "Toggle Split/Join" })

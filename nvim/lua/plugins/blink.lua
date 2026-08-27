@@ -1,4 +1,3 @@
--- install/update 時に Rust fuzzy ライブラリをビルドする
 vim.api.nvim_create_autocmd("PackChanged", {
   group = vim.api.nvim_create_augroup("my.pack.build.blink", { clear = true }),
   callback = function(ev)
@@ -24,14 +23,6 @@ vim.pack.add({
   "https://github.com/nvim-mini/mini.icons.git",
   "https://github.com/saghen/blink.cmp.git",
 }, { confirm = false })
-
-local ok_luasnip, luasnip = pcall(require, "luasnip")
-if ok_luasnip then
-  luasnip.config.setup({})
-  pcall(function()
-    require("luasnip.loaders.from_vscode").lazy_load()
-  end)
-end
 
 ---@module 'blink.cmp'
 ---@type blink.cmp.Config
@@ -91,7 +82,7 @@ local opts = {
     },
   },
   snippets = {
-    preset = "luasnip",
+    preset = "default",
   },
   sources = {
     default = { "git", "lsp", "path", "snippets", "buffer" },
@@ -136,4 +127,32 @@ local opts = {
   },
 }
 
-require("blink.cmp").setup(opts)
+local blink_initialized = false
+
+local function setup_blink()
+  if blink_initialized then
+    return
+  end
+  blink_initialized = true
+
+  local ok_luasnip, luasnip = pcall(require, "luasnip")
+  if ok_luasnip then
+    luasnip.config.setup({})
+    pcall(function()
+      require("luasnip.loaders.from_vscode").lazy_load()
+    end)
+  end
+
+  local ok_blink, blink = pcall(require, "blink.cmp")
+  if not ok_blink then
+    vim.notify("Failed to load blink.cmp", vim.log.levels.ERROR)
+    return
+  end
+  blink.setup(opts)
+end
+
+vim.api.nvim_create_autocmd({ "InsertEnter", "CmdlineEnter" }, {
+  group = vim.api.nvim_create_augroup("my.lazy.blink", { clear = true }),
+  once = true,
+  callback = setup_blink,
+})

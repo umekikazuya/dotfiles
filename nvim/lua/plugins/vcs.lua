@@ -54,29 +54,79 @@ require("gitsigns").setup({
   end,
 })
 
-require("gitlinker").setup({
-  mappings = nil,
-})
+local gitlinker_initialized = false
+local function ensure_gitlinker()
+  if gitlinker_initialized then
+    return true
+  end
+  local ok, gitlinker = pcall(require, "gitlinker")
+  if not ok then
+    vim.notify("Failed to load gitlinker", vim.log.levels.ERROR)
+    return false
+  end
+  gitlinker.setup({ mappings = nil })
+  gitlinker_initialized = true
+  return true
+end
+
 vim.keymap.set("n", "<leader>gB", function()
+  if not ensure_gitlinker() then
+    return
+  end
   require("gitlinker").get_buf_range_url("n", {
     action_callback = require("gitlinker.actions").open_in_browser,
   })
 end, { desc = "Git Browse (open)" })
 vim.keymap.set("x", "<leader>gB", function()
+  if not ensure_gitlinker() then
+    return
+  end
   require("gitlinker").get_buf_range_url("v", {
     action_callback = require("gitlinker.actions").open_in_browser,
   })
 end, { desc = "Git Browse (open)" })
 vim.keymap.set("n", "<leader>gY", function()
+  if not ensure_gitlinker() then
+    return
+  end
   require("gitlinker").get_buf_range_url("n")
 end, { desc = "Git Browse (copy)" })
 vim.keymap.set("x", "<leader>gY", function()
+  if not ensure_gitlinker() then
+    return
+  end
   require("gitlinker").get_buf_range_url("v")
 end, { desc = "Git Browse (copy)" })
 
-require("diffview").setup({
-  use_icons = false,
-})
+local diffview_initialized = false
+local function ensure_diffview()
+  if diffview_initialized then
+    return true
+  end
+  vim.cmd.packadd("diffview.nvim")
+  local ok, diffview = pcall(require, "diffview")
+  if not ok then
+    vim.notify("Failed to load diffview", vim.log.levels.ERROR)
+    return false
+  end
+  diffview.setup({ use_icons = false })
+  diffview_initialized = true
+  return true
+end
+
+for _, cmd_name in ipairs({ "DiffviewOpen", "DiffviewClose", "DiffviewFileHistory", "DiffviewFocusFiles", "DiffviewToggleFiles" }) do
+  if vim.fn.exists(":" .. cmd_name) == 2 then
+    goto continue
+  end
+  vim.api.nvim_create_user_command(cmd_name, function(opts)
+    pcall(vim.api.nvim_del_user_command, cmd_name)
+    if not ensure_diffview() then
+      return
+    end
+    vim.cmd(("%s %s"):format(cmd_name, opts.args))
+  end, { nargs = "*", desc = ("Lazy %s"):format(cmd_name) })
+  ::continue::
+end
 
 local function resolve_octo_default_remotes()
   local remotes = vim.fn.systemlist({ "git", "remote" })

@@ -27,31 +27,44 @@ vim.pack.add({
   "https://github.com/MeanderingProgrammer/render-markdown.nvim.git",
 }, { confirm = false })
 
+local markdown_initialized = false
+local function ensure_markdown_plugins()
+  if markdown_initialized then
+    return true
+  end
+  local ok, render_markdown = pcall(require, "render-markdown")
+  if not ok then
+    vim.notify("Failed to load render-markdown", vim.log.levels.ERROR)
+    return false
+  end
+  render_markdown.setup({
+    code = {
+      sign = false,
+      width = "block",
+      right_pad = 1,
+    },
+    heading = {
+      sign = false,
+      position = "inline",
+    },
+    quote = {
+      repeat_linebreak = true,
+    },
+    completions = {
+      lsp = { enabled = true },
+    },
+  })
+  markdown_initialized = true
+  return true
+end
+
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = "markdown",
+  pattern = { "markdown", "markdown.mdx" },
   callback = function(ev)
+    ensure_markdown_plugins()
     vim.keymap.set("n", "<leader>cp", "<cmd>MarkdownPreviewToggle<cr>", {
       buffer = ev.buf,
       desc = "Markdown Preview",
     })
   end,
 })
-
-require("render-markdown").setup({
-  code = {
-    sign = false,
-    width = "block",
-    right_pad = 1,
-  },
-  heading = {
-    sign = false,
-    position = "inline",
-  },
-  quote = {
-    repeat_linebreak = true,
-  },
-  completions = {
-    lsp = { enabled = true },
-  },
-})
-vim.api.nvim_exec_autocmds("FileType", { pattern = vim.bo.filetype, modeline = false })
