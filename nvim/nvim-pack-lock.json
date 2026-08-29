@@ -5,7 +5,7 @@
       "src": "https://github.com/L3MON4D3/LuaSnip.git"
     },
     "SchemaStore.nvim": {
-      "rev": "b4a92475bb6928810b66a0dd2fd86bea44089aba",
+      "rev": "2a9b750cbaba7a7417e0d20774374dd0756d967d",
       "src": "https://github.com/b0o/SchemaStore.nvim.git"
     },
     "blink-cmp-git": {
@@ -101,7 +101,7 @@
       "src": "https://github.com/windwp/nvim-ts-autotag.git"
     },
     "octo.nvim": {
-      "rev": "37a416818c61bd2d150498e2f601744e5329e2eb",
+      "rev": "af2411604b51cb4a0f3e2de50b1b7cacc2581c48",
       "src": "https://github.com/pwntester/octo.nvim.git"
     },
     "oil.nvim": {
