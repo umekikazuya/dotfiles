@@ -95,9 +95,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
     map("n", "<leader>cl", "<cmd>LspInfo<cr>", "LSP Info")
 
     if client:supports_method("textDocument/codeLens") then
-      map("n", "<leader>cc", vim.lsp.codelens.run, "Run Codelens")
-      map("x", "<leader>cc", vim.lsp.codelens.run, "Run Codelens")
       map("n", "<leader>cC", vim.lsp.codelens.refresh, "Refresh Codelens")
+      if client.name == "gopls" then
+        vim.lsp.codelens.enable(true, { bufnr = bufnr })
+      end
     end
 
     if client:supports_method("textDocument/inlayHint") then
