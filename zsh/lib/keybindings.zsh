@@ -1,6 +1,7 @@
 # Use vi editing mode, with jj as the insert-mode escape sequence.
 bindkey -v
 bindkey -M viins 'jj' vi-cmd-mode
+bindkey -M viins '^H' backward-delete-char
 
 # Edit the current command line in $EDITOR from vi command mode.
 autoload -Uz edit-command-line
