@@ -21,7 +21,7 @@ setopt hist_expire_dups_first   # HISTFILEのサイズがHISTSIZEを超える場
 setopt extended_glob
 function zshaddhistory() {
     local line=${1%%$'\n'}
-    if [[ "$line" =~ "^(ls|pwd|tm|exit|git add|git res|git ress|git ame|git st|git push -f)" ]]; then
+    if [[ "$line" =~ "^(ls|pwd|tm|exit|git add|git res|git ress|git ame|git push -f)" ]]; then
         return 1 # 履歴に保存しない
     fi
     return 0 # 履歴に保存する
