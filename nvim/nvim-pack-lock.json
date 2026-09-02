@@ -5,7 +5,7 @@
       "src": "https://github.com/L3MON4D3/LuaSnip.git"
     },
     "SchemaStore.nvim": {
-      "rev": "fc58c7a06fc430699bbec1a52b62a256cc204ecf",
+      "rev": "6a1a2daf151dd742d5ff2f64eb2cc049d7e5ab4a",
       "src": "https://github.com/b0o/SchemaStore.nvim.git"
     },
     "blink-cmp-git": {
@@ -13,7 +13,7 @@
       "src": "https://github.com/Kaiser-Yang/blink-cmp-git.git"
     },
     "blink.cmp": {
-      "rev": "61ffe3e9cedb59eac31484248a1de6a0e37f8d21",
+      "rev": "05c1798b48d8440358e59342b77fee84c8a8f18e",
       "src": "https://github.com/saghen/blink.cmp.git"
     },
     "blink.lib": {
@@ -85,7 +85,7 @@
       "src": "https://github.com/mfussenegger/nvim-lint.git"
     },
     "nvim-lspconfig": {
-      "rev": "bbe6b383a1e85d3a84b54a43f7d9d83567c150cb",
+      "rev": "ee1e369181a9e64904cdd7b739e98c70778cfc71",
       "src": "https://github.com/neovim/nvim-lspconfig.git"
     },
     "nvim-treesitter": {
