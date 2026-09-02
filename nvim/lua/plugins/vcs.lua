@@ -46,10 +46,6 @@ require("gitsigns").setup({
       gs.blame_line({ full = true })
     end, "Blame Line")
     map("n", "<leader>ghB", gs.blame, "Blame Buffer")
-    map("n", "<leader>ghd", gs.diffthis, "Diff This")
-    map("n", "<leader>ghD", function()
-      gs.diffthis("~")
-    end, "Diff This ~")
     map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "Select Hunk")
   end,
 })
@@ -127,6 +123,10 @@ for _, cmd_name in ipairs({ "DiffviewOpen", "DiffviewClose", "DiffviewFileHistor
   end, { nargs = "*", desc = ("Lazy %s"):format(cmd_name) })
   ::continue::
 end
+
+vim.keymap.set({ "n" }, "<leader>gd", ":DiffviewOpen<CR>")
+vim.keymap.set({ "n" }, "<leader>gpd", ":DiffviewOpen origin/HEAD...HEAD --imply-local<CR>")
+
 
 local function resolve_octo_default_remotes()
   local remotes = vim.fn.systemlist({ "git", "remote" })
