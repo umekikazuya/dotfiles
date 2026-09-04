@@ -1,0 +1,7 @@
+{
+  "Current date (YYYY/MM/DD)": {
+    "prefix": "date",
+    "body": ["$CURRENT_YEAR/$CURRENT_MONTH/$CURRENT_DATE"],
+    "description": "2026/01/01"
+  }
+}
