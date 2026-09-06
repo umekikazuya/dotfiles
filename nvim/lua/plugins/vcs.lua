@@ -105,7 +105,7 @@ local function ensure_diffview()
     vim.notify("Failed to load diffview", vim.log.levels.ERROR)
     return false
   end
-  diffview.setup({ use_icons = false })
+  diffview.setup({ use_icons = true })
   diffview_initialized = true
   return true
 end
