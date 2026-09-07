@@ -18,8 +18,6 @@ vim.api.nvim_create_autocmd("PackChanged", {
 vim.pack.add({
   "https://github.com/saghen/blink.lib.git",
   "https://github.com/Kaiser-Yang/blink-cmp-git.git",
-  "https://github.com/L3MON4D3/LuaSnip.git",
-  "https://github.com/rafamadriz/friendly-snippets.git",
   "https://github.com/nvim-mini/mini.icons.git",
   "https://github.com/saghen/blink.cmp.git",
 }, { confirm = false })
@@ -87,6 +85,13 @@ local opts = {
   sources = {
     default = { "git", "lsp", "path", "snippets", "buffer" },
     providers = {
+      snippets = {
+        opts = {
+          friendly_snippets = false,
+          search_paths = { vim.fn.stdpath("config") .. "/snippets" },
+          global_snippets = { "all" },
+        },
+      },
       git = {
         module = "blink-cmp-git",
         name = "Git",
@@ -134,14 +139,6 @@ local function setup_blink()
     return
   end
   blink_initialized = true
-
-  local ok_luasnip, luasnip = pcall(require, "luasnip")
-  if ok_luasnip then
-    luasnip.config.setup({})
-    pcall(function()
-      require("luasnip.loaders.from_vscode").lazy_load()
-    end)
-  end
 
   local ok_blink, blink = pcall(require, "blink.cmp")
   if not ok_blink then
