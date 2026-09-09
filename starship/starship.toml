@@ -6,6 +6,9 @@ disabled = true
 [gcloud]
 disabled = true
 
+[nodejs]
+disabled = true
+
 [directory]
 style = "blue"
 
