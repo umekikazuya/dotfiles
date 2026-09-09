@@ -46,6 +46,9 @@ if [ -f "$ZSH_CONFIG_DIR/.zshrc.local" ]; then
   source "$ZSH_CONFIG_DIR/.zshrc.local"
 fi
 
+if [ -x "$HOME/.local/bin/mise" ]; then
+  eval "$("$HOME/.local/bin/mise" activate zsh)"
+fi
 eval "$(gh completion -s zsh)"
 eval "$(starship init zsh)"
 
