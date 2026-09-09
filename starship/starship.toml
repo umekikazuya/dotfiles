@@ -6,8 +6,8 @@ disabled = true
 [gcloud]
 disabled = true
 
-[nodejs]
-disabled = true
+[aws]
+format = "[$profile]($style)"
 
 [directory]
 style = "blue"
