@@ -6,8 +6,8 @@ vim.g.maplocalleader = "\\"
 
 -- 表示設定
 vim.opt.showtabline = 0 -- タブラインを非表示
-vim.opt.list = true -- 不可視文字を表示モードにする
-vim.opt.number = true -- 行番号表示
+vim.opt.list = true     -- 不可視文字を表示モードにする
+vim.opt.number = true   -- 行番号表示
 vim.opt.numberwidth = 6
 vim.opt.signcolumn = "yes"
 vim.opt.relativenumber = true -- 相対行番号を無効にする
@@ -44,6 +44,8 @@ vim.opt.hlsearch = true
 -- その他
 vim.opt.autowrite = false -- 自動保存は InsertLeave の autocmd に限定する
 vim.opt.splitright = true
+vim.opt.grepprg =
+"rg --vimgrep"
 
 -- クリップボードをOSと共有する
 vim.opt.clipboard = "unnamedplus"
