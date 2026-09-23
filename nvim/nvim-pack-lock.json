@@ -1,7 +1,7 @@
 {
   "plugins": {
     "SchemaStore.nvim": {
-      "rev": "626485da21ad1df21bbb25359be759e8936876a9",
+      "rev": "76faabd8d091e4316ec8e1e90aa9371210b574b3",
       "src": "https://github.com/b0o/SchemaStore.nvim.git"
     },
     "blink-cmp-git": {
@@ -73,7 +73,7 @@
       "src": "https://github.com/mfussenegger/nvim-lint.git"
     },
     "nvim-lspconfig": {
-      "rev": "ffd261c09c3dabd0bf1a438f47a8ae3b22f3c3ff",
+      "rev": "046b1a797af1effe8e0474b9af9657a3761ec58a",
       "src": "https://github.com/neovim/nvim-lspconfig.git"
     },
     "nvim-treesitter": {
@@ -105,7 +105,7 @@
       "src": "https://github.com/HiPhish/rainbow-delimiters.nvim.git"
     },
     "treesj": {
-      "rev": "79aedb401bbdc7e4202f7881eab5f6feb2105b0a",
+      "rev": "9f349ba62c524f065d6f43254d731ddf8319b9bf",
       "src": "https://github.com/Wansmer/treesj.git"
     },
     "trouble.nvim": {
