@@ -1,7 +1,7 @@
 {
   "plugins": {
     "SchemaStore.nvim": {
-      "rev": "fae5c76c00dec18485f264396ce24368e9c4e9fb",
+      "rev": "d93ef1e8365950420ea3e706e82caf65dc9ff968",
       "src": "https://github.com/b0o/SchemaStore.nvim.git"
     },
     "blink-cmp-git": {
@@ -29,7 +29,7 @@
       "src": "https://github.com/j-hui/fidget.nvim.git"
     },
     "fzf-lua": {
-      "rev": "eab53acb3fd36479f084f854b4418d02b5c70382",
+      "rev": "d5c12c6d72ed84554f0f8dacb84f20da094b6a2d",
       "src": "https://github.com/ibhagwan/fzf-lua.git"
     },
     "gitlinker.nvim": {
@@ -53,7 +53,7 @@
       "src": "https://github.com/nvim-lualine/lualine.nvim.git"
     },
     "mini.ai": {
-      "rev": "6c39ae7b11abe479fbe1bc81bf00ac6bca7afa07",
+      "rev": "c2c4278beb759aa24b9506f56a67186a6cc2209c",
       "src": "https://github.com/nvim-mini/mini.ai.git"
     },
     "mini.icons": {
@@ -65,7 +65,7 @@
       "src": "https://github.com/nvim-mini/mini.pairs.git"
     },
     "mini.surround": {
-      "rev": "33a2ebe5df8eb4751828fcba133e18ed0fbbdfab",
+      "rev": "72feeaa0f984646efde875cc775a97b6f8a8be9b",
       "src": "https://github.com/nvim-mini/mini.surround.git"
     },
     "nvim-lint": {
@@ -81,7 +81,7 @@
       "src": "https://github.com/nvim-treesitter/nvim-treesitter.git"
     },
     "nvim-ts-autotag": {
-      "rev": "88c1453db4ba7dd24131086fe51fdf74e587d275",
+      "rev": "d7220b55e16ed3c04e88086256def5d282429493",
       "src": "https://github.com/windwp/nvim-ts-autotag.git"
     },
     "octo.nvim": {
