@@ -6,7 +6,7 @@ go = "latest"
 "go:golang.org/x/tools/gopls" = "latest"
 "go:golang.org/x/tools/cmd/goimports" = "latest"
 "go:mvdan.cc/gofumpt" = "latest"
-golangci-lint = "v2.13.2"
+golangci-lint = "v2.14.0"
 gotestsum = "latest"
 "go:github.com/mfridman/tparse" = "latest"
 
