@@ -77,7 +77,6 @@ end)
 local php_service = os.getenv("NVIM_PHP_DOCKER_SERVICE") or "app"
 
 require("conform").setup({
-  -- 旧 pack.lua が注入していたデフォルトを明示
   format_on_save = function(bufnr)
     if vim.b[bufnr].autosave_in_progress then
       return nil
@@ -92,7 +91,6 @@ require("conform").setup({
     timeout_ms = 30000,
   },
   formatters_by_ft = {
-    -- biome 対応 ft は biome 優先、prettier フォールバック（各 condition で絞る）
     css = { "biome", "prettier" },
     graphql = { "biome", "prettier" },
     javascript = { "biome", "prettier" },
@@ -107,7 +105,8 @@ require("conform").setup({
     less = { "prettier" },
     scss = { "prettier" },
     vue = { "prettier" },
-    yaml = { "prettier" },
+    yaml = { "yamlfmt" },
+    yml = { "yamlfmt" },
 
     go = { "goimports", "gofumpt" },
     php = { "phpcbf" },
@@ -155,5 +154,8 @@ require("conform").setup({
       },
       stdin = true,
     },
+    yaml = {
+      "yamlfmt"
+    }
   },
 })

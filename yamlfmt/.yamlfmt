@@ -6,6 +6,7 @@ formatter:
   trim_trailing_whitespace: true
   include_document_start: false
   retain_line_breaks_single: true
+  max_line_length: 120
   pad_line_comments: 1
   force_array_style: block
   force_quote_style: double
