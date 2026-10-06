@@ -1,0 +1,12 @@
+formatter:
+  type: basic
+  indent: 2
+  line_ending: lf
+  eof_newline: true
+  trim_trailing_whitespace: true
+  include_document_start: false
+  retain_line_breaks_single: true
+  pad_line_comments: 1
+  force_array_style: block
+  force_quote_style: double
+  disallow_anchors: true
