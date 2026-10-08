@@ -26,6 +26,10 @@ end
 local golangcilint = lint.linters.golangcilint
 golangcilint.cmd = "mise"
 golangcilint.args = vim.list_extend({ "exec", "--", "golangci-lint" }, golangcilint.args or {})
+golangcilint.append_fname = false
+table.insert(golangcilint.args, function()
+  return vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ":h")
+end)
 
 -- phpcs は docker compose 経由で実行（組み込み定義の parser を保つため部分上書きに留める）
 local service = os.getenv("NVIM_PHP_DOCKER_SERVICE") or "app"
