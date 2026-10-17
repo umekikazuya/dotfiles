@@ -1,40 +1,60 @@
-"$schema" = 'https://starship.rs/config-schema.json'
-
 [battery]
 disabled = true
+
+format = """
+$directory\
+$git_branch\
+$git_status\
+$direnv\
+$python\
+$aws\
+$fill\
+$cmd_duration\
+$time\
+\n$character\
+"""
+
+[fill]
+symbol = '─'
+
+[directory]
+truncation_length = 6
+truncation_symbol = ' '
+truncate_to_repo = false
+home_symbol = '~'
+read_only = ' 󰌾 '
+style = 'bold fg:#313244'
+read_only_style = 'bold fg:#313244'
+format = """
+[$path]($style) \
+[$read_only]($read_only_style) \
+"""
 
 [gcloud]
 disabled = true
 
 [aws]
-format = "[$profile]($style)"
-
-[directory]
-style = "blue"
+format = '[$symbol $profile ]($style)'
+symbol = "💭"
+style = "bold fg:#ffcb6b"
 
 [character]
 success_symbol = "[❯](purple)"
 error_symbol = "[❯](red)"
-vimcmd_symbol = "[❮](green)"
+vimcmd_symbol = '[V](bold green) '
 
 [git_branch]
-format = "[$branch]($style)"
-style = "bright-black"
+symbol = ""
+style = "fg:#769ff0"
+format = """
+[$symbol $branch]($style)\
+"""
 
 [git_status]
-format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
-style = "cyan"
-conflicted = "​"
-untracked = "​"
-modified = "​"
-staged = "​"
-renamed = "​"
-deleted = "​"
-stashed = "≡"
-
-[git_state]
-format = '\([$state( $progress_current/$progress_total)]($style)\) '
-style = "bright-black"
+style = "fg:#769ff0"
+format = """
+[$all_status$ahead_behind]($style)\
+"""
 
 [cmd_duration]
 format = "[$duration]($style) "
