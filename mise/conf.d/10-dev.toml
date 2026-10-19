@@ -14,6 +14,7 @@ gotestsum = "latest"
 
 node = "latest"
 "npm:@vtsls/language-server" = "latest"
+deno = "latest"
 
 # LSP
 
@@ -33,3 +34,7 @@ lua-language-server = "latest"
 
 neovim = "latest"
 tree-sitter = "latest"
+
+# zsh
+
+sheldon = "latest"
