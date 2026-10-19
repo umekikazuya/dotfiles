@@ -27,7 +27,7 @@ style = 'bold fg:#313244'
 read_only_style = 'bold fg:#313244'
 format = """
 [$path]($style) \
-[$read_only]($read_only_style) \
+[$read_only]($read_only_style)\
 """
 
 [gcloud]
@@ -53,7 +53,7 @@ format = """
 [git_status]
 style = "fg:#769ff0"
 format = """
-[$all_status$ahead_behind]($style)\
+[$all_status$ahead_behind]($style) \
 """
 
 [cmd_duration]
