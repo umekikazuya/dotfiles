@@ -1,7 +1,7 @@
 {
   "plugins": {
     "SchemaStore.nvim": {
-      "rev": "82037f0534e303c3bb39472340fd23b9c46ab528",
+      "rev": "d038a750bc7799590f19efa0d8df80cdf05faf80",
       "src": "https://github.com/b0o/SchemaStore.nvim.git"
     },
     "blink-cmp-git": {
@@ -57,7 +57,7 @@
       "src": "https://github.com/nvim-mini/mini.ai.git"
     },
     "mini.icons": {
-      "rev": "f916635dc5ae2f479fbb9ab8184bb9444b62e86c",
+      "rev": "9e4c1645ce2b78afd6191b6be2c38bc0f998dd48",
       "src": "https://github.com/nvim-mini/mini.icons.git"
     },
     "mini.pairs": {
@@ -73,7 +73,7 @@
       "src": "https://github.com/mfussenegger/nvim-lint.git"
     },
     "nvim-lspconfig": {
-      "rev": "45a3a444b710511c39abca3b60bb6e23a21e3de5",
+      "rev": "77b7432d4770d23b277d37923e5a08a442d8bb07",
       "src": "https://github.com/neovim/nvim-lspconfig.git"
     },
     "nvim-treesitter": {
