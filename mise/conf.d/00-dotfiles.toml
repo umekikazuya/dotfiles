@@ -18,3 +18,4 @@
 "~/.config/ghostty" = { source = "~/src/github.com/umekikazuya/dotfiles/ghostty" }
 "~/.config/starship.toml" = { source = "~/src/github.com/umekikazuya/dotfiles/starship/starship.toml" }
 "~/.config/yamlfmt/.yamlfmt" = { source = "~/src/github.com/umekikazuya/dotfiles/yamlfmt/.yamlfmt" }
+"~/.config/zeno" = { source = "~/src/github.com/umekikazuya/dotfiles/zeno" }

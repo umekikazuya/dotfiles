@@ -1,0 +1,47 @@
+snippets:
+  - name: ssh hosts
+    keyword: sshli
+    snippet: "cat ~/.ssh/config | grep '^Host ' | sed -e 's/^Host //g'"
+  - name: nvim
+    keyword: nv
+    snippet: nvim
+  - name: docker compose
+    keyword: dc
+    snippet: docker compose
+  - name: docker ps
+    keyword: dps
+    snippet: docker ps --format "table {{ .Names }}\t{{ .Status }}\t{{ .Ports }}"
+  - name: docker ps all
+    keyword: dpsa
+    snippet: docker ps -a
+  - name: docker stats
+    keyword: dst
+    snippet: docker stats
+  - name: docker images
+    keyword: dil
+    snippet: docker images
+  - name: docker compose logs
+    keyword: dclog
+    snippet: docker compose logs -f --no-log-prefix
+  - name: docker compose exec
+    keyword: dcex
+    snippet: docker compose exec -it
+  - name: docker rm
+    keyword: drm
+    snippet: docker rm
+  - name: docker rmi
+    keyword: dri
+    snippet: docker rmi
+  - name: docker cleanup
+    keyword: dcl
+    snippet: >-
+      docker system df &&
+      docker volume ls -qf dangling=true | xargs -r docker volume rm &&
+      docker images -f 'dangling=true' -q | xargs -r docker rmi &&
+      docker container prune --force --filter 'until=168h' &&
+      docker ps --filter 'status=exited' | grep 'weeks ago' | awk '{print $1}' | xargs -r docker rm &&
+      docker builder prune &&
+      docker system df
+  - name: pnpm
+    keyword: pn
+    snippet: pnpm
