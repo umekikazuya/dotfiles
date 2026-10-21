@@ -14,9 +14,6 @@ snippets:
   - name: docker ps all
     keyword: dpsa
     snippet: docker ps -a
-  - name: docker stats
-    keyword: dst
-    snippet: docker stats
   - name: docker images
     keyword: dil
     snippet: docker images

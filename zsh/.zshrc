@@ -61,7 +61,7 @@ if [[ -f "$ZENO_SCRIPT" ]]; then
   source "$ZENO_SCRIPT"
   bindkey ' '  zeno-auto-snippet
   bindkey '^m' zeno-auto-snippet-and-accept-line
-  bindkey '^r' zeno-history-selection
+
   bindkey '^x '  zeno-insert-space
   bindkey '^x^m' accept-line
   bindkey '^z' zeno-toggle-auto-snippet
