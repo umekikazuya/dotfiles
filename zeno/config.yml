@@ -42,3 +42,81 @@ snippets:
   - name: pnpm
     keyword: pn
     snippet: pnpm
+  - name: git status
+    keyword: st
+    snippet: status -u -s
+    context:
+      lbuffer: '^git\s+'
+  - name: git log oneline
+    keyword: logo
+    snippet: log --oneline
+    context:
+      lbuffer: '^git\s+'
+  - name: git log name status
+    keyword: logn
+    snippet: log --name-status --oneline
+    context:
+      lbuffer: '^git\s+'
+  - name: git log graph
+    keyword: lg
+    snippet: >-
+      -c 'alias.lg=!TZ=Asia/Tokyo git log --graph --all --date-order
+      --pretty=format:"%C(yellow)%h%C(reset) - %C(bold red)%d%C(reset) %s %C(green)(%ad)%C(reset) %C(bold blue)<%an>%C(reset)"
+      --date=format-local:"%Y/%m/%d %H:%M"' lg
+    context:
+      lbuffer: '^git\s+lg$'
+  - name: git fetch prune all
+    keyword: fp
+    snippet: fetch --prune --all
+    context:
+      lbuffer: '^git\s+'
+  - name: git switch
+    keyword: sw
+    snippet: switch
+    context:
+      lbuffer: '^git\s+'
+  - name: git branch delete
+    keyword: bd
+    snippet: branch -D
+    context:
+      lbuffer: '^git\s+'
+  - name: git commit
+    keyword: ci
+    snippet: commit -v
+    context:
+      lbuffer: '^git\s+'
+  - name: git commit amend
+    keyword: ame
+    snippet: commit --amend
+    context:
+      lbuffer: '^git\s+'
+  - name: git commit amend no edit
+    keyword: ame-no
+    snippet: commit --amend --no-edit
+    context:
+      lbuffer: '^git\s+'
+  - name: git diff
+    keyword: di
+    snippet: diff
+    context:
+      lbuffer: '^git\s+'
+  - name: git diff staged
+    keyword: di-s
+    snippet: diff --staged
+    context:
+      lbuffer: '^git\s+'
+  - name: git add all
+    keyword: aa
+    snippet: add .
+    context:
+      lbuffer: '^git\s+'
+  - name: git restore
+    keyword: res
+    snippet: restore
+    context:
+      lbuffer: '^git\s+'
+  - name: git restore staged
+    keyword: ress
+    snippet: restore --staged
+    context:
+      lbuffer: '^git\s+'
