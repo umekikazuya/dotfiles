@@ -90,11 +90,6 @@ snippets:
     snippet: commit --amend
     context:
       lbuffer: '^git\s+'
-  - name: git commit amend no edit
-    keyword: ame-no
-    snippet: commit --amend --no-edit
-    context:
-      lbuffer: '^git\s+'
   - name: git diff
     keyword: di
     snippet: diff

@@ -27,6 +27,22 @@
 	process = git-lfs filter-process
 	required = true
 
+[alias]
+	st = status -u -s
+	logo = log --oneline
+	logn = log --name-status --oneline
+	lg = log --graph --all --date-order --pretty=format:'%C(yellow)%h%C(reset) - %C(bold red)%d%C(reset) %s %C(green)(%ad)%C(reset) %C(bold blue)<%an>%C(reset)' --date=format-local:'%Y/%m/%d %H:%M'
+	fp = fetch --prune --all
+	sw = switch
+	bd = branch -D
+	ci = commit -v
+	ame = commit --amend
+	di = diff
+	di-s = diff --staged
+	aa = add .
+	res = restore
+	ress = restore --staged
+
 [init]
 	defaultBranch = develop
 
