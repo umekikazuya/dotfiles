@@ -1,7 +1,7 @@
 {
   "plugins": {
     "SchemaStore.nvim": {
-      "rev": "d038a750bc7799590f19efa0d8df80cdf05faf80",
+      "rev": "2af1680d9c054f10ce9ebc1f28443178c2b5fcbf",
       "src": "https://github.com/b0o/SchemaStore.nvim.git"
     },
     "blink-cmp-git": {
@@ -29,7 +29,7 @@
       "src": "https://github.com/j-hui/fidget.nvim.git"
     },
     "fzf-lua": {
-      "rev": "348df165f1773dd08c5d710add3fd0db6d421e6a",
+      "rev": "a306c293b37bd7c8c1e8e1e6c0d7d3d9c3de3f21",
       "src": "https://github.com/ibhagwan/fzf-lua.git"
     },
     "gitlinker.nvim": {
