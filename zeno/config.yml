@@ -60,9 +60,9 @@ snippets:
   - name: git log graph
     keyword: lg
     snippet: >-
-      -c 'alias.lg=!TZ=Asia/Tokyo git log --graph --all --date-order
+      log --graph --all --date-order
       --pretty=format:"%C(yellow)%h%C(reset) - %C(bold red)%d%C(reset) %s %C(green)(%ad)%C(reset) %C(bold blue)<%an>%C(reset)"
-      --date=format-local:"%Y/%m/%d %H:%M"' lg
+      --date=format-local:"%Y/%m/%d %H:%M"
     context:
       lbuffer: '^git\s+lg$'
   - name: git fetch prune all
