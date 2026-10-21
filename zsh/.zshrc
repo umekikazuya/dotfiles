@@ -52,4 +52,19 @@ fi
 eval "$(gh completion -s zsh)"
 eval "$(starship init zsh)"
 
+export ZENO_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/zeno"
+export ZENO_ENABLE_SOCK=1
+export ZENO_DISABLE_BUILTIN_COMPLETION=1
+
+ZENO_SCRIPT="$HOME/src/github.com/umekikazuya/dotfiles/zsh/plugins/zeno.zsh/zeno.zsh"
+if [[ -f "$ZENO_SCRIPT" ]]; then
+  source "$ZENO_SCRIPT"
+  bindkey ' '  zeno-auto-snippet
+  bindkey '^m' zeno-auto-snippet-and-accept-line
+  bindkey '^r' zeno-history-selection
+  bindkey '^x '  zeno-insert-space
+  bindkey '^x^m' accept-line
+  bindkey '^z' zeno-toggle-auto-snippet
+fi
+
 unset ZSH_CONFIG_DIR ZSH_LIB_DIR ZSH_CACHE_DIR ZSH_COMPDUMP file
