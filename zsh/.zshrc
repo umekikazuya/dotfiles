@@ -62,6 +62,7 @@ if [[ -f "$ZENO_SCRIPT" ]]; then
   bindkey ' '  zeno-auto-snippet
   bindkey '^m' zeno-auto-snippet-and-accept-line
   bindkey '^s' zeno-insert-snippet
+  bindkey '^i' zeno-completion
 
   bindkey '^x '  zeno-insert-space
   bindkey '^x^m' accept-line
