@@ -1,9 +1,9 @@
 # fzf
 source <(fzf --zsh)
-export FZF_DEFAULT_OPTS="--ansi --color 'fg:#3b3248,fg+:#14171d,bg:-1,bg+:#ddd3fb,hl:#8b5cf6,hl+:#6d28d9,header:#b35b79,info:#7b66b8,pointer:#8b5cf6,marker:#8b5cf6,prompt:#8b5cf6,border:#c9c2b4'"
-export FZF_DEFAULT_COMMAND='fd --type f --color=always --hidden --exclude .git'
+export FZF_DEFAULT_OPTS="--reverse --ansi --color 'fg:#52525b,fg+:#18181b,bg:-1,bg+:#f3e8ff,hl:#9333ea,hl+:#7e22ce,info:#8b5cf6,prompt:#8b5cf6,pointer:#8b5cf6,marker:#8b5cf6,border:#d8b4fe'"
+export FZF_DEFAULT_COMMAND='fd --type d --color=never --hidden --exclude .git/ ; fd --type f --color=never --hidden --exclude .git/'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_CTRL_T_OPTS="--preview 'bat --color=always --style=numbers {}' --preview-window=right:55%"
+export FZF_CTRL_T_OPTS="--input-border --preview 'bat --color=always --style=numbers {}' --preview-window=down:50%"
 export FZF_CTRL_R_OPTS="--reverse --input-border --preview 'echo {}' --preview-window=down:3:wrap"
 
 _fzf_complete_git() {
