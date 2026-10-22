@@ -1,7 +1,5 @@
 -- Add any additional keymaps here
 
--- インサートモード中に 'jj' を素早く入力すると Esc とみなす
-vim.keymap.set("i", "jj", "<Esc>", { desc = "Escape with jj" })
 -- 入力モード中に Ctrl + l でカーソル移動
 vim.keymap.set("i", "<C-l>", "<Right>", { desc = "Right" })
 
