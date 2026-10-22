@@ -82,7 +82,7 @@ snippets:
       lbuffer: '^git\s+'
   - name: git commit
     keyword: ci
-    snippet: commit -v
+    snippet: commit
     context:
       lbuffer: '^git\s+'
   - name: git commit amend
