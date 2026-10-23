@@ -22,8 +22,6 @@ eval "$(task --completion zsh)"
 
 source <(usage g completion-init zsh)
 
-if command -v aws >/dev/null 2>&1 && command -v aws_completer >/dev/null 2>&1; then
-  autoload -Uz bashcompinit
-  bashcompinit
-  complete -C aws_completer aws
-fi
+autoload -Uz bashcompinit
+bashcompinit
+complete -C aws_completer aws
