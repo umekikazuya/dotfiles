@@ -126,6 +126,6 @@ completions:
   - name: gh browse
     patterns:
       - "^gh browse -R( .*)? $"
-    sourceCommand: "gh repo list --visibility=public | awk '{print $1}'"
+    sourceCommand: "gh repo list --archived=false --limit 100 | awk '{print $1}'"
     options:
       --prompt: "'browse repo >'"
