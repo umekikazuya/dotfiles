@@ -8,6 +8,7 @@
 
 export PATH="$HOME/.local/bin:$PATH"
 
+FPATH="$HOME/.docker/completions:$FPATH"
 autoload -Uz compinit
 ZSH_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
 ZSH_COMPDUMP="$ZSH_CACHE_DIR/.zcompdump"
