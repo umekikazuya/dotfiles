@@ -9,6 +9,7 @@ go = "latest"
 golangci-lint = "v2.14.0"
 gotestsum = "latest"
 "go:github.com/mfridman/tparse" = "latest"
+k6 = "latest"
 
 # node
 
