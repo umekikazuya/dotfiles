@@ -1,7 +1,7 @@
 {
   "plugins": {
     "SchemaStore.nvim": {
-      "rev": "fa093b1323f7cb379f47fc6704b38864f1cb97bf",
+      "rev": "bc61f7c787ccd31e06d84991bd399c2aca421f43",
       "src": "https://github.com/b0o/SchemaStore.nvim.git"
     },
     "blink-cmp-git": {
@@ -9,7 +9,7 @@
       "src": "https://github.com/Kaiser-Yang/blink-cmp-git.git"
     },
     "blink.cmp": {
-      "rev": "1e4cb39b9200950dca1cbc4d630c60c16eb8e7e4",
+      "rev": "c4e7117a1b3d07656e949114f832a7efd677ec3e",
       "src": "https://github.com/saghen/blink.cmp.git"
     },
     "blink.lib": {
@@ -53,7 +53,7 @@
       "src": "https://github.com/nvim-lualine/lualine.nvim.git"
     },
     "mini.ai": {
-      "rev": "d0c4987a1ead2bcf4eb22cc9815c662d76677c08",
+      "rev": "a4f5648dedf435e6306205135d1babb563b55d28",
       "src": "https://github.com/nvim-mini/mini.ai.git"
     },
     "mini.icons": {
@@ -65,7 +65,7 @@
       "src": "https://github.com/nvim-mini/mini.pairs.git"
     },
     "mini.surround": {
-      "rev": "59ce0acf79e1d930756ef3a7cb4c2369560cf548",
+      "rev": "5357f00aca51a3b43e7775901b1ad9699f8c2678",
       "src": "https://github.com/nvim-mini/mini.surround.git"
     },
     "nvim-lint": {
