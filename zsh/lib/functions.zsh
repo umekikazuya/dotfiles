@@ -41,3 +41,15 @@ fancy-ctrl-z() {
     zle clear-screen
   fi
 }
+
+notify() {
+  local ec=${1:-$?}
+
+  if (( ec == 0 )); then
+    afplay /System/Library/Sounds/Glass.aiff
+  else
+    afplay /System/Library/Sounds/Basso.aiff
+  fi
+
+  return $ec
+}

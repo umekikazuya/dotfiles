@@ -6,7 +6,17 @@
 #
 # ------------------------------------------------------------------------------
 
-export PATH="$HOME/.local/bin:$PATH"
+typeset -U path PATH
+path=("$HOME/.local/bin" $path)
+
+ZSH_CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
+export ZENO_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/zeno"
+unset ZENO_DISABLE_EXECUTE_CACHE_COMMAND ZENO_DISABLE_BUILTIN_COMPLETION
+
+# Local environment is input to initialization, not a final configuration hook.
+if [[ -r "$ZSH_CONFIG_DIR/.zshrc.local" ]]; then
+  source "$ZSH_CONFIG_DIR/.zshrc.local"
+fi
 
 # Resolve managed tools before completion setup can cache shim paths.
 if [ -x "$HOME/.local/bin/mise" ]; then
@@ -48,7 +58,6 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
 
 # Prefer XDG config path first to keep dotfiles location independent.
-ZSH_CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
 ZSH_LIB_DIR="$ZSH_CONFIG_DIR/lib"
 
 # Backward-compatible fallback for direct .zshrc symlink layout.
@@ -63,22 +72,14 @@ for file in "$ZSH_LIB_DIR"/*.zsh; do
   fi
 done
 
-# Load local settings if they exist
-if [ -f "$ZSH_CONFIG_DIR/.zshrc.local" ]; then
-  source "$ZSH_CONFIG_DIR/.zshrc.local"
-fi
-
 eval "$(gh completion -s zsh)"
 eval "$(starship init zsh)"
-
-export ZENO_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/zeno"
-unset ZENO_DISABLE_EXECUTE_CACHE_COMMAND ZENO_DISABLE_BUILTIN_COMPLETION
 
 ZENO_SCRIPT="${ZSH_LIB_DIR:h}/plugins/zeno.zsh/zeno.zsh"
 if [[ -f "$ZENO_SCRIPT" ]]; then
   source "$ZENO_SCRIPT"
   zeno-bind-default-keys
-  bindkey '^r' zeno-smart-history-selection
+  bindkey '^r' fzf-history-widget
   bindkey '^z' zeno-toggle-auto-snippet
 fi
 

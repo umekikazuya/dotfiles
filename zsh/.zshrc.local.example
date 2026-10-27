@@ -1,3 +1,7 @@
-# Put machine-local settings here.
-# Example:
-# export PATH="$HOME/.your-local-bin:$PATH"
+# Interactive-shell environment only; loaded before mise and tool initialization.
+# Do not put key bindings, widgets, or tool initialization here.
+# PATH entries are deduplicated, including when .zshrc is sourced again.
+#
+# path=("$HOME/.your-local-bin" $path)
+# export FZF_DEFAULT_OPTS="--reverse --ansi"
+# export ZENO_HOME="$HOME/.config/zeno"
