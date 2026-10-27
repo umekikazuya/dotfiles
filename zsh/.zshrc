@@ -8,6 +8,27 @@
 
 export PATH="$HOME/.local/bin:$PATH"
 
+# Resolve managed tools before completion setup can cache shim paths.
+if [ -x "$HOME/.local/bin/mise" ]; then
+  eval "$("$HOME/.local/bin/mise" activate zsh)"
+  # Mise can restore inherited shim aliases at each prompt or directory change.
+  _zsh_mise_shims_fallback() {
+    local shims="${MISE_DATA_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/mise}/shims" shim
+    for shim in "$shims" "${(@M)path:#*/shims}"; do
+      if [[ ${shim:A} == ${shims:A} ]]; then
+        path=("${(@)path:#"$shim"}")
+      fi
+    done
+    path+=("$shims")
+    hash -r
+  }
+  _zsh_mise_shims_fallback
+  add-zsh-hook -d precmd _zsh_mise_shims_fallback
+  add-zsh-hook -d chpwd _zsh_mise_shims_fallback
+  add-zsh-hook precmd _zsh_mise_shims_fallback
+  add-zsh-hook chpwd _zsh_mise_shims_fallback
+fi
+
 FPATH="$HOME/.docker/completions:$FPATH"
 autoload -Uz compinit
 ZSH_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
@@ -47,26 +68,17 @@ if [ -f "$ZSH_CONFIG_DIR/.zshrc.local" ]; then
   source "$ZSH_CONFIG_DIR/.zshrc.local"
 fi
 
-if [ -x "$HOME/.local/bin/mise" ]; then
-  eval "$("$HOME/.local/bin/mise" activate zsh)"
-fi
 eval "$(gh completion -s zsh)"
 eval "$(starship init zsh)"
 
 export ZENO_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/zeno"
-export ZENO_ENABLE_SOCK=1
-export ZENO_DISABLE_BUILTIN_COMPLETION=1
+unset ZENO_DISABLE_EXECUTE_CACHE_COMMAND ZENO_DISABLE_BUILTIN_COMPLETION
 
-ZENO_SCRIPT="$HOME/src/github.com/umekikazuya/dotfiles/zsh/plugins/zeno.zsh/zeno.zsh"
+ZENO_SCRIPT="${ZSH_LIB_DIR:h}/plugins/zeno.zsh/zeno.zsh"
 if [[ -f "$ZENO_SCRIPT" ]]; then
   source "$ZENO_SCRIPT"
-  bindkey ' '  zeno-auto-snippet
-  bindkey '^m' zeno-auto-snippet-and-accept-line
-  bindkey '^s' zeno-insert-snippet
-  bindkey '^i' zeno-completion
-
-  bindkey '^x '  zeno-insert-space
-  bindkey '^x^m' accept-line
+  zeno-bind-default-keys
+  bindkey '^r' zeno-smart-history-selection
   bindkey '^z' zeno-toggle-auto-snippet
 fi
 
