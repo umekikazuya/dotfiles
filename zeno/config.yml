@@ -1,4 +1,14 @@
 snippets:
+  - name: open
+    keyword: o
+    snippet: open
+    context:
+      lbuffer: "^o$"
+  - name: open localhost
+    keyword: local
+    snippet: "http://localhost:{{}}"
+    context:
+      lbuffer: '^open\s+local$'
   - name: ssh hosts
     keyword: sshli
     snippet: "cat ~/.ssh/config | grep '^Host ' | sed -e 's/^Host //g'"
@@ -117,6 +127,20 @@ snippets:
       lbuffer: '^git\s+'
 
 completions:
+  - name: localhost port
+    patterns:
+      - "^open http://localhost:$"
+    sourceCommand: >-
+      lsof -nP -iTCP -sTCP:LISTEN -Fpcn 2>/dev/null |
+      awk '/^c/ { command = substr($0, 2) }
+      /^n/ { port = $0; sub(/^.*:/, "", port);
+      if (port ~ /^[0-9]+$/ && !seen[port SUBSEP command]++)
+      printf "%s\t%s\n", port, command }' |
+      sort -n -k1,1 -k2,2
+    options:
+      --prompt: "'localhost port > '"
+      --no-multi: true
+    callback: "awk '{print $1}'"
   - name: aws cli completer
     patterns:
       - '^\s*(?:[A-Z_]+=\S+\s+)*aws(?:$|\s.*)$'
@@ -129,3 +153,10 @@ completions:
     sourceCommand: "gh repo list --archived=false --limit 100 | awk '{print $1}'"
     options:
       --prompt: "'browse repo >'"
+  - name: gh issue ID
+    patterns:
+      - "^gh issue (view|edit|close|open)? $"
+    sourceCommand: "gh issue ls --limit 100"
+    options:
+      --prompt: "'Issue ID> '"
+    callback: "awk '{print $1}'"
