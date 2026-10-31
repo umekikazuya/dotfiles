@@ -1,7 +1,7 @@
 {
   "plugins": {
     "SchemaStore.nvim": {
-      "rev": "a59b43cffa5a11d80b4ca4fd6a52350ac7bd6104",
+      "rev": "cc6302a0957806dfc0f2687f1f35ee9652686101",
       "src": "https://github.com/b0o/SchemaStore.nvim.git"
     },
     "blink-cmp-git": {
@@ -9,7 +9,7 @@
       "src": "https://github.com/Kaiser-Yang/blink-cmp-git.git"
     },
     "blink.cmp": {
-      "rev": "c4e7117a1b3d07656e949114f832a7efd677ec3e",
+      "rev": "d4318ec75309a37e09757de0f16faa67bf22b890",
       "src": "https://github.com/saghen/blink.cmp.git"
     },
     "blink.lib": {
@@ -37,7 +37,7 @@
       "src": "https://github.com/ruifm/gitlinker.nvim.git"
     },
     "gitsigns.nvim": {
-      "rev": "d4854fa9a94b5c8b37dd209fb4a19e98e764186f",
+      "rev": "1e9d0fbfe7ff848bc402d2c2e2854fb4eff2dce7",
       "src": "https://github.com/lewis6991/gitsigns.nvim.git"
     },
     "indent-blankline.nvim": {
@@ -69,11 +69,11 @@
       "src": "https://github.com/nvim-mini/mini.surround.git"
     },
     "nvim-lint": {
-      "rev": "f6230a5c06ba59e6059c14637f1dbe29a7978b9b",
+      "rev": "52107ce2076a27a285af781248e2c59bad817cd0",
       "src": "https://github.com/mfussenegger/nvim-lint.git"
     },
     "nvim-lspconfig": {
-      "rev": "4feaba4d3980032b3f62f3ba5df4de27fdf59cfd",
+      "rev": "460bb34e7be114f1fda7815781696bc701e60f83",
       "src": "https://github.com/neovim/nvim-lspconfig.git"
     },
     "nvim-treesitter": {
@@ -85,7 +85,7 @@
       "src": "https://github.com/windwp/nvim-ts-autotag.git"
     },
     "octo.nvim": {
-      "rev": "8461d99d13cca243f89848bf4d9fadee096f0a48",
+      "rev": "3c4abf9e7a9378fd7dd5181de91cb65080674b04",
       "src": "https://github.com/pwntester/octo.nvim.git"
     },
     "oil.nvim": {
