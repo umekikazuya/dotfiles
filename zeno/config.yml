@@ -129,7 +129,7 @@ snippets:
 completions:
   - name: localhost port
     patterns:
-      - "^open http://localhost:$"
+      - "^(?:open|curl) http://localhost:$"
     sourceCommand: >-
       lsof -nP -iTCP -sTCP:LISTEN -Fpcn 2>/dev/null |
       awk '/^c/ { command = substr($0, 2) }
