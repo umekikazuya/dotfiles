@@ -1,7 +1,7 @@
 {
   "plugins": {
     "SchemaStore.nvim": {
-      "rev": "cc6302a0957806dfc0f2687f1f35ee9652686101",
+      "rev": "073910e2521e23681c44a8b1355e91765a60cbaa",
       "src": "https://github.com/b0o/SchemaStore.nvim.git"
     },
     "blink-cmp-git": {
@@ -9,7 +9,7 @@
       "src": "https://github.com/Kaiser-Yang/blink-cmp-git.git"
     },
     "blink.cmp": {
-      "rev": "eece1c590dc575d489589c95499ec3acbf004e42",
+      "rev": "06097529cf6d3618546436f9a6bd5beaed979aef",
       "src": "https://github.com/saghen/blink.cmp.git"
     },
     "blink.lib": {
@@ -37,7 +37,7 @@
       "src": "https://github.com/ruifm/gitlinker.nvim.git"
     },
     "gitsigns.nvim": {
-      "rev": "1e9d0fbfe7ff848bc402d2c2e2854fb4eff2dce7",
+      "rev": "4bcd99167c265f135886b282baad77afe06206b2",
       "src": "https://github.com/lewis6991/gitsigns.nvim.git"
     },
     "indent-blankline.nvim": {
@@ -73,11 +73,11 @@
       "src": "https://github.com/mfussenegger/nvim-lint.git"
     },
     "nvim-lspconfig": {
-      "rev": "d8d2fda7aae57030452ce8cd6e770b1eb704514e",
+      "rev": "adfbb74472f6c231b651b650a89f414c2680fb31",
       "src": "https://github.com/neovim/nvim-lspconfig.git"
     },
     "nvim-treesitter": {
-      "rev": "a9c4e1457e2e59f1b82c8f78dcdb3b2517555200",
+      "rev": "0195cd62fa89950f34c0e0d648ea7897ab85d4d3",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter.git"
     },
     "nvim-ts-autotag": {
@@ -85,7 +85,7 @@
       "src": "https://github.com/windwp/nvim-ts-autotag.git"
     },
     "octo.nvim": {
-      "rev": "3c4abf9e7a9378fd7dd5181de91cb65080674b04",
+      "rev": "302ff3223e9ba954955cc518b0199da62d2a757f",
       "src": "https://github.com/pwntester/octo.nvim.git"
     },
     "oil.nvim": {
@@ -125,7 +125,7 @@
       "src": "https://github.com/folke/which-key.nvim.git"
     },
     "yanky.nvim": {
-      "rev": "adcabd8512bead30184916fa9277e73c021ef099",
+      "rev": "edcbe0f6d693b9e7860626094f886a2d79cfe63b",
       "src": "https://github.com/gbprod/yanky.nvim.git"
     }
   }
