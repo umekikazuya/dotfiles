@@ -15,6 +15,7 @@ k6 = "latest"
 
 node = "latest"
 "npm:@vtsls/language-server" = "latest"
+pnpm = "latest"
 
 # deno
 
