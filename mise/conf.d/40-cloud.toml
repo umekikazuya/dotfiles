@@ -4,6 +4,5 @@ terraform = "latest"
 "npm:aws-cdk" = "latest"
 awscli = { version = "latest", symlink_bins = "true" }
 task = "latest"
-claude = "latest"
 "npm:@github/copilot" = "latest"
 "npm:greptile" = "latest"
