@@ -1,7 +1,7 @@
 {
   "plugins": {
     "SchemaStore.nvim": {
-      "rev": "4794bb7a4cf66b894f0029c3094b7936a8c0e8fe",
+      "rev": "06012297e4d5d089ce5ac4cc8011a8f3c0148190",
       "src": "https://github.com/b0o/SchemaStore.nvim.git"
     },
     "blink-cmp-git": {
@@ -37,7 +37,7 @@
       "src": "https://github.com/ruifm/gitlinker.nvim.git"
     },
     "gitsigns.nvim": {
-      "rev": "4bcd99167c265f135886b282baad77afe06206b2",
+      "rev": "ef707fb93301a9b856f36eae4c8f56f5b988a794",
       "src": "https://github.com/lewis6991/gitsigns.nvim.git"
     },
     "indent-blankline.nvim": {
