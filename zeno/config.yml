@@ -160,3 +160,20 @@ completions:
     options:
       --prompt: "'Issue ID> '"
     callback: "awk '{print $1}'"
+  - name: pnpm filter
+    patterns:
+      - '^\s*pnpm\s+.*--filter\s+[^ ]*$'
+    sourceCommand: "pnpm list --recursive --depth -1 --json | jq -r '.[].name'"
+    options:
+      --prompt: "'pnpm package > '"
+  - name: pnpm filtered scripts
+    patterns:
+      - '^\s*pnpm\s+.*--filter\s+[^ ]+\s+(?:run|run-script)\s+.*$'
+    sourceCommand: >-
+      PACKAGE=$(printf '%s\n' "$LBUFFER" |
+      sed -E 's/.*--filter[[:space:]]+([^[:space:]]+).*/\1/');
+      pnpm --filter "$PACKAGE" exec node -e
+      'process.stdout.write(Object.keys(require("./package.json").scripts || {}).join("\n"))' |
+      sort -u
+    options:
+      --prompt: "'pnpm script > '"
