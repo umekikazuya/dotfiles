@@ -155,6 +155,13 @@ completions:
       printf '%s%s\n' "$prefix" "$candidate";
       fi;
       done
+  - name: ghq get ACCOUNT
+    patterns:
+      - "^ghq get [^/]+/$"
+    sourceCommand: >-
+      ACCOUNT=$(printf '%s\n' "$LBUFFER" |
+      sed -E 's#^ghq get ([^/]+)/$#\1#');
+      gh repo list "$ACCOUNT" --limit 200 --json name | jq -r '.[].name'
   - name: gh browse
     patterns:
       - "^gh browse -R( .*)? $"
