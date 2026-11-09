@@ -147,6 +147,14 @@ completions:
     sourceCommand: 'LINE="${LBUFFER}${RBUFFER}"; CLEAN=$(perl -pe "s/^\s*(?:[A-Z_]+=\S+\s+)+//" <<< "$LINE"); OFF=$((${#LINE}-${#CLEAN})); COMP_LINE="$CLEAN" COMP_POINT=$((${#LBUFFER}-OFF)) aws_completer 2>/dev/null'
     options:
       --prompt: "'aws > '"
+    callback: >-
+      partial=${LBUFFER##*[[:space:]]};
+      prefix=${LBUFFER[1,$(( ${#LBUFFER} - ${#partial} ))]};
+      while IFS= read -r candidate; do
+      if [[ $candidate == "$partial"* ]]; then
+      printf '%s%s\n' "$prefix" "$candidate";
+      fi;
+      done
   - name: gh browse
     patterns:
       - "^gh browse -R( .*)? $"
