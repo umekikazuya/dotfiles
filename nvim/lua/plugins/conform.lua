@@ -134,6 +134,15 @@ require("conform").setup({
       end,
     },
     ["markdownlint-cli2"] = {
+      args = function(_, ctx)
+        local args = { "--fix" }
+        local config = require("utils.markdownlint").config_path(ctx.buf)
+        if config then
+          vim.list_extend(args, { "--config", config })
+        end
+        table.insert(args, "$FILENAME")
+        return args
+      end,
       condition = function(_, ctx)
         local diag = vim.tbl_filter(function(d)
           return d.source == "markdownlint"

@@ -11,6 +11,16 @@ lint.linters_by_ft = {
   markdown = { "markdownlint-cli2" },
 }
 
+local markdownlint = lint.linters["markdownlint-cli2"]
+lint.linters["markdownlint-cli2"] = function()
+  local config = require("utils.markdownlint").config_path(vim.api.nvim_get_current_buf())
+  local args = { "-" }
+  if config then
+    args = { "--config", config, "-" }
+  end
+  return vim.tbl_extend("force", markdownlint, { args = args })
+end
+
 local golangci_config_names = {
   ".golangci.yml",
   ".golangci.yaml",
