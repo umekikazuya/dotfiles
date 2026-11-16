@@ -7,6 +7,8 @@
 "~/.zshrc" = { source = "~/src/github.com/umekikazuya/dotfiles/zsh/.zshrc" }
 "~/.zprofile" = { source = "~/src/github.com/umekikazuya/dotfiles/zsh/.zprofile" }
 
+"~/.editorconfig" = { source = "~/src/github.com/umekikazuya/dotfiles/.editorconfig" }
+
 "~/.tmux.conf" = { source = "~/src/github.com/umekikazuya/dotfiles/tmux/.tmux.conf" }
 "~/.vimrc" = { source = "~/src/github.com/umekikazuya/dotfiles/vim/.vimrc" }
 

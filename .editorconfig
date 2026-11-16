@@ -1,0 +1,32 @@
+# EditorConfig coding styles definitions. For more information about the
+# properties used in this file, please see the EditorConfig documentation:
+# https://editorconfig.org/
+
+# indicate this is the root of the project
+root = true
+
+[*]
+charset = utf-8
+
+end_of_line = lf
+insert_final_newline = false
+trim_trailing_whitespace = true
+
+indent_style = space
+indent_size = 2
+
+[Makefile]
+indent_style = tab
+tab_width = 2
+insert_final_newline = true
+
+[*.md]
+trim_trailing_whitespace = false
+insert_final_newline = true
+
+[*.go]
+indent_style = tab
+insert_final_newline = true
+
+[*.ts]
+insert_final_newline = true
