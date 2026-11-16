@@ -21,6 +21,10 @@ pnpm = "latest"
 
 deno = "latest"
 
+# rust
+
+rust = "latest"
+
 # LSP
 
 "npm:@tailwindcss/language-server" = "latest"
