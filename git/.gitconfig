@@ -53,10 +53,6 @@
 [tag]
 	gpgSign = true
 
-[gpg]
-	program = gpg
-
-
 [interactive]
     diffFilter = delta --color-only
 
