@@ -1,7 +1,7 @@
 {
   "plugins": {
     "SchemaStore.nvim": {
-      "rev": "024511f9960150bc172e82201d2ce5eb64adc588",
+      "rev": "5926c7899b2e36cd0f944ef3a933abd68c0fcdb8",
       "src": "https://github.com/b0o/SchemaStore.nvim.git"
     },
     "blink-cmp-git": {
@@ -37,7 +37,7 @@
       "src": "https://github.com/ruifm/gitlinker.nvim.git"
     },
     "gitsigns.nvim": {
-      "rev": "c0862d382a35b7b45757d8d151a6a634c09bf3ce",
+      "rev": "ea38d317af34f8ffcfbaf0f0dcc1471736661a4c",
       "src": "https://github.com/lewis6991/gitsigns.nvim.git"
     },
     "indent-blankline.nvim": {
@@ -85,7 +85,7 @@
       "src": "https://github.com/windwp/nvim-ts-autotag.git"
     },
     "octo.nvim": {
-      "rev": "0ddca04c02aab8ba18d2072f9b855f3806adad54",
+      "rev": "c4d3a12e1d6a62408d6f83b3d9387392bcf79bdf",
       "src": "https://github.com/pwntester/octo.nvim.git"
     },
     "oil.nvim": {
