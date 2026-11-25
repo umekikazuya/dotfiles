@@ -48,8 +48,8 @@ if [ ! -d "$ZSH_CACHE_DIR" ]; then
   mkdir -p "$ZSH_CACHE_DIR"
 fi
 
-# Use cached completion dump to skip compaudit on startup.
-compinit -C -d "$ZSH_COMPDUMP"
+# Reuse the cached completion dump and refresh it when completion files change.
+compinit -d "$ZSH_COMPDUMP"
 
 
 # Completion improvements
