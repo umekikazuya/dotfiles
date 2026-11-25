@@ -4,11 +4,21 @@ snippets:
     snippet: open
     context:
       lbuffer: "^o$"
-  - name: open localhost
+  - name: curl
+    keyword: c
+    snippet: curl
+    context:
+      lbuffer: "^c$"
+  - name: curl localhost
     keyword: local
     snippet: "http://localhost:{{}}"
     context:
       lbuffer: '^open\s+local$'
+  - name: curl localhost
+    keyword: local
+    snippet: "http://localhost:{{}}"
+    context:
+      lbuffer: '^curl\s+local$'
   - name: ssh hosts
     keyword: sshli
     snippet: "cat ~/.ssh/config | grep '^Host ' | sed -e 's/^Host //g'"
